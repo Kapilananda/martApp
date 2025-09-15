@@ -1,16 +1,27 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 
-const width = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
+
 export default function HotDealsCard({ item, navigation }) {
   return (
-    <View style={[styles.product,]}>
+    <View style={styles.product}>
+      {/* Product Image */}
+      <View>
 
-      <Image source={{ uri: item.image }} style={styles.image} />
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ProductDetails", { product: item })}
+      >
 
+        <Image source={{ uri: item.image }} style={styles.image} />
+      </TouchableOpacity>
+
+      {/* Product Title */}
       <Text numberOfLines={2} style={styles.title}>{item.title}</Text>
+      </View>
 
-      <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: "center", width: "100%", marginTop: 3 }}>
+      {/* Footer with Price & Button */}
+      <View style={styles.footer}>
         <Text style={styles.price}>${item.price}</Text>
         <TouchableOpacity
           style={styles.btn}
@@ -25,48 +36,60 @@ export default function HotDealsCard({ item, navigation }) {
 
 const styles = StyleSheet.create({
   product: {
-    backgroundColor: "white",
-    margin: 5,
-    borderRadius: 8,
-    padding: 10,
+    backgroundColor: "#fff",
+    margin: 10,
+    borderRadius: 15,
+    padding: 12,
     alignItems: "center",
-    elevation: 3,
-    width: 150 ,
-    marginTop: -8,
+    elevation: 6,  // Android shadow
+    shadowColor: "#000", // iOS shadow
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 3 },
+    shadowRadius: 6,
+    width: width * 0.44,  // ~2 cards per row
+    minHeight: height * 0.28,
   },
   image: {
-    width: "50%",
-    height: 120,
-    resizeMode: "center",
-    marginBottom: 5,
+    width: "85%",
+    height: height * 0.14,
+    resizeMode: "contain",
+    marginBottom: 8,
   },
   title: {
     fontSize: 14,
-    fontWeight: "bold",
+    fontWeight: "600",
     textAlign: "center",
-    marginBottom: 3,
+    marginBottom: 8,
+    color: "#333",
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: "center",
+    width: "100%",
+    marginTop: "auto",  // pushes footer to bottom
   },
   price: {
-    fontSize: 15,
-    color: "green",
-    marginBottom: 5,
-
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#2E7D32", // dark green
   },
   viewButton: {
-    color: "#31326F",
+    color: "#fff",
     fontWeight: "bold",
-    fontSize: 40,
-    border: 1,
-    top: -7,
+    fontSize: 22,
   },
   btn: {
-    backgroundColor: '#BDE3C3',
-    borderRadius: 50,
-    width:  40,
+    backgroundColor: '#4CAF50', // primary green
+    borderRadius: 25,
+    width: 40,
     height: 40,
-    top:0,
-    elevation:5,
+    elevation: 4,
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: "#000",
+    shadowOpacity: 0.15,
+    shadowOffset: { width: 0, height: 3 },
+    shadowRadius: 5,
   }
 });

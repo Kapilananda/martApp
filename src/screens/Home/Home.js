@@ -4,17 +4,15 @@ import {
   View,
   Text,
   FlatList,
-  Image,
-  TouchableOpacity,
   ActivityIndicator,
   SafeAreaView,
-  ScrollView,
   Dimensions,
-  Animated,
 } from "react-native";
 
+import HotDealsCard from "../../components/HotDealsCard";
+import Categories from "../../components/Categories";
 
-import HotDealsCard from '../../components/HotDealsCard'
+const { width, height } = Dimensions.get("window");
 
 export default function Home({ navigation }) {
   const [products, setProducts] = useState([]);
@@ -23,12 +21,12 @@ export default function Home({ navigation }) {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const response = await fetch('https://fakestoreapi.com/products');
+        const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
         console.log("Fetched Data:", data);
-        setProducts(data); // ✅ directly use data
+        setProducts(data);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       } finally {
         setLoading(false);
       }
@@ -38,7 +36,7 @@ export default function Home({ navigation }) {
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View style={styles.loader}>
         <ActivityIndicator size="large" color="#4CAF50" />
       </View>
     );
@@ -46,43 +44,86 @@ export default function Home({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-       
+      <FlatList
+        data={[]} // nothing here, all content is in ListHeaderComponent
+        keyExtractor={(_, index) => index.toString()}
+        ListHeaderComponent={
+          <View>
+            {/* Header */}
+            <View style={styles.header}>
+              <Text style={styles.appTitle}>MartApp 🛒</Text>
+            </View>
 
-      </View>
-      <ScrollView style={{ height: "75%", width: "100%" }}>
-        <View style={styles.deals}>
-          <Text style={styles.heading}>
-            Deals of the Day
-          </Text>
-          <FlatList
-            data={products.slice(0, 10)}
-            // numColumns={2}
-            horizontal
-            nestedScrollEnabled={true}
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={(item) => item.id.toString()}
-            contentContainerStyle={{ padding: 10 }}
-            renderItem={({ item }) => (
-              <HotDealsCard item={item} navigation={navigation} />
-            )}
-            style={{ height: "100%", }}
-          />
-        </View>
-        <View style={styles.dummy}>
-          <Text style={styles.heading}>Fresh things(Fruits & veggies)....</Text>
-        </View>
-        <View style={styles.dummy}>
-          <Text style={styles.heading}>Grocery....</Text>
-        </View>
-        <View style={styles.dummy}>
-          <Text style={styles.heading}>Snacks....</Text>
-        </View>
-        <View style={styles.dummy}>
-          <Text style={styles.heading}>Grocery....</Text>
-        </View>
-      </ScrollView>
+            {/* Deals of the Day */}
+            <View style={[styles.section, { width: width, paddingVertical: 0 }]}>
+              <Text style={styles.heading}>🔥 Deals of the Day</Text>
+              <FlatList
+                data={products.slice(0, 10)}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item) => item.id.toString()}
+                contentContainerStyle={{ paddingHorizontal: 10 }}
+                renderItem={({ item }) => (
+                  <HotDealsCard item={item} navigation={navigation} />
+                )}
+              />
+            </View>
 
+            {/* Fresh Items */}
+            <View style={styles.section}>
+              <Text style={styles.heading}>🍎 Fresh Fruits & Veggies</Text>
+              <FlatList
+                data={products.slice(0, 12)}
+                numColumns={4}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
+                  <Categories item={item} navigation={navigation} />
+                )}
+              />
+            </View>
+
+            {/* Grocery */}
+            <View style={styles.section}>
+              <Text style={styles.heading}>🥦 Grocery</Text>
+              <FlatList
+                data={products.slice(0, 12)}
+                numColumns={4}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
+                  <Categories item={item} navigation={navigation} />
+                )}
+              />
+            </View>
+
+            {/* Snacks */}
+            <View style={styles.section}>
+              <Text style={styles.heading}>🍪 Snacks</Text>
+              <FlatList
+                data={products.slice(0, 12)}
+                numColumns={4}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
+                  <Categories item={item} navigation={navigation} />
+                )}
+              />
+            </View>
+
+            {/* Beverages */}
+            <View style={styles.section}>
+              <Text style={styles.heading}>🥤 Beverages</Text>
+              <FlatList
+                data={products.slice(0, 12)}
+                numColumns={4}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
+                  <Categories item={item} navigation={navigation} />
+                )}
+              />
+            </View>
+          </View>
+        }
+        renderItem={null} // no row rendering needed
+      />
     </SafeAreaView>
   );
 }
@@ -90,27 +131,43 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fbc12d30",
+    backgroundColor: "#F9FAFB", // soft gray-white background
+  },
+  loader: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F9FAFB",
   },
   header: {
-    height: "25%",
-    width: "100%",
-    backgroundColor: "white",
+    height: height * 0.28,
+    width: width,
+    backgroundColor: "#4CAF50",
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 5,
+  },
+  appTitle: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "white",
+    letterSpacing: 1,
   },
   heading: {
-    fontSize: 15,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: "bold",
     marginBottom: 10,
-    paddingTop: 15,
-    paddingLeft: 17,
+    paddingLeft: 10,
+    color: "#333",
   },
-  deals: {
-    height: "27%",
-    width: "100%"
+  section: {
+    backgroundColor: "white",
+    borderRadius: 12,
+    paddingVertical: 15,
+    marginVertical: 8,
+    elevation: 2,
+    shadowColor: "#000",
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
   },
-  dummy: {
-    height: "200",
-    width: "100%",
-  },
-   
 });
