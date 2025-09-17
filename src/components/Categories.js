@@ -1,12 +1,16 @@
 import { StyleSheet, Text, View, Dimensions, Image, TouchableOpacity, } from 'react-native';
 import React from 'react';
+import ProductList from '../screens/Home/ProductList';
 
 const { width } = Dimensions.get("window");
 
-export default function Categories({ item, navigation }) {
+export default function Categories({ item,products, navigation }) {
+
+  console.log(item);
+  
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
+      <TouchableOpacity  onPress={() => navigation.navigate("ProductList",{products})}>
 
         <Image
           source={{ uri: item.image }}
@@ -23,7 +27,8 @@ export default function Categories({ item, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    width: width * 0.22,   // 🔹 each item ~22% of screen width (fits 4 per row with spacing)
+    width: width * 0.21,   // 🔹 each item ~22% of screen width (fits 4 per row with spacing)
+    height: width * 0.3,   // 🔹 each item ~22% of screen width (fits 4 per row with spacing)
     margin: 5,
     alignItems: "center",
     justifyContent: "center",

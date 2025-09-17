@@ -1,95 +1,90 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
+import React from "react";
+import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 export default function HotDealsCard({ item, navigation }) {
   return (
-    <View style={styles.product}>
-      {/* Product Image */}
-      <View>
-
+    <View style={styles.card}>
       <TouchableOpacity
-        onPress={() => navigation.navigate("ProductDetails", { product: item })}
+        onPress={() => navigation.navigate("ProductDetails", { item: item })}
       >
-
         <Image source={{ uri: item.image }} style={styles.image} />
       </TouchableOpacity>
 
-      {/* Product Title */}
       <Text numberOfLines={2} style={styles.title}>{item.title}</Text>
-      </View>
 
-      {/* Footer with Price & Button */}
       <View style={styles.footer}>
-        <Text style={styles.price}>${item.price}</Text>
-        <TouchableOpacity
-          style={styles.btn}
-          onPress={() => { }}
+        <Text style={styles.price}>${item.price.toFixed(2)}</Text>
+
+        <LinearGradient
+          colors={['#FF6D00', '#FFAB40']}
+          style={styles.plusBorder}
         >
-          <Text style={styles.viewButton}>+</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.plusButton}
+            onPress={() => console.log("Add to cart", item.title)}
+          >
+            <Text style={styles.plusText}>+</Text>
+          </TouchableOpacity>
+        </LinearGradient>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  product: {
+  card: {
     backgroundColor: "#fff",
-    margin: 10,
+    width: (width - 40) / 2.2,
     borderRadius: 15,
-    padding: 12,
-    alignItems: "center",
-    elevation: 6,  // Android shadow
-    shadowColor: "#000", // iOS shadow
+    padding: 10,
+    marginHorizontal: 5,
+    marginBottom: 15,
+    elevation: 4,
+    shadowColor: "#000",
     shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 3 },
     shadowRadius: 6,
-    width: width * 0.44,  // ~2 cards per row
-    minHeight: height * 0.28,
+    shadowOffset: { width: 0, height: 3 },
   },
   image: {
-    width: "85%",
-    height: height * 0.14,
+    width: "100%",
+    height: 150,
     resizeMode: "contain",
     marginBottom: 8,
   },
   title: {
     fontSize: 14,
     fontWeight: "600",
-    textAlign: "center",
-    marginBottom: 8,
     color: "#333",
+    marginBottom: 8,
   },
   footer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
-    width: "100%",
-    marginTop: "auto",  // pushes footer to bottom
   },
   price: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#2E7D32", // dark green
+    color: "#2E7D32",
   },
-  viewButton: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: 22,
-  },
-  btn: {
-    backgroundColor: '#4CAF50', // primary green
+  plusBorder: {
     borderRadius: 25,
+    padding: 2,
+  },
+  plusButton: {
+    backgroundColor: "#fff",
+    borderRadius: 22,
     width: 40,
     height: 40,
-    elevation: 4,
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: "#000",
-    shadowOpacity: 0.15,
-    shadowOffset: { width: 0, height: 3 },
-    shadowRadius: 5,
-  }
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  plusText: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "#FF6D00",
+  },
 });

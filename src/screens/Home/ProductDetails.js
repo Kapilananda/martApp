@@ -14,8 +14,10 @@ import LinearGradient from "react-native-linear-gradient";
 
 const { width } = Dimensions.get("window");
 
-export default function ProductDetails({ route, navigation }) {
-  const { product } = route.params;
+export default function itemDetails({ route, navigation }) {
+  const { item } = route.params;
+  // console.log(`hello ${item}`);
+  
   const [quantity, setQuantity] = useState(1);
 
   // ⭐ Dynamic Rating Renderer
@@ -60,26 +62,26 @@ export default function ProductDetails({ route, navigation }) {
           </TouchableOpacity>
         </View>
 
-        {/* Product Image */}
+        {/* item Image */}
         <View style={styles.imageWrapper}>
-          <Image source={{ uri: product.image }} style={styles.image} />
+          <Image source={{ uri: item.image }} style={styles.image} />
         </View>
 
-        {/* Product Info */}
+        {/* item Info */}
         <View style={styles.infoCard}>
-          <Text style={styles.title}>{product.title}</Text>
+          <Text style={styles.title}>{item.title}</Text>
 
           {/* Rating */}
           <View style={styles.ratingRow}>
-            {renderStars(product.rating?.rate)}
+            {renderStars(item.rating?.rate)}
             <Text style={styles.ratingValue}>
-              ({product.rating?.count ?? 0} reviews)
+              ({item.rating?.count ?? 0} reviews)
             </Text>
           </View>
 
           {/* Price & Quantity */}
           <View style={styles.priceRow}>
-            <Text style={styles.price}>₹ {product.price}</Text>
+            <Text style={styles.price}>₹ {item.price}</Text>
 
             <View style={styles.qtyBox}>
               <TouchableOpacity
@@ -95,19 +97,19 @@ export default function ProductDetails({ route, navigation }) {
           </View>
 
           {/* Description */}
-          <Text style={styles.sectionTitle}>Product Details</Text>
-          <Text style={styles.description}>{product.description}</Text>
+          <Text style={styles.sectionTitle}>item Details</Text>
+          <Text style={styles.description}>{item.description}</Text>
 
-          {/* Related Products */}
-          <Text style={styles.sectionTitle}>Related Products</Text>
+          {/* Related items */}
+          <Text style={styles.sectionTitle}>Related items</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {[...Array(3)].map((_, i) => (
               <View key={i} style={styles.relatedCard}>
                 <Image
-                  source={{ uri: product.image }}
+                  source={{ uri: item.image }}
                   style={styles.relatedImg}
                 />
-                <Text style={styles.relatedPrice}>₹ {product.price}</Text>
+                <Text style={styles.relatedPrice}>₹ {item.price}</Text>
               </View>
             ))}
           </ScrollView>
@@ -119,7 +121,7 @@ export default function ProductDetails({ route, navigation }) {
         <View>
           <Text style={styles.totalText}>Total Price</Text>
           <Text style={styles.totalPrice}>
-            ₹ {(product.price * quantity).toFixed(2)}
+            ₹ {(item.price * quantity).toFixed(2)}
           </Text>
         </View>
         <TouchableOpacity>
@@ -232,6 +234,7 @@ const styles = StyleSheet.create({
     elevation: 4,
     alignItems: "center",
     width: 120,
+    marginBottom:10
   },
   relatedImg: { width: 80, height: 80, resizeMode: "contain" },
   relatedPrice: {
