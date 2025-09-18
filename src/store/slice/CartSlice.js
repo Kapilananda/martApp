@@ -42,10 +42,17 @@ const cartSlice = createSlice({
     },
     decreaseQty: (state, action) => {
       const item = state.cartItems.find((i) => i.id === action.payload);
-      if (item && item.quantity > 1) {
-        item.quantity -= 1;
-        state.totalQuantity -= 1;
-        state.totalPrice -= item.price;
+      if (item) {
+        if (item.quantity > 1) {
+          item.quantity -= 1;
+          state.totalQuantity -= 1;
+          state.totalPrice -= item.price;
+        } else {
+          // ✅ remove if qty goes to 0
+          state.cartItems = state.cartItems.filter((i) => i.id !== item.id);
+          state.totalQuantity -= 1;
+          state.totalPrice -= item.price;
+        }
       }
     },
     clearCart: (state) => {

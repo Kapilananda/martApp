@@ -50,7 +50,7 @@ export default function BottomTabNavigator() {
               position: "absolute",
               borderTopWidth: 0,
               elevation: 7,
-              margin: 15,
+              margin: 10,
               padding: 10,
               borderRadius: 20,
               height: 65,
@@ -62,7 +62,7 @@ export default function BottomTabNavigator() {
               height: 65,
             },
 
-        tabBarItemStyle: { paddingVertical: 7 },
+        tabBarItemStyle: { paddingVertical: 8 },
       })}
     >
       {/* 👇 Pass setter to Home */}

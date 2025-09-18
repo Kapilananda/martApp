@@ -2,9 +2,8 @@ import React from "react";
 import {
   View,
   Text,
-  TextInput,
-  StyleSheet,
   TouchableOpacity,
+  StyleSheet,
   Dimensions,
   ScrollView,
   SafeAreaView,
@@ -12,8 +11,9 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import LinearGradient from "react-native-linear-gradient";
+import { useSelector } from "react-redux";
 
-const { width } = Dimensions.get("window");
+const { width, height } = Dimensions.get("window");
 
 const categories = [
   { name: "All", icon: "grid-outline", colors: ["#ff9a9e", "#fad0c4"] },
@@ -24,7 +24,10 @@ const categories = [
   { name: "Tech", icon: "phone-portrait-outline", colors: ["#7f00ff", "#e100ff"] },
 ];
 
-export default function TopHome({navigation}) {
+export default function TopHome({ navigation }) {
+  // Get cart count from Redux
+  const cartItems = useSelector((state) => state.cart.cartItems.length);
+
   return (
     <SafeAreaView>
       <LinearGradient
@@ -35,42 +38,35 @@ export default function TopHome({navigation}) {
       >
         {/* Top row - delivery info + profile */}
         <View style={styles.topRow}>
-          <View>
+          <View style={{ flexShrink: 1 }}>
             <Text style={styles.deliveryTime}>⏱ 8 mins</Text>
             <Text style={styles.address} numberOfLines={1}>
               Padmavathi Nagar, Tirupati
             </Text>
           </View>
-          <TouchableOpacity activeOpacity={0.7}>
-            <Icon name="person-circle-outline" size={width * 0.1} color="#fff" />
+          <TouchableOpacity activeOpacity={0.7} onPress={ () => navigation.navigate("ProfileScreen")}>
+            <Icon name="person-circle-outline" size={width * 0.12} color="#d7eaffff" />
           </TouchableOpacity>
         </View>
 
         {/* Search + Cart */}
         <View style={styles.searchRow}>
-          <View style={styles.searchBox}>
-            <Icon name="search-outline" size={width * 0.05} color="#888" />
-            <View> 
-              <TouchableOpacity onPress={() => navigation.navigate("SearchScreen",{navigation})}>
-                <Text>  Search for Products... </Text>
-              </TouchableOpacity>
-            </View>
-            {/* <TouchableOpacity style={{alignContent:"flex-end"}}>
-              <Icon name="mic-outline" size={width * 0.05} color="#888" />
-            </TouchableOpacity> */}
-          </View>
+          <TouchableOpacity
+            style={styles.searchBox}
+            onPress={() => navigation.navigate("SearchScreen", { navigation })}
+            activeOpacity={0.7}
+          >
+            <Icon name="search-outline" size={width * 0.06} color="#888" />
+            <Text style={styles.searchText}> Search for Products... </Text>
+          </TouchableOpacity>
 
-          {/* Cart with badge */}
           <TouchableOpacity style={styles.cartBtn} activeOpacity={0.8}>
-            <LinearGradient
-              colors={["#ff6a00", "#ee0979"]}
-              style={styles.cartGradient}
-            >
-              <Icon name="cart-outline" size={width * 0.07} color="#fff" />
+            <Icon name="cart-outline" size={width * 0.1} color="#fff" />
+            {cartItems > 0 && (
               <View style={styles.badge}>
-                <Text style={styles.badgeText}>3</Text>
+                <Text style={styles.badgeText}>{cartItems}</Text>
               </View>
-            </LinearGradient>
+            )}
           </TouchableOpacity>
         </View>
 
@@ -84,7 +80,7 @@ export default function TopHome({navigation}) {
           {categories.map((cat) => (
             <TouchableOpacity key={cat.name} activeOpacity={0.8} style={styles.catBtn}>
               <LinearGradient colors={cat.colors} style={styles.catGradient}>
-                <Icon name={cat.icon} size={width * 0.045} color="#fff" />
+                <Icon name={cat.icon} size={width * 0.05} color="#fff" />
                 <Text style={styles.catText}>{cat.name}</Text>
               </LinearGradient>
             </TouchableOpacity>
@@ -98,11 +94,11 @@ export default function TopHome({navigation}) {
 const styles = StyleSheet.create({
   headerContainer: {
     width: "100%",
-    paddingTop: 40,
-    paddingHorizontal: 14,
-    paddingBottom: 14,
-    borderBottomLeftRadius: 18,
-    borderBottomRightRadius: 18,
+    paddingTop: height * 0.03,
+    paddingHorizontal: width * 0.035,
+    paddingBottom: height * 0.02,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
     ...Platform.select({
       ios: { shadowColor: "#000", shadowOpacity: 0.08, shadowRadius: 6, shadowOffset: { width: 0, height: 3 } },
       android: { elevation: 5 },
@@ -112,57 +108,52 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 14,
+    marginBottom: height * 0.02,
   },
   deliveryTime: {
-    fontSize: width * 0.04,
+    fontSize: width * 0.045,
     fontWeight: "bold",
     color: "#fff",
   },
   address: {
-    fontSize: width * 0.032,
+    fontSize: width * 0.035,
     color: "#e6f0ff",
-    maxWidth: "75%",
+    maxWidth: width * 0.65,
   },
   searchRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 14,
+    marginBottom: height * 0.02,
   },
   searchBox: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fff",
-    borderRadius: 25,
-    paddingHorizontal: 12,
-    height: width * 0.11,
+    borderRadius: width * 0.06,
+    paddingHorizontal: width * 0.035,
+    height: height * 0.055,
     ...Platform.select({
       ios: { shadowColor: "#000", shadowOpacity: 0.08, shadowRadius: 4, shadowOffset: { width: 0, height: 2 } },
       android: { elevation: 3 },
     }),
   },
-  input: {
-    flex: 1,
-    marginLeft: 6,
-    fontSize: width * 0.035,
-    color: "#000",
+  searchText: {
+    marginLeft: width * 0.02,
+    fontSize: width * 0.036,
+    color: "#888",
   },
   cartBtn: {
-    marginLeft: 12,
+    marginLeft: width * 0.03,
     position: "relative",
-  },
-  cartGradient: {
-    padding: 8,
-    borderRadius: 30,
     justifyContent: "center",
     alignItems: "center",
   },
   badge: {
     position: "absolute",
-    top: 2,
-    right: 2,
-    backgroundColor: "#e53935",
+    top: -5,
+    right: -5,
+    backgroundColor: "#E53935",
     borderRadius: 12,
     minWidth: 18,
     height: 18,
@@ -172,29 +163,29 @@ const styles = StyleSheet.create({
   },
   badgeText: {
     color: "#fff",
-    fontSize: width * 0.028,
+    fontSize: 10,
     fontWeight: "bold",
   },
   categoryRow: {
-    marginTop: 6,
+    marginTop: height * 0.01,
   },
   catBtn: {
-    marginRight: 10,
+    marginRight: width * 0.025,
   },
   catGradient: {
     flexDirection: "row",
     alignItems: "center",
-    borderRadius: 25,
-    paddingHorizontal: 14,
-    paddingVertical: 7,
+    borderRadius: width * 0.06,
+    paddingHorizontal: width * 0.035,
+    paddingVertical: height * 0.012,
     ...Platform.select({
       ios: { shadowColor: "#000", shadowOpacity: 0.05, shadowRadius: 4, shadowOffset: { width: 0, height: 2 } },
       android: { elevation: 2 },
     }),
   },
   catText: {
-    marginLeft: 6,
-    fontSize: width * 0.034,
+    marginLeft: width * 0.02,
+    fontSize: width * 0.036,
     fontWeight: "600",
     color: "#fff",
   },

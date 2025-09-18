@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
   View,
   Text,
@@ -9,9 +9,12 @@ import {
   Dimensions,
   Modal,
   Pressable,
-  Alert,
+  SafeAreaView,
+  ScrollView,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import AntDesign from "react-native-vector-icons/AntDesign";
+import ItemCard from "../../components/ItemCard";
 
 const { width } = Dimensions.get("window");
 
@@ -21,7 +24,19 @@ const ProductList = ({ route, navigation }) => {
   const [filterVisible, setFilterVisible] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [favorites, setFavorites] = useState([]);
-  const [cart, setCart] = useState([]); // ✅ Cart state
+  const [cart, setCart] = useState([]);
+
+  // ✅ Filter states
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [sortBy, setSortBy] = useState(null);
+  const [minRating, setMinRating] = useState(null);
+  const [priceRange, setPriceRange] = useState([0, 1000]);
+
+  // ✅ Unique categories
+  const categories = useMemo(
+    () => [...new Set(products.map((p) => p.category))],
+    [products]
+  );
 
   // ✅ Toggle favorite
   const toggleFavorite = (id) => {
@@ -35,153 +50,211 @@ const ProductList = ({ route, navigation }) => {
     setCart((prev) => {
       const exists = prev.find((cartItem) => cartItem.id === item.id);
       if (exists) {
-        // increase quantity
         return prev.map((cartItem) =>
           cartItem.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );
       } else {
-        // add new item
         return [...prev, { ...item, quantity: 1 }];
       }
     });
-    Alert.alert("🛒 Added to Cart", `${item.title} has been added to your cart.`);
+  };
+
+  // ✅ Apply Filters
+  const applyFilters = () => {
+    let filtered = [...products];
+
+    if (selectedCategory) {
+      filtered = filtered.filter((item) => item.category === selectedCategory);
+    }
+
+    if (minRating) {
+      filtered = filtered.filter((item) => item.rating?.rate >= minRating);
+    }
+
+    if (priceRange) {
+      filtered = filtered.filter(
+        (item) => item.price >= priceRange[0] && item.price <= priceRange[1]
+      );
+    }
+
+    if (sortBy === "lowToHigh") {
+      filtered.sort((a, b) => a.price - b.price);
+    } else if (sortBy === "highToLow") {
+      filtered.sort((a, b) => b.price - a.price);
+    }
+
+    setFilteredProducts(filtered);
+    setFilterVisible(false);
+  };
+
+  const resetFilters = () => {
+    setSelectedCategory(null);
+    setSortBy(null);
+    setMinRating(null);
+    setPriceRange([0, 1000]);
+    setFilteredProducts(products);
+    setFilterVisible(false);
   };
 
   const renderProduct = ({ item }) => (
-    <View style={styles.card}>
-      {/* Clickable Product Card */}
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("ProductDetails", {
-            item,
-            isFavorite: favorites.includes(item.id),
-            toggleFavorite: () => toggleFavorite(item.id),
-            addToCart: () => addToCart(item), // ✅ Pass cart handler to details screen
-          })
-        }
-      >
-        {/* Image */}
-        <Image source={{ uri: item.image }} style={styles.image} />
-
-        {/* Name */}
-        <Text style={styles.name} numberOfLines={1}>
-          {item.title}
-        </Text>
-
-        {/* Rating */}
-        <View
-          style={{
-            flexDirection: "row",
-            marginVertical: 2,
-            justifyContent: "center",
-          }}
-        >
-          {[1, 2, 3, 4, 5].map((i) => (
-            <Icon
-              key={i}
-              name="star"
-              size={14}
-              color={i <= Math.round(item.rating?.rate || 4) ? "#f1c40f" : "#ccc"}
-              style={{ marginRight: 2 }}
-            />
-          ))}
-        </View>
-
-        {/* Price */}
-        <Text style={styles.popularPrice}>₹ {item.price.toFixed(2)}/KG</Text>
-      </TouchableOpacity>
-
-      {/* Action Buttons */}
-      <View style={styles.actions}>
-        {/* Favorite button */}
-        <TouchableOpacity onPress={() => toggleFavorite(item.id)}>
-          <Icon
-            name={favorites.includes(item.id) ? "heart" : "heart-outline"}
-            size={22}
-            color={favorites.includes(item.id) ? "#e63946" : "#2f855a"}
-          />
-        </TouchableOpacity>
-
-        {/* Add to cart button */}
-        <TouchableOpacity style={styles.addBtn} onPress={() => addToCart(item)}>
-          <Icon name="cart" size={18} color="#fff" />
-        </TouchableOpacity>
-      </View>
-    </View>
+    <ItemCard
+      item={item}
+      navigation={navigation}
+      isFavorite={favorites.includes(item.id)}
+      toggleFavorite={() => toggleFavorite(item.id)}
+      addToCart={() => addToCart(item)}
+    />
   );
 
   return (
-    <View style={styles.container}>
-      {/* Top bar with back + filter */}
-      <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-        {/* Back button */}
+    <SafeAreaView style={styles.container}>
+      {/* 🔹 Floating Top Bar */}
+      <View style={styles.topBar}>
         <TouchableOpacity
-          style={styles.filterBtn}
+          style={styles.topBtn}
           onPress={() => navigation.goBack()}
         >
-
-          <AntDesign name="arrowleft" size={20} color="#333" />
-
+          <AntDesign name="arrowleft" size={20} color="#2f855a" />
+          <Text style={styles.topBtnText}>Back</Text>
         </TouchableOpacity>
 
-        {/* Filter button */}
         <TouchableOpacity
-          style={styles.filterBtn}
+          style={styles.topBtn}
           onPress={() => setFilterVisible(true)}
         >
-          <Icon name="options-outline" size={18} color="#fff" />
-          <Text style={styles.filterText}> Filter</Text>
+          <Icon name="options-outline" size={18} color="#2f855a" />
+          <Text style={styles.topBtnText}>Filter</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Product Grid */}
+      {/* 🔹 Product Grid */}
       <FlatList
         data={filteredProducts}
         renderItem={renderProduct}
         keyExtractor={(item) => item.id.toString()}
         numColumns={2}
         columnWrapperStyle={{ justifyContent: "space-between" }}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        contentContainerStyle={{ paddingBottom: 40 }}
         showsVerticalScrollIndicator={false}
       />
 
-      {/* Filter Modal */}
+      {/* 🔹 Filter Modal */}
       <Modal visible={filterVisible} animationType="slide" transparent>
         <View style={styles.modalOverlay}>
           <View style={styles.modalContainer}>
-            <Text style={styles.modalTitle}>Filter Products</Text>
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <Text style={styles.modalTitle}>Filter Products</Text>
 
-            {/* Dummy filter options */}
-            <Text style={styles.modalOption}>Category</Text>
-            <Text style={styles.modalOption}>Sort by</Text>
-            <Text style={styles.modalOption}>Rating</Text>
-            <Text style={styles.modalOption}>Price Range</Text>
+              {/* Category */}
+              <Text style={styles.modalOption}>Category</Text>
+              <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+                {categories.map((cat) => (
+                  <Pressable
+                    key={cat}
+                    style={[
+                      styles.chip,
+                      selectedCategory === cat && styles.chipActive,
+                    ]}
+                    onPress={() =>
+                      setSelectedCategory(
+                        selectedCategory === cat ? null : cat
+                      )
+                    }
+                  >
+                    <Text
+                      style={[
+                        styles.chipText,
+                        selectedCategory === cat && styles.chipTextActive,
+                      ]}
+                    >
+                      {cat}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
 
-            {/* Modal Actions */}
-            <View style={styles.modalActions}>
-              <Pressable
-                style={[styles.modalBtn, { backgroundColor: "#ccc" }]}
-                onPress={() => {
-                  setFilteredProducts(products);
-                  setFilterVisible(false);
-                }}
-              >
-                <Text style={styles.modalBtnText}>Reset</Text>
-              </Pressable>
+              {/* Sort by */}
+              <Text style={styles.modalOption}>Sort by</Text>
+              <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+                <Pressable
+                  style={[
+                    styles.chip,
+                    sortBy === "lowToHigh" && styles.chipActive,
+                  ]}
+                  onPress={() => setSortBy("lowToHigh")}
+                >
+                  <Text
+                    style={[
+                      styles.chipText,
+                      sortBy === "lowToHigh" && styles.chipTextActive,
+                    ]}
+                  >
+                    Price: Low → High
+                  </Text>
+                </Pressable>
 
-              <Pressable
-                style={[styles.modalBtn, { backgroundColor: "#2f855a" }]}
-                onPress={() => setFilterVisible(false)}
-              >
-                <Text style={styles.modalBtnText}>Apply</Text>
-              </Pressable>
-            </View>
+                <Pressable
+                  style={[
+                    styles.chip,
+                    sortBy === "highToLow" && styles.chipActive,
+                  ]}
+                  onPress={() => setSortBy("highToLow")}
+                >
+                  <Text
+                    style={[
+                      styles.chipText,
+                      sortBy === "highToLow" && styles.chipTextActive,
+                    ]}
+                  >
+                    Price: High → Low
+                  </Text>
+                </Pressable>
+              </View>
+
+              {/* Rating */}
+              <Text style={styles.modalOption}>Minimum Rating</Text>
+              <View style={{ flexDirection: "row" }}>
+                {[3, 4, 5].map((r) => (
+                  <Pressable
+                    key={r}
+                    style={[styles.chip, minRating === r && styles.chipActive]}
+                    onPress={() => setMinRating(minRating === r ? null : r)}
+                  >
+                    <Text
+                      style={[
+                        styles.chipText,
+                        minRating === r && styles.chipTextActive,
+                      ]}
+                    >
+                      ⭐ {r}+
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
+
+              {/* Modal Actions */}
+              <View style={styles.modalActions}>
+                <Pressable
+                  style={[styles.modalBtn, { backgroundColor: "#ccc" }]}
+                  onPress={resetFilters}
+                >
+                  <Text style={styles.modalBtnText}>Reset</Text>
+                </Pressable>
+
+                <Pressable
+                  style={[styles.modalBtn, { backgroundColor: "#2f855a" }]}
+                  onPress={applyFilters}
+                >
+                  <Text style={styles.modalBtnText}>Apply</Text>
+                </Pressable>
+              </View>
+            </ScrollView>
           </View>
         </View>
       </Modal>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -189,71 +262,33 @@ const ProductList = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 12,
+    paddingHorizontal: 12,
     backgroundColor: "#fff",
-    top: 40,
-  },
-  filterBtn: {
-    alignSelf: "flex-end",
-    backgroundColor: "#2f855a",
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 15,
-    paddingVertical: 8,
-    borderRadius: 25,
-    marginBottom: 12,
-    elevation: 3,
-    color: "white",
-  },
-  filterText: {
-    color: "#fff",
-    fontWeight: "600",
-    marginLeft: 0,
-  },
-  card: {
-    width: "48%",
-    backgroundColor: "#f8f9fa",
-    borderRadius: 14,
-    padding: 12,
-    marginBottom: 15,
-    elevation: 3,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
-  },
-  image: {
-    width: "100%",
-    height: width * 0.35,
-    resizeMode: "contain",
-    borderRadius: 10,
-    backgroundColor: "#fff",
-  },
-  name: {
-    fontSize: 15,
-    fontWeight: "600",
-    marginTop: 6,
-    color: "#333",
-  },
-  popularPrice: {
-    fontSize: 14,
-    color: "#2f855a",
-    marginVertical: 4,
-    fontWeight: "500",
-  },
-  actions: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: 6,
-  },
-  addBtn: {
-    backgroundColor: "#2f855a",
-    padding: 8,
-    borderRadius: 50,
-    elevation: 2,
   },
 
-  // ✅ Modal
+  // 🔹 Top Bar
+  topBar: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10,
+    marginTop: 5,
+  },
+  topBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#f0fdf4",
+    borderRadius: 25,
+    paddingHorizontal: 15,
+    paddingVertical: 8,
+    elevation: 2,
+  },
+  topBtnText: {
+    color: "#2f855a",
+    fontWeight: "600",
+    marginLeft: 6,
+  },
+
+  // 🔹 Modal
   modalOverlay: {
     flex: 1,
     backgroundColor: "rgba(0,0,0,0.4)",
@@ -267,19 +302,42 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   modalTitle: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: "700",
     marginBottom: 20,
+    color: "#333",
   },
   modalOption: {
     fontSize: 16,
-    marginBottom: 12,
+    marginVertical: 10,
     color: "#444",
+  },
+  chip: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 20,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    marginRight: 8,
+    marginBottom: 10,
+  },
+  chipActive: {
+    backgroundColor: "#2f855a",
+    borderColor: "#2f855a",
+  },
+  chipText: {
+    color: "#333",
+    fontSize: 14,
+  },
+  chipTextActive: {
+    color: "#fff",
+    fontWeight: "600",
   },
   modalActions: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 20,
+    marginBottom: 10,
   },
   modalBtn: {
     flex: 1,

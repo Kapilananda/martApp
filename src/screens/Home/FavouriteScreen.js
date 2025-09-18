@@ -35,9 +35,7 @@ export default function FavoriteScreen({ navigation }) {
   return (
     <View style={styles.container}>
       {/* Header */}
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>My Favourites</Text>
-      </View>
+      <Text style={{ fontSize: 22,fontWeight: "700",color: "#333",marginVertical: 15,marginLeft:10}}>❤️ My Favorites</Text>
 
       {/* Favorites List */}
       <FlatList

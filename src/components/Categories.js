@@ -26,7 +26,7 @@ export default function Categories({ item,products, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    width: width * 0.20,   // 🔹 each item ~22% of screen width (fits 4 per row with spacing)
+    width: width * 0.18,   // 🔹 each item ~22% of screen width (fits 4 per row with spacing)
     height: width * 0.3,   // 🔹 each item ~22% of screen width (fits 4 per row with spacing)
     margin: 5,
     alignItems: "center",
