@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function Cart() {
+export default function ItemCard() {
   return (
     <View>
-      <Text>Cart</Text>
+      <Text>ItemCard</Text>
     </View>
   )
 }

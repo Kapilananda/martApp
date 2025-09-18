@@ -7,11 +7,13 @@ import {
   TouchableOpacity,
   Dimensions,
   ScrollView,
+  SafeAreaView,
+  Platform,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import LinearGradient from "react-native-linear-gradient";
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 const categories = [
   { name: "All", icon: "grid-outline", colors: ["#ff9a9e", "#fad0c4"] },
@@ -22,77 +24,89 @@ const categories = [
   { name: "Tech", icon: "phone-portrait-outline", colors: ["#7f00ff", "#e100ff"] },
 ];
 
-export default function EcommerceHeader() {
+export default function TopHome({navigation}) {
   return (
-    <LinearGradient
-      colors={["#00b09b", "#96c93dff","#96c93d"]} // teal-blue gradient
-      style={styles.headerContainer}
-    >
-      {/* Top row - delivery info + profile */}
-      <View style={styles.topRow}>
-        <View>
-          <Text style={styles.deliveryTime}>8 mins</Text>
-          <Text style={styles.address} numberOfLines={1}>
-            Padmavathi Nagar, Tirupati
-          </Text>
-        </View>
-        <TouchableOpacity>
-          <Icon name="person-circle-outline" size={40} color="#fff" />
-        </TouchableOpacity>
-      </View>
-
-      {/* Search + Cart */}
-      <View style={styles.searchRow}>
-        <View style={styles.searchBox}>
-          <Icon name="search-outline" size={20} color="#888" />
-          <TextInput
-            placeholder="Search for products"
-            placeholderTextColor="#999"
-            style={styles.input}
-          />
-          <TouchableOpacity>
-            <Icon name="mic-outline" size={20} color="#888" />
+    <SafeAreaView>
+      <LinearGradient
+        colors={["#00b09b", "#96c93d"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={styles.headerContainer}
+      >
+        {/* Top row - delivery info + profile */}
+        <View style={styles.topRow}>
+          <View>
+            <Text style={styles.deliveryTime}>⏱ 8 mins</Text>
+            <Text style={styles.address} numberOfLines={1}>
+              Padmavathi Nagar, Tirupati
+            </Text>
+          </View>
+          <TouchableOpacity activeOpacity={0.7}>
+            <Icon name="person-circle-outline" size={width * 0.1} color="#fff" />
           </TouchableOpacity>
         </View>
 
-        {/* Cart with badge */}
-        <TouchableOpacity style={styles.cartBtn}>
-          <Icon name="cart-outline" size={30} color="#fff" />
-          <View style={styles.badge}>
-            <Text style={styles.badgeText}>3</Text>
+        {/* Search + Cart */}
+        <View style={styles.searchRow}>
+          <View style={styles.searchBox}>
+            <Icon name="search-outline" size={width * 0.05} color="#888" />
+            <View> 
+              <TouchableOpacity onPress={() => navigation.navigate("SearchScreen",{navigation})}>
+                <Text>  Search for Products... </Text>
+              </TouchableOpacity>
+            </View>
+            {/* <TouchableOpacity style={{alignContent:"flex-end"}}>
+              <Icon name="mic-outline" size={width * 0.05} color="#888" />
+            </TouchableOpacity> */}
           </View>
-        </TouchableOpacity>
-      </View>
 
-      {/* Categories scroll */}
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.categoryRow}
-      >
-        {categories.map((cat) => (
-          <TouchableOpacity key={cat.name} style={styles.catBtn}>
+          {/* Cart with badge */}
+          <TouchableOpacity style={styles.cartBtn} activeOpacity={0.8}>
             <LinearGradient
-              colors={cat.colors}
-              style={styles.catGradient}
+              colors={["#ff6a00", "#ee0979"]}
+              style={styles.cartGradient}
             >
-              <Icon name={cat.icon} size={18} color="#fff" />
-              <Text style={styles.catText}>{cat.name}</Text>
+              <Icon name="cart-outline" size={width * 0.07} color="#fff" />
+              <View style={styles.badge}>
+                <Text style={styles.badgeText}>3</Text>
+              </View>
             </LinearGradient>
           </TouchableOpacity>
-        ))}
-      </ScrollView>
-    </LinearGradient>
+        </View>
+
+        {/* Categories scroll */}
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.categoryRow}
+          contentContainerStyle={{ paddingBottom: 6 }}
+        >
+          {categories.map((cat) => (
+            <TouchableOpacity key={cat.name} activeOpacity={0.8} style={styles.catBtn}>
+              <LinearGradient colors={cat.colors} style={styles.catGradient}>
+                <Icon name={cat.icon} size={width * 0.045} color="#fff" />
+                <Text style={styles.catText}>{cat.name}</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </LinearGradient>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   headerContainer: {
-    height: width * 0.58,
+    width: "100%",
     paddingTop: 40,
-    paddingHorizontal: 12,
-    paddingBottom: 10,
-    elevation: 5,
+    paddingHorizontal: 14,
+    paddingBottom: 14,
+    borderBottomLeftRadius: 18,
+    borderBottomRightRadius: 18,
+    ...Platform.select({
+      ios: { shadowColor: "#000", shadowOpacity: 0.08, shadowRadius: 6, shadowOffset: { width: 0, height: 3 } },
+      android: { elevation: 5 },
+    }),
   },
   topRow: {
     flexDirection: "row",
@@ -101,14 +115,14 @@ const styles = StyleSheet.create({
     marginBottom: 14,
   },
   deliveryTime: {
-    fontSize: 16,
+    fontSize: width * 0.04,
     fontWeight: "bold",
     color: "#fff",
   },
   address: {
-    fontSize: 13,
+    fontSize: width * 0.032,
     color: "#e6f0ff",
-    maxWidth: width * 0.65,
+    maxWidth: "75%",
   },
   searchRow: {
     flexDirection: "row",
@@ -121,56 +135,66 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     borderRadius: 25,
-    paddingHorizontal: 14,
-    height: 44,
-    elevation: 3,
-    shadowColor: "#000",
-    shadowOpacity: 0.08,
-    shadowRadius: 4,
+    paddingHorizontal: 12,
+    height: width * 0.11,
+    ...Platform.select({
+      ios: { shadowColor: "#000", shadowOpacity: 0.08, shadowRadius: 4, shadowOffset: { width: 0, height: 2 } },
+      android: { elevation: 3 },
+    }),
   },
   input: {
     flex: 1,
     marginLeft: 6,
-    fontSize: 14,
+    fontSize: width * 0.035,
     color: "#000",
   },
   cartBtn: {
     marginLeft: 12,
     position: "relative",
   },
+  cartGradient: {
+    padding: 8,
+    borderRadius: 30,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   badge: {
     position: "absolute",
-    top: -6,
-    right: -6,
+    top: 2,
+    right: 2,
     backgroundColor: "#e53935",
     borderRadius: 12,
-    minWidth: 20,
-    height: 20,
+    minWidth: 18,
+    height: 18,
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: 4,
+    paddingHorizontal: 3,
   },
   badgeText: {
     color: "#fff",
-    fontSize: 11,
+    fontSize: width * 0.028,
     fontWeight: "bold",
   },
   categoryRow: {
     marginTop: 6,
   },
   catBtn: {
-    marginRight: 12,
+    marginRight: 10,
   },
   catGradient: {
     flexDirection: "row",
     alignItems: "center",
-    borderRadius: 20,
+    borderRadius: 25,
     paddingHorizontal: 14,
-    paddingVertical: 6,
+    paddingVertical: 7,
+    ...Platform.select({
+      ios: { shadowColor: "#000", shadowOpacity: 0.05, shadowRadius: 4, shadowOffset: { width: 0, height: 2 } },
+      android: { elevation: 2 },
+    }),
   },
   catText: {
     marginLeft: 6,
-    fontSize: 13,
+    fontSize: width * 0.034,
     fontWeight: "600",
     color: "#fff",
   },

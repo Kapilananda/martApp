@@ -11,14 +11,24 @@ import {
 import AntDesign from "react-native-vector-icons/AntDesign";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import LinearGradient from "react-native-linear-gradient";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavorite } from "../../store/slice/FavoritesSlice"; // import slice
 
 const { width } = Dimensions.get("window");
 
-export default function itemDetails({ route, navigation }) {
+export default function ProductDetails({ route, navigation }) {
   const { item } = route.params;
-  // console.log(`hello ${item}`);
-  
   const [quantity, setQuantity] = useState(1);
+
+  const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.favorite.favorites);
+
+  const isFavorite = favorites.some((fav) => fav.id === item.id);
+
+  // ⭐ Toggle favorite
+  const handleToggleFavorite = () => {
+    dispatch(toggleFavorite(item));
+  };
 
   // ⭐ Dynamic Rating Renderer
   const renderStars = (rating) => {
@@ -55,19 +65,28 @@ export default function itemDetails({ route, navigation }) {
             style={styles.iconButton}
             onPress={() => navigation.goBack()}
           >
-            <Text>&lt; Back</Text>
+            <AntDesign name="arrowleft" size={20} color="#333" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconButton}>
-            <AntDesign name="hearto" size={20} color="#E91E63" />
+
+          {/* ❤️ Favorite Button */}
+          <TouchableOpacity
+            style={styles.iconButton}
+            onPress={handleToggleFavorite}
+          >
+            <AntDesign
+              name={isFavorite ? "heart" : "hearto"}
+              size={22}
+              color={isFavorite ? "#E91E63" : "#E91E63"}
+            />
           </TouchableOpacity>
         </View>
 
-        {/* item Image */}
+        {/* Product Image */}
         <View style={styles.imageWrapper}>
           <Image source={{ uri: item.image }} style={styles.image} />
         </View>
 
-        {/* item Info */}
+        {/* Product Info */}
         <View style={styles.infoCard}>
           <Text style={styles.title}>{item.title}</Text>
 
@@ -97,18 +116,15 @@ export default function itemDetails({ route, navigation }) {
           </View>
 
           {/* Description */}
-          <Text style={styles.sectionTitle}>item Details</Text>
+          <Text style={styles.sectionTitle}>Product Details</Text>
           <Text style={styles.description}>{item.description}</Text>
 
           {/* Related items */}
-          <Text style={styles.sectionTitle}>Related items</Text>
+          <Text style={styles.sectionTitle}>Related Products</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {[...Array(3)].map((_, i) => (
               <View key={i} style={styles.relatedCard}>
-                <Image
-                  source={{ uri: item.image }}
-                  style={styles.relatedImg}
-                />
+                <Image source={{ uri: item.image }} style={styles.relatedImg} />
                 <Text style={styles.relatedPrice}>₹ {item.price}</Text>
               </View>
             ))}
@@ -158,7 +174,7 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    justifyContent:'center',
+    justifyContent: "center",
   },
 
   imageWrapper: {
@@ -234,7 +250,7 @@ const styles = StyleSheet.create({
     elevation: 4,
     alignItems: "center",
     width: 120,
-    marginBottom:10
+    marginBottom: 10,
   },
   relatedImg: { width: 80, height: 80, resizeMode: "contain" },
   relatedPrice: {

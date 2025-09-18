@@ -1,0 +1,108 @@
+[
+  {
+    "title": "🍎 Fruits & Vegetables",
+    "subcategories": [
+      { "title": "Fresh Fruits", "image": "https://img.icons8.com/color/96/apple.png" },
+      { "title": "Fresh Vegetables", "image": "https://img.icons8.com/color/96/broccoli.png" },
+      { "title": "Herbs & Exotic", "image": "https://img.icons8.com/color/96/basil.png" },
+      { "title": "Organic Produce", "image": "https://img.icons8.com/color/96/organic-food.png" },
+      { "title": "Cut & Packaged", "image": "https://img.icons8.com/color/96/meal.png" },
+      { "title": "Paneer & Tofu", "image": "https://img.icons8.com/color/96/tofu.png" }
+    ]
+  },
+  {
+    "title": "🥛 Dairy & Bakery",
+    "subcategories": [
+      { "title": "Milk", "image": "https://img.icons8.com/color/96/milk-bottle.png" },
+      { "title": "Curd/Yogurt", "image": "https://img.icons8.com/color/96/yogurt.png" },
+      { "title": "Butter & Cheese", "image": "https://img.icons8.com/color/96/cheese.png" },
+      { "title": "Bread & Buns", "image": "https://img.icons8.com/color/96/bread.png" },
+      { "title": "Cakes & Pastries", "image": "https://img.icons8.com/color/96/cake.png" },
+      { "title": "Ice Creams & Desserts", "image": "https://img.icons8.com/color/96/ice-cream-bowl.png" }
+    ]
+  },
+  {
+    "title": "🍪 Snacks & Branded Foods",
+    "subcategories": [
+      { "title": "Biscuits & Cookies", "image": "https://img.icons8.com/color/96/cookie.png" },
+      { "title": "Chips & Namkeen", "image": "https://img.icons8.com/color/96/potato-chips.png" },
+      { "title": "Chocolates & Candies", "image": "https://img.icons8.com/color/96/chocolate-bar.png" },
+      { "title": "Instant Noodles & Pasta", "image": "https://img.icons8.com/color/96/noodles.png" },
+      { "title": "Breakfast Cereals", "image": "https://img.icons8.com/color/96/corn.png" },
+      { "title": "Dry Fruits & Nuts", "image": "https://img.icons8.com/color/96/nuts.png" }
+    ]
+  },
+  {
+    "title": "🥤 Beverages",
+    "subcategories": [
+      { "title": "Soft Drinks", "image": "https://img.icons8.com/color/96/soda.png" },
+      { "title": "Juices", "image": "https://img.icons8.com/color/96/orange-juice.png" },
+      { "title": "Tea & Coffee", "image": "https://img.icons8.com/color/96/coffee.png" },
+      { "title": "Energy & Health Drinks", "image": "https://img.icons8.com/color/96/energy-drink.png" },
+      { "title": "Mineral Water", "image": "https://img.icons8.com/color/96/water-bottle.png" },
+      { "title": "Flavored Milk & Shakes", "image": "https://img.icons8.com/color/96/milkshake.png" }
+    ]
+  },
+  {
+    "title": "🥫 Pantry Staples",
+    "subcategories": [
+      { "title": "Rice & Grains", "image": "https://img.icons8.com/color/96/rice-bowl.png" },
+      { "title": "Atta & Flours", "image": "https://img.icons8.com/color/96/flour.png" },
+      { "title": "Pulses & Lentils", "image": "https://img.icons8.com/color/96/beans.png" },
+      { "title": "Oil & Ghee", "image": "https://img.icons8.com/color/96/olive-oil.png" },
+      { "title": "Salt, Sugar & Spices", "image": "https://img.icons8.com/color/96/spices.png" },
+      { "title": "Pickles & Sauces", "image": "https://img.icons8.com/color/96/sauce.png" }
+    ]
+  },
+  {
+    "title": "🍗 Meat, Fish & Eggs",
+    "subcategories": [
+      { "title": "Fresh Meat", "image": "https://img.icons8.com/color/96/steak.png" },
+      { "title": "Fish & Seafood", "image": "https://img.icons8.com/color/96/fish-food.png" },
+      { "title": "Eggs", "image": "https://img.icons8.com/color/96/eggs.png" },
+      { "title": "Frozen Meat", "image": "https://img.icons8.com/color/96/frozen.png" },
+      { "title": "Marinated Meats", "image": "https://img.icons8.com/color/96/chicken-leg.png" }
+    ]
+  },
+  {
+    "title": "🧴 Personal Care",
+    "subcategories": [
+      { "title": "Skin Care", "image": "https://img.icons8.com/color/96/face-mask.png" },
+      { "title": "Hair Care", "image": "https://img.icons8.com/color/96/hair-dryer.png" },
+      { "title": "Oral Care", "image": "https://img.icons8.com/color/96/toothbrush.png" },
+      { "title": "Bath & Body", "image": "https://img.icons8.com/color/96/soap.png" },
+      { "title": "Men’s Grooming", "image": "https://img.icons8.com/color/96/razor.png" },
+      { "title": "Women’s Hygiene", "image": "https://img.icons8.com/color/96/sanitary-pad.png" }
+    ]
+  },
+  {
+    "title": "🧹 Household Essentials",
+    "subcategories": [
+      { "title": "Cleaning Supplies", "image": "https://img.icons8.com/color/96/broom.png" },
+      { "title": "Laundry", "image": "https://img.icons8.com/color/96/washing-machine.png" },
+      { "title": "Kitchen & Bathroom Needs", "image": "https://img.icons8.com/color/96/toilet.png" },
+      { "title": "Air Fresheners", "image": "https://img.icons8.com/color/96/perfume-bottle.png" },
+      { "title": "Disposable Items", "image": "https://img.icons8.com/color/96/trash.png" }
+    ]
+  },
+  {
+    "title": "🐶 Pet Care",
+    "subcategories": [
+      { "title": "Dog Food", "image": "https://img.icons8.com/color/96/dog-bowl.png" },
+      { "title": "Cat Food", "image": "https://img.icons8.com/color/96/cat-food.png" },
+      { "title": "Pet Accessories", "image": "https://img.icons8.com/color/96/pet-collar.png" },
+      { "title": "Pet Grooming", "image": "https://img.icons8.com/color/96/dog-grooming.png" },
+      { "title": "Bird & Fish Supplies", "image": "https://img.icons8.com/color/96/fish-bowl.png" }
+    ]
+  },
+  {
+    "title": "💊 Health & Wellness",
+    "subcategories": [
+      { "title": "Medicines (OTC)", "image": "https://img.icons8.com/color/96/pills.png" },
+      { "title": "Vitamins & Supplements", "image": "https://img.icons8.com/color/96/vitamin-c.png" },
+      { "title": "Sanitizers & Masks", "image": "https://img.icons8.com/color/96/sanitizer.png" },
+      { "title": "First Aid", "image": "https://img.icons8.com/color/96/first-aid-kit.png" },
+      { "title": "Health Devices", "image": "https://img.icons8.com/color/96/thermometer.png" }
+    ]
+  }
+]

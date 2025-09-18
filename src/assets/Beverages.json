@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Soft Drinks",
+    "image": "https://5.imimg.com/data5/SELLER/Default/2020/10/FP/GL/OA/521830/soft-drinks.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Juices",
+    "image": "https://almmedia.almarai.com/BrandCategoryMapping/juices_0144202454234AM.png"
+  },
+  {
+    "id": 3,
+    "title": "Energy Drinks",
+    "image": "https://news.northeastern.edu/wp-content/uploads/2025/09/Monster_Red_Bull_1400.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Tea & Coffee",
+    "image": "https://budleaf.com/wp-content/uploads/2023/04/Coffee-or-Tea-1.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Milk & Shakes",
+    "image": "https://5.imimg.com/data5/ANDROID/Default/2023/9/346038915/JC/YP/VS/114698241/product-jpeg-500x500.jpegb"
+  },
+   {
+    "id": 6,
+    "title": "Water",
+    "image": "https://amust.in/wp-content/uploads/2024/10/2LCreative1.webpb"
+  }
+]
