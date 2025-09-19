@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 16,
     right: 16,
-    bottom: 82, // adjust for Bottom Tabs if needed
+    bottom: 10, // adjust for Bottom Tabs if needed
     height: 80,
     flexDirection: "row",
     justifyContent: "space-between",

@@ -238,7 +238,7 @@ const renderCategoryContent = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false} onScroll={handleScroll} scrollEventThrottle={16}>
+      <ScrollView showsVerticalScrollIndicator={false} scrollEventThrottle={16}>
         {/* Header */}
         <TopHome navigation={navigation} onCategorySelect={setSelectedCategory} /> {/* 🔹 Pass function */}
 
