@@ -3,7 +3,6 @@ import {
   View,
   Text,
   FlatList,
-  Image,
   TouchableOpacity,
   StyleSheet,
   Dimensions,
@@ -14,6 +13,8 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavorite } from "../../store/slice/FavoritesSlice";
 import ItemCard from "../../components/ItemCard";
 
 const { width } = Dimensions.get("window");
@@ -21,10 +22,11 @@ const { width } = Dimensions.get("window");
 const ProductList = ({ route, navigation }) => {
   const products = route?.params?.products || [];
 
+  const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.favorite.favorites);
+
   const [filterVisible, setFilterVisible] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState(products);
-  const [favorites, setFavorites] = useState([]);
-  const [cart, setCart] = useState([]);
 
   // ✅ Filter states
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -37,29 +39,6 @@ const ProductList = ({ route, navigation }) => {
     () => [...new Set(products.map((p) => p.category))],
     [products]
   );
-
-  // ✅ Toggle favorite
-  const toggleFavorite = (id) => {
-    setFavorites((prev) =>
-      prev.includes(id) ? prev.filter((fav) => fav !== id) : [...prev, id]
-    );
-  };
-
-  // ✅ Add to Cart
-  const addToCart = (item) => {
-    setCart((prev) => {
-      const exists = prev.find((cartItem) => cartItem.id === item.id);
-      if (exists) {
-        return prev.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
-        );
-      } else {
-        return [...prev, { ...item, quantity: 1 }];
-      }
-    });
-  };
 
   // ✅ Apply Filters
   const applyFilters = () => {
@@ -98,15 +77,18 @@ const ProductList = ({ route, navigation }) => {
     setFilterVisible(false);
   };
 
-  const renderProduct = ({ item }) => (
-    <ItemCard
-      item={item}
-      navigation={navigation}
-      isFavorite={favorites.includes(item.id)}
-      toggleFavorite={() => toggleFavorite(item.id)}
-      addToCart={() => addToCart(item)}
-    />
-  );
+  const renderProduct = ({ item }) => {
+    const isFavorite = favorites.some((fav) => fav.id === item.id);
+
+    return (
+      <ItemCard
+        item={item}
+        navigation={navigation}
+        isFavorite={isFavorite}
+        onToggleFavorite={() => dispatch(toggleFavorite(item))}
+      />
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -265,8 +247,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     backgroundColor: "#fff",
   },
-
-  // 🔹 Top Bar
   topBar: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -287,8 +267,6 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     marginLeft: 6,
   },
-
-  // 🔹 Modal
   modalOverlay: {
     flex: 1,
     backgroundColor: "rgba(0,0,0,0.4)",

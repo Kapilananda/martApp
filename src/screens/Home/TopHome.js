@@ -24,8 +24,7 @@ const categories = [
   { name: "Tech", icon: "phone-portrait-outline", colors: ["#7f00ff", "#e100ff"] },
 ];
 
-export default function TopHome({ navigation }) {
-  // Get cart count from Redux
+export default function TopHome({ navigation, onCategorySelect }) {
   const cartItems = useSelector((state) => state.cart.cartItems.length);
 
   return (
@@ -36,7 +35,7 @@ export default function TopHome({ navigation }) {
         end={{ x: 1, y: 1 }}
         style={styles.headerContainer}
       >
-        {/* Top row - delivery info + profile */}
+        {/* Top row */}
         <View style={styles.topRow}>
           <View style={{ flexShrink: 1 }}>
             <Text style={styles.deliveryTime}>⏱ 8 mins</Text>
@@ -44,7 +43,7 @@ export default function TopHome({ navigation }) {
               Padmavathi Nagar, Tirupati
             </Text>
           </View>
-          <TouchableOpacity activeOpacity={0.7} onPress={ () => navigation.navigate("ProfileScreen")}>
+          <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate("ProfileScreen")}>
             <Icon name="person-circle-outline" size={width * 0.12} color="#d7eaffff" />
           </TouchableOpacity>
         </View>
@@ -78,7 +77,12 @@ export default function TopHome({ navigation }) {
           contentContainerStyle={{ paddingBottom: 6 }}
         >
           {categories.map((cat) => (
-            <TouchableOpacity key={cat.name} activeOpacity={0.8} style={styles.catBtn}>
+            <TouchableOpacity
+              key={cat.name}
+              activeOpacity={0.8}
+              style={styles.catBtn}
+              onPress={() => onCategorySelect(cat.name)}   // 🔹 pass clicked category
+            >
               <LinearGradient colors={cat.colors} style={styles.catGradient}>
                 <Icon name={cat.icon} size={width * 0.05} color="#fff" />
                 <Text style={styles.catText}>{cat.name}</Text>
@@ -104,89 +108,20 @@ const styles = StyleSheet.create({
       android: { elevation: 5 },
     }),
   },
-  topRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: height * 0.02,
-  },
-  deliveryTime: {
-    fontSize: width * 0.045,
-    fontWeight: "bold",
-    color: "#fff",
-  },
-  address: {
-    fontSize: width * 0.035,
-    color: "#e6f0ff",
-    maxWidth: width * 0.65,
-  },
-  searchRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: height * 0.02,
-  },
+  topRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: height * 0.02 },
+  deliveryTime: { fontSize: width * 0.045, fontWeight: "bold", color: "#fff" },
+  address: { fontSize: width * 0.035, color: "#e6f0ff", maxWidth: width * 0.65 },
+  searchRow: { flexDirection: "row", alignItems: "center", marginBottom: height * 0.02 },
   searchBox: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#fff",
-    borderRadius: width * 0.06,
-    paddingHorizontal: width * 0.035,
-    height: height * 0.055,
-    ...Platform.select({
-      ios: { shadowColor: "#000", shadowOpacity: 0.08, shadowRadius: 4, shadowOffset: { width: 0, height: 2 } },
-      android: { elevation: 3 },
-    }),
+    flex: 1, flexDirection: "row", alignItems: "center", backgroundColor: "#fff",
+    borderRadius: width * 0.06, paddingHorizontal: width * 0.035, height: height * 0.055,
   },
-  searchText: {
-    marginLeft: width * 0.02,
-    fontSize: width * 0.036,
-    color: "#888",
-  },
-  cartBtn: {
-    marginLeft: width * 0.03,
-    position: "relative",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  badge: {
-    position: "absolute",
-    top: -5,
-    right: -5,
-    backgroundColor: "#E53935",
-    borderRadius: 12,
-    minWidth: 18,
-    height: 18,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 3,
-  },
-  badgeText: {
-    color: "#fff",
-    fontSize: 10,
-    fontWeight: "bold",
-  },
-  categoryRow: {
-    marginTop: height * 0.01,
-  },
-  catBtn: {
-    marginRight: width * 0.025,
-  },
-  catGradient: {
-    flexDirection: "row",
-    alignItems: "center",
-    borderRadius: width * 0.06,
-    paddingHorizontal: width * 0.035,
-    paddingVertical: height * 0.012,
-    ...Platform.select({
-      ios: { shadowColor: "#000", shadowOpacity: 0.05, shadowRadius: 4, shadowOffset: { width: 0, height: 2 } },
-      android: { elevation: 2 },
-    }),
-  },
-  catText: {
-    marginLeft: width * 0.02,
-    fontSize: width * 0.036,
-    fontWeight: "600",
-    color: "#fff",
-  },
+  searchText: { marginLeft: width * 0.02, fontSize: width * 0.036, color: "#888" },
+  cartBtn: { marginLeft: width * 0.03, position: "relative", justifyContent: "center", alignItems: "center" },
+  badge: { position: "absolute", top: -5, right: -5, backgroundColor: "#E53935", borderRadius: 12, minWidth: 18, height: 18, alignItems: "center", justifyContent: "center", paddingHorizontal: 3 },
+  badgeText: { color: "#fff", fontSize: 10, fontWeight: "bold" },
+  categoryRow: { marginTop: height * 0.01 },
+  catBtn: { marginRight: width * 0.025 },
+  catGradient: { flexDirection: "row", alignItems: "center", borderRadius: width * 0.06, paddingHorizontal: width * 0.035, paddingVertical: height * 0.012 },
+  catText: { marginLeft: width * 0.02, fontSize: width * 0.036, fontWeight: "600", color: "#fff" },
 });

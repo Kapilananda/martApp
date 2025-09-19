@@ -16,7 +16,7 @@ export default function ItemCard({ item, navigation, isFavorite, onToggleFavorit
   const inCart = cartItems.find((i) => i.id === item.id);
 
   return (
-    <View style={styles.card}>
+    <View style={[styles.card]}>
       {/* Favorite */}
       <TouchableOpacity style={styles.favButton} onPress={onToggleFavorite}>
         <Ionicons
@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "#fff",
     width: "48%",
+    // height : "20%",
     borderRadius: 16,
     padding: 12,
     marginBottom: 15,

@@ -4,19 +4,19 @@ import ProductList from '../screens/Home/ProductList';
 
 const { width } = Dimensions.get("window");
 
-export default function Categories({ item,products, navigation }) {
+export default function Categories({ item,products, navigation,favorites,dispatch }) {
 
   
   return (
     <View style={styles.container}>
-      <TouchableOpacity  onPress={() => navigation.navigate("ProductList",{products})}>
+      <TouchableOpacity  onPress={() => navigation.navigate("ProductList",{products,favorites,dispatch})}>
 
         <Image
           source={{ uri: item.image }}
           style={styles.img}
         />
         <Text numberOfLines={1} style={styles.label}>
-          {item.title}
+          {String(item.title)}
         </Text>
       </TouchableOpacity>
 
