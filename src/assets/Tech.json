@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Smartphones",
+    "image": "https://motorolain.vtexassets.com/arquivos/ids/160371-800-auto?width=800&height=auto&aspect=true"
+  },
+  {
+    "id": 2,
+    "title": "Laptops",
+    "image": "https://static0.xdaimages.com/wordpress/wp-content/uploads/2024/05/framework-laptop-2.png"
+  },
+  {
+    "id": 3,
+    "title": "Wearable Tech",
+    "image": "https://careevolution.com/wp-content/uploads/2025/04/Wearables-WP-hero3.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Gaming",
+    "image": "https://fintechnews.sg/wp-content/uploads/2024/05/Gaming-Industry.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Speakers",
+    "image": "https://www.portronics.com/cdn/shop/files/Portronics_Apollo_One_20w_portable_speaker.jpg?v=1731574580"
+  },
+  {
+    "id": 6,
+    "title": "Buds",
+    "image": "https://bnewmobiles.com/cdn/shop/products/NoiseMiniAirBudsTrulyWirelessBluetooth_JetBlack_2_2048x.png?v=1631276040"
+  },
+  {
+    "id": 7,
+    "title": "Cameras",
+    "image": "https://images-cdn.ubuy.co.in/65fe64a89de64a706c0120dc-canon-eos-5d-mark-iv-dslr-camera-with.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Drones",
+    "image": "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/54A5/production/_87996612_87996608.jpg"
+  }
+]

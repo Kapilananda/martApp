@@ -26,19 +26,19 @@ export default function Categories({ item,products, navigation,favorites,dispatc
 
 const styles = StyleSheet.create({
   container: {
-    width: width * 0.18,   // 🔹 each item ~22% of screen width (fits 4 per row with spacing)
+    width: width * 0.19,   // 🔹 each item ~22% of screen width (fits 4 per row with spacing)
     height: width * 0.3,   // 🔹 each item ~22% of screen width (fits 4 per row with spacing)
     margin: 5,
     alignItems: "center",
     justifyContent: "center",
   },
   img: {
-    width: width * 0.18,   // 🔹 image ~18% of screen width
-    height: width * 0.18,  // 🔹 square image
+    width: width * 0.22,   // 🔹 image ~18% of screen width
+    height: width * 0.22,  // 🔹 square image
     // borderRadius: (width * 0.18) / 2, // 🔹 circular style
     borderRadius: 20,
     elevation: 2,
-    resizeMode: "contain",
+    resizeMode: "cover",
     backgroundColor: "#f5f5f5",
   },
   label: {

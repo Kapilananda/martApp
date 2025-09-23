@@ -1,41 +1,47 @@
 [
   {
     "id": 1,
-    "title": "Soft Drinks",
-    "image": "https://5.imimg.com/data5/SELLER/Default/2020/10/FP/GL/OA/521830/soft-drinks.jpg"
+    "title": "Juices",
+    "image": "https://www.advoice.co.in/wp-content/uploads/2025/02/fruit-juice-packaging.webp"
   },
   {
     "id": 2,
-    "title": "Juices",
-    "image": "https://almmedia.almarai.com/BrandCategoryMapping/juices_0144202454234AM.png"
+    "title": "Iced Tea",
+    "image": "https://herbivo.in/wp-content/uploads/2023/02/Kiwi-iced-tea.png.webp"
   },
   {
     "id": 3,
-    "title": "Energy Drinks",
-    "image": "https://news.northeastern.edu/wp-content/uploads/2025/09/Monster_Red_Bull_1400.jpg"
+    "title": "Coffee",
+    "image": "https://t4.ftcdn.net/jpg/01/62/74/67/360_F_162746788_uxm2CkE5xQq2fy7DVJASe40lMcvSQ52A.jpg"
   },
   {
     "id": 4,
-    "title": "Tea & Coffee",
-    "image": "https://budleaf.com/wp-content/uploads/2023/04/Coffee-or-Tea-1.jpg"
+    "title": "Smoothies",
+    "image": "https://thebigmansworld.com/wp-content/uploads/2024/06/healthy-smoothie-recipes.jpg"
   },
   {
     "id": 5,
     "title": "Milk & Shakes",
-    "image": "https://5.imimg.com/data5/ANDROID/Default/2023/9/346038915/JC/YP/VS/114698241/product-jpeg-500x500.jpegb"
+    "image": "https://s3-media0.fl.yelpcdn.com/bphoto/FC79DlEA-ba_t6bB1EGu7g/1000s.jpg"
   },
-   {
+  {
     "id": 6,
-    "title": "Water",
-    "image": "https://amust.in/wp-content/uploads/2024/10/2LCreative1.webpb"
+    "title": "Energy Drinks",
+    "image": "https://www.jiomart.com/images/product/original/494399210/campa-energy-caffeinated-beverage-200-ml-product-images-o494399210-p609448545-0-202406271415.jpg?im=Resize=(420,420)"
   },
   {
     "id": 7,
     "title": "Water",
-    "image": "https://amust.in/wp-content/uploads/2024/10/2LCreative1.webpb"
-  },{
+    "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/wnushvamuaheo4v0ertj"
+  },
+  {
     "id": 8,
-    "title": "Water",
-    "image": "https://amust.in/wp-content/uploads/2024/10/2LCreative1.webpb"
+    "title": "Soft Drinks",
+    "image": "https://static.wixstatic.com/media/8f1abd_80bf432a005041b59c2a7fa1960ce71e~mv2.jpeg/v1/fill/w_744,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/8f1abd_80bf432a005041b59c2a7fa1960ce71e~mv2.jpeg"
+  },
+  {
+    "id": 9,
+    "title": "Hot Chocolate",
+    "image": "https://www.laurafuentes.com/wp-content/uploads/2024/11/Nutella-hot-chocolate_RC-SQ.jpg"
   }
 ]

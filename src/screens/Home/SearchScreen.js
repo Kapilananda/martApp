@@ -22,13 +22,8 @@ export default function ProductCarousel({ navigation }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-  const [cart, setCart] = useState([]); // 🛒 Local cart state
-
-  const handleSearchSubmit = () => {
-    if (searchQuery.length >= 3) {
-      navigation.navigate("SearchResult", { query: searchQuery });
-    }
-  };
+  const [cart, setCart] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -38,7 +33,7 @@ export default function ProductCarousel({ navigation }) {
 
         // Add random discounts
         const updated = data.map((item) => {
-          const discountPercent = Math.floor(Math.random() * 30) + 10; // 10–40%
+          const discountPercent = Math.floor(Math.random() * 30) + 10;
           const discountedPrice = (
             item.price -
             (item.price * discountPercent) / 100
@@ -58,18 +53,30 @@ export default function ProductCarousel({ navigation }) {
     getProducts();
   }, []);
 
-  // ✅ Filter products by search
-  const filteredProducts =
-    searchQuery.length >= 3
-      ? products.filter((item) =>
-          item.title.toLowerCase().includes(searchQuery.toLowerCase())
-        )
-      : products;
+  // 🔍 Live search suggestions
+  useEffect(() => {
+    if (searchQuery.length > 0) {
+      const results = products.filter((item) =>
+        item.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSuggestions(results);
+    } else {
+      setSuggestions([]);
+    }
+  }, [searchQuery, products]);
 
-  // 🛒 Add to cart function
+  // ✅ Navigate to SearchResult on Enter
+  const handleSearchSubmit = () => {
+    if (searchQuery.length > 0) {
+      navigation.navigate("SearchResult", { query: searchQuery });
+      setSuggestions([]); // hide suggestions after navigation
+    }
+  };
+
+  // 🛒 Add to cart
   const addToCart = (item) => {
     setCart((prev) => [...prev, item]);
-    console.log("Cart updated:", [...cart, item]); // debug
+    console.log("Cart updated:", [...cart, item]);
   };
 
   const renderProduct = ({ item }) => (
@@ -80,6 +87,7 @@ export default function ProductCarousel({ navigation }) {
         {item.title}
       </Text>
 
+      {/* ⭐ Rating */}
       <View style={styles.ratingRow}>
         {[1, 2, 3, 4, 5].map((i) => (
           <Ionicons
@@ -93,37 +101,27 @@ export default function ProductCarousel({ navigation }) {
         <Text style={styles.ratingText}>({item.rating?.count})</Text>
       </View>
 
+      {/* 💰 Price */}
       <View style={styles.priceRow}>
         <Text style={styles.discountPrice}>${item.discountedPrice}</Text>
         <Text style={styles.originalPrice}>${item.price}</Text>
         <Text style={styles.discountTag}>-{item.discountPercent}%</Text>
       </View>
 
-      {/* 🛒 Add to Cart Button */}
-      <TouchableOpacity
-        style={styles.cartButton}
-        onPress={() => addToCart(item)}
-      >
+      {/* 🛒 Add to Cart */}
+      <TouchableOpacity style={styles.cartButton} onPress={() => addToCart(item)}>
         <Ionicons name="cart-outline" size={18} color="#fff" />
         <Text style={styles.cartButtonText}>Add</Text>
       </TouchableOpacity>
     </View>
   );
 
-  // if (loading) {
-  //   return (
-  //     <View style={styles.center}>
-  //       <ActivityIndicator size="large" color="#2f855a" />
-  //     </View>
-  //   );
-  // }
-
   return (
-    <ScrollView style={{ flex: 1 }}>
-      {/* 🔍 Search Bar */}
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
+    <ScrollView style={{ flex: 1, backgroundColor: "#f9f9f9" }}>
+      {/* 🔍 Search Row */}
+      <View style={styles.searchRow}>
         <TouchableOpacity
-          style={[,{width:45,height:45,justifyContent: "center",alignItems:'center',elevation:2,backgroundColor: "#dbdbdbff",borderRadius: 25,}]}
+          style={styles.backButton}
           onPress={() => navigation.goBack()}
         >
           <AntDesign name="arrowleft" size={22} color="#333" />
@@ -138,83 +136,134 @@ export default function ProductCarousel({ navigation }) {
             value={searchQuery}
             onChangeText={setSearchQuery}
             returnKeyType="search"
-            onSubmitEditing={handleSearchSubmit}
+            onSubmitEditing={handleSearchSubmit} // 🚀 Enter pressed
           />
         </View>
       </View>
 
-      {/* Recommandations */}
-      <Text style={styles.sectionTitle}>Recommands</Text>
+      {/* 🔽 Suggestions Dropdown */}
+      {suggestions.length > 0 && (
+        <View style={styles.suggestionBox}>
+          {suggestions.slice(0, 6).map((item) => (
+            <TouchableOpacity
+              key={item.id}
+              style={styles.suggestionItem}
+              onPress={() => {
+                setSearchQuery(item.title);
+                setSuggestions([]);
+                navigation.navigate("SearchResult", { query: item.title });
+              }}
+            >
+              <Image source={{ uri: item.image }} style={styles.suggestionImage} />
+              <Text numberOfLines={1} style={styles.suggestionText}>
+                {item.title}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      )}
+
+      {/* Recommendations */}
+      <Text style={styles.sectionTitle}>Recommended</Text>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{ paddingHorizontal: 12 }}
       >
-        {/* {loading : <ActivityIndicator size="large" color="#2f855a" /> ? } */}
-        {products.slice(0, 8).map((item) => (
-          <TouchableOpacity key={item.id} style={styles.popularCard}>
-            <Image source={{ uri: item.image }} style={styles.popularImage} />
-            <Text style={styles.popularText} numberOfLines={1}>
-              {item.title}
-            </Text>
-          </TouchableOpacity>
-        ))}
+        {loading ? (
+          <ActivityIndicator size="large" color="#2f855a" />
+        ) : (
+          products.slice(0, 8).map((item) => (
+            <TouchableOpacity key={item.id} style={styles.popularCard}>
+              <Image source={{ uri: item.image }} style={styles.popularImage} />
+              <Text style={styles.popularText} numberOfLines={1}>
+                {item.title}
+              </Text>
+            </TouchableOpacity>
+          ))
+        )}
       </ScrollView>
 
       {/* Top Deals */}
-      <Text style={styles.sectionTitle}>Top Deals</Text>
+      <View style={styles.dealHeader}>
+        <Text style={styles.sectionTitle}>Top Deals</Text>
+        <TouchableOpacity>
+          <Text style={styles.seeAll}>See All &gt;</Text>
+        </TouchableOpacity>
+      </View>
+
       <FlatList
-        style={{ marginTop: 10, marginBottom: 10 }}
-        data={filteredProducts}
+        style={{ marginVertical: 10 }}
+        data={products}
         renderItem={renderProduct}
         keyExtractor={(item) => item.id.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 15, marginBottom: 5 }}
+        contentContainerStyle={{ paddingHorizontal: 15 }}
       />
-
-      {/* Popular Searches */}
-      <Text style={styles.sectionTitle}>Popular Searches</Text>
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 12 }}
-      >
-        {products.slice(0, 8).map((item) => (
-          <TouchableOpacity key={item.id} style={styles.popularCard}>
-            <Image source={{ uri: item.image }} style={styles.popularImage} />
-            <Text style={styles.popularText} numberOfLines={1}>
-              {item.title}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
     </ScrollView>
   );
 }
 
+
 const styles = StyleSheet.create({
-  center: {
-    flex: 1,
+  searchRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 10,
+    marginBottom: 5,
+  },
+  backButton: {
+    width: 45,
+    height: 45,
     justifyContent: "center",
     alignItems: "center",
+    elevation: 2,
+    backgroundColor: "#e0e0e0",
+    borderRadius: 25,
+    marginLeft: 8,
   },
   searchBox: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#f1f3f6",
+    backgroundColor: "#fff",
     borderRadius: 25,
     paddingHorizontal: 12,
     height: 45,
-    marginHorizontal: 12,
-    marginVertical: 12,
+    marginHorizontal: 10,
     elevation: 2,
   },
   searchInput: {
     flex: 1,
     marginLeft: 8,
     fontSize: 16,
+    color: "#333",
+  },
+  suggestionBox: {
+    backgroundColor: "#fff",
+    marginHorizontal: 20,
+    borderRadius: 10,
+    elevation: 3,
+    paddingVertical: 5,
+    marginBottom: 10,
+  },
+  suggestionItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 8,
+    borderBottomColor: "#eee",
+    borderBottomWidth: 1,
+  },
+  suggestionImage: {
+    width: 35,
+    height: 35,
+    resizeMode: "contain",
+    marginRight: 10,
+  },
+  suggestionText: {
+    flex: 1,
+    fontSize: 14,
     color: "#333",
   },
   card: {
@@ -224,9 +273,6 @@ const styles = StyleSheet.create({
     padding: 10,
     marginRight: 12,
     elevation: 3,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
   },
   image: {
     width: "100%",
@@ -276,14 +322,23 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "700",
     color: "#333",
-    marginVertical: 0,
+    marginVertical: 8,
     marginLeft: 12,
-    marginTop: 0,
+  },
+  dealHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginHorizontal: 12,
+  },
+  seeAll: {
+    fontSize: 14,
+    color: "blue",
   },
   popularCard: {
     width: width * 0.3,
     marginRight: 12,
-    marginTop: 20,
+    marginTop: 15,
     marginBottom: 20,
     alignItems: "center",
   },

@@ -46,7 +46,7 @@ export default function CategoryScreen({ route, navigation }) {
           <View style={styles.imageBox}>
             <Image source={{ uri: item.image }} style={styles.image} />
           </View>
-          <Text style={styles.subTitle} numberOfLines={2}>
+          <Text style={styles.subTitle} numberOfLines={1}>
             {item.title}
           </Text>
         </LinearGradient>

@@ -11,6 +11,7 @@ import {
   ScrollView,
   Pressable,
 } from "react-native";
+
 import LinearGradient from "react-native-linear-gradient";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleFavorite } from "../../store/slice/FavoritesSlice";
@@ -19,6 +20,12 @@ import Categories from "../../components/Categories";
 import TopHome from "./TopHome";
 import Beverages from "../../assets/Beverages.json";
 import ItemCard from "../../components/ItemCard";
+import AdsCarousel from "../../components/AdsCarousel";
+
+import Snacks from "../../assets/Snacks.json";
+import Fresh from "../../assets/Fresh.json";
+import Household from "../../assets/Household.json";
+import Tech from "../../assets/Tech.json";
 
 const { width } = Dimensions.get("window");
 
@@ -33,10 +40,10 @@ export default function HomeScreen({ route, navigation }) {
   const setIsFloating = route.params?.setIsFloating;
 
   const handleScroll = (event) => {
-    const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
-    const paddingToBottom = 20;
+    // const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
+    // const paddingToBottom = 20;
     setIsFloating(
-      layoutMeasurement.height + contentOffset.y < contentSize.height - paddingToBottom
+      // layoutMeasurement.height + contentOffset.y < contentSize.height - paddingToBottom
     );
   };
 
@@ -115,7 +122,7 @@ const renderCategoryContent = () => {
           <View style={styles.section}>
             <Text style={styles.heading}>🍪 Snacks</Text>
             <View style={styles.grid}>
-              {products.slice(0, 12).map((item) => (
+              {Snacks.map((item) => (
                 <Categories key={item.id} item={item} products={products} navigation={navigation} />
               ))}
             </View>
@@ -135,7 +142,7 @@ const renderCategoryContent = () => {
           <View style={styles.section}>
             <Text style={styles.heading}>🥦 Fresh</Text>
             <View style={styles.grid}>
-              {Beverages.map((item) => (
+              {Fresh.map((item) => (
                 <Categories key={item.id} item={item} products={products} navigation={navigation} />
               ))}
             </View>
@@ -145,7 +152,7 @@ const renderCategoryContent = () => {
           <View style={styles.section}>
             <Text style={styles.heading}>🏠 Household</Text>
             <View style={styles.grid}>
-              {Beverages.map((item) => (
+              {Household.map((item) => (
                 <Categories key={item.id} item={item} products={products} navigation={navigation} />
               ))}
             </View>
@@ -155,11 +162,7 @@ const renderCategoryContent = () => {
           <View style={styles.section}>
             <Text style={styles.heading}>💻 Tech</Text>
             <View style={styles.grid}>
-              {[
-                { id: "t1", title: "Smartphone", image: "https://picsum.photos/200/200?tech1" },
-                { id: "t2", title: "Headphones", image: "https://picsum.photos/200/200?tech2" },
-                { id: "t3", title: "Laptop", image: "https://picsum.photos/200/200?tech3" },
-              ].map((item) => (
+              {Tech.map((item) => (
                 <Categories key={item.id} item={item} products={products} navigation={navigation} />
               ))}
             </View>
@@ -172,7 +175,7 @@ const renderCategoryContent = () => {
         <View style={styles.section}>
           <Text style={styles.heading}>🍪 Snacks</Text>
           <View style={styles.grid}>
-            {products.slice(0, 12).map((item) => (
+            {Snacks.map((item) => (
               <Categories key={item.id} item={item} products={products} navigation={navigation} favorites={favorites} dispatch={dispatch} />
             ))}
           </View>
@@ -196,7 +199,7 @@ const renderCategoryContent = () => {
         <View style={styles.section}>
           <Text style={styles.heading}>🥦 Fresh</Text>
           <View style={styles.grid}>
-            {Beverages.map((item) => (
+            {Fresh.map((item) => (
               <Categories key={item.id} item={item} products={products} navigation={navigation} />
             ))}
           </View>
@@ -208,7 +211,7 @@ const renderCategoryContent = () => {
         <View style={styles.section}>
           <Text style={styles.heading}>🏠 Household</Text>
           <View style={styles.grid}>
-            {Beverages.map((item) => (
+            {Household.map((item) => (
               <Categories key={item.id} item={item} products={products} navigation={navigation} />
             ))}
           </View>
@@ -217,14 +220,10 @@ const renderCategoryContent = () => {
 
     case "Tech":
       return (
-        <View style={[styles.section,{marginBottom:100}]}>
+        <View style={[styles.section,{marginBottom : 70}]}>
           <Text style={styles.heading}>💻 Tech</Text>
           <View style={styles.grid}>
-            {[
-              { id: "t1", title: "Smartphone", image: "https://picsum.photos/200/200?tech1" },
-              { id: "t2", title: "Headphones", image: "https://picsum.photos/200/200?tech2" },
-              { id: "t3", title: "Laptop", image: "https://picsum.photos/200/200?tech3" },
-            ].map((item) => (
+            {Tech.map((item) => (
               <Categories key={item.id} item={item} products={products} navigation={navigation} />
             ))}
           </View>
@@ -238,12 +237,12 @@ const renderCategoryContent = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false} scrollEventThrottle={16}>
+      <ScrollView showsVerticalScrollIndicator={false} onScroll={handleScroll} scrollEventThrottle={16}>
         {/* Header */}
         <TopHome navigation={navigation} onCategorySelect={setSelectedCategory} /> {/* 🔹 Pass function */}
-
+        
         {/* Promo Banner */}
-        <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={false} style={styles.carousel}>
+        {/* <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={false} style={styles.carousel}>
           {[
             "https://img.freepik.com/free-vector/shopping-discount-banner-sale_1017-34875.jpg",
             "https://img.freepik.com/free-vector/flat-supermarket-sale-background_23-2149322106.jpg",
@@ -258,7 +257,8 @@ const renderCategoryContent = () => {
               </Pressable>
             </View>
           ))}
-        </ScrollView>
+        </ScrollView> */}
+        <AdsCarousel autoPlayInterval={3000} itemHeight={200}  />
 
         {/* 🔹 Dynamic content */}
         {renderCategoryContent()}
@@ -280,6 +280,6 @@ const styles = StyleSheet.create({
   sectionDeals: { backgroundColor: "#fff", borderRadius: 12, padding: 14, marginVertical: 10, marginHorizontal: 16, elevation: 2 },
   sectionPopular: { backgroundColor: "#fff", borderRadius: 12, padding: 14, marginVertical: 10, marginHorizontal: 16, elevation: 2 },
   heading: { fontSize: 18, fontWeight: "700", marginBottom: 12, color: "#333" },
-  grid: { flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", rowGap: 14 },
+  grid: { flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", rowGap: 10 },
   dealsList: { paddingHorizontal: 6 },
 });

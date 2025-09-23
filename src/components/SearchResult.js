@@ -41,7 +41,7 @@ export default function ResultScreen({ route, navigation }) {
 
   // ⬇ navigate only after products are set and not loading
   useEffect(() => {
-    if (!loading && products.length > 0) {
+    if (!loading && products.length >= 0) {
       navigation.replace('ProductList', { products }); // ✅ replaces instead of stacking
     }
   }, [loading, products, navigation]);

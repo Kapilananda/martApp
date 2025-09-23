@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Chips & Crisps",
+    "image": "https://mir-s3-cdn-cf.behance.net/project_modules/fs/10f2e1113252423.6023ff0ea973d.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Cookies & Biscuits",
+    "image": "https://www.tarladalal.com/media/recipe/mainphoto/2025/02/08/big_karachi_biscuits%2C_hyderabadi_tutti_fruti_biscuits-14279.webp"
+  },
+  {
+    "id": 3,
+    "title": "Nuts & Seeds",
+    "image": "https://www.superfoodevolution.com/images/nuts-and-seeds-list.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Popcorn",
+    "image": "https://m.media-amazon.com/images/I/71WCHcFxA8L._UF894,1000_QL80_.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Crackers",
+    "image": "https://www.mydiversekitchen.com/wp-content/uploads/2009/10/namakpare-a-savoury-indian-snack-the-baked-version-recipe-55173.1024x1024.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Baked Goods",
+    "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2025/9/7/4ef3361b-5cc8-46df-91c2-ea66f2167fcd_036edab0-015b-4673-a09b-53f05e1889e7.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Kids' Snacks",
+    "image": "https://assets.clevelandclinic.org/transform/LargeFeatureImage/18462bb4-71ba-4de5-936c-ce5310dc57bd/helathySnacks-1132718381-770x553_jpg"
+  },
+  {
+    "id": 8,
+    "title": "Baked & Puffed",
+    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgREQBKw2znu93C60JJ37YOqHFSMpcOKyhOHlLbhpiLhqFhHcDfO_Ov6qhCmPZOKIEr7f-aRZCGRUTojxozpXEbeb-iIrrAjMLqOYrvtD_428eIVcbmbJO4ROav2l27-zG-ZiBmAObnf-w/s1600/chicken+puffs.JPG"
+  },
+  {
+    "id": 9,
+    "title": "Healthy Bites",
+    "image": "https://cdn-life.dailyburn.com/life/wp-content/uploads/2015/07/10040847/Key-Lime-Pie-Energy-Balls.jpg"
+  }
+]

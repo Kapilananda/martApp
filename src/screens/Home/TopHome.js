@@ -59,7 +59,16 @@ export default function TopHome({ navigation, onCategorySelect }) {
             <Text style={styles.searchText}> Search for Products... </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.cartBtn} activeOpacity={0.8}>
+          <TouchableOpacity
+            style={styles.cartBtn}
+            activeOpacity={0.8}
+            onPress={() =>
+              navigation.navigate("BottomTabNavigation", {
+                screen: "CartScreen",
+              })
+            }
+
+          >
             <Icon name="cart-outline" size={width * 0.1} color="#fff" />
             {cartItems > 0 && (
               <View style={styles.badge}>
@@ -103,6 +112,7 @@ const styles = StyleSheet.create({
     paddingBottom: height * 0.02,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
+    marginBottom:10,
     ...Platform.select({
       ios: { shadowColor: "#000", shadowOpacity: 0.08, shadowRadius: 6, shadowOffset: { width: 0, height: 3 } },
       android: { elevation: 5 },

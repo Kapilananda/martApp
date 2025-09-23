@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Cleaning Supplies",
+    "image": "https://i.chaldn.com/_mpimage/laundry?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D166470&q=best&v=1"
+  },
+  {
+    "id": 2,
+    "title": "Kitchenware",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4uqbjaRMqoV1rZOkI_uUQLTEdjiSC1ZM8zQ&s"
+  },
+  {
+    "id": 3,
+    "title": "Personal Care",
+    "image": "https://lh3.googleusercontent.com/proxy/2Qc-vo5dx9V5j1HOL7UltR_Y58mts3loqhOk8Y7stmq3Yux0a3LNH-Z1atdw9AptveX--AhpOZdzK7g4cZjwKDBuGXh_x5KH3gUEwNDfDb_CLI9UGik-AAUb3o6PBtk"
+  },
+  {
+    "id": 4,
+    "title": "Laundry",
+    "image": "https://static.vecteezy.com/system/resources/previews/068/816/599/non_2x/laundry-spray-and-folded-clothes-in-home-laundry-room-for-domestic-chores-use-free-photo.jpeg"
+  },
+  {
+    "id": 5,
+    "title": "Home Decor",
+    "image": "https://cdn.shopify.com/s/files/1/2690/0106/files/Macrame_Wall_Hangings_for_Vibrant_Home_Decor_480x480.jpg?v=1707463768"
+  },
+  {
+    "id": 6,
+    "title": "Stationery",
+    "image": "https://img.freepik.com/free-photo/school-stationery-with-accessories_1101-373.jpg?semt=ais_incoming&w=740&q=80"
+  },
+  {
+    "id": 7,
+    "title": "Tools & Hardware",
+    "image": "https://roadnarrows-store.com/wp-content/uploads/2024/08/Top-10-Essential-Hardware-Tools-for-Every-Homeowner-roadnarrows-store.com_.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Storage Solutions",
+    "image": "https://images.squarespace-cdn.com/content/v1/5f4c451c8a35d1237843430d/1598851928373-9XWAEXD5KD0DF5UVR3UY/Mobilepartstrolley-withbins_512x512.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Pet Supplies",
+    "image": "https://www.petexpress.com.ph/cdn/shop/articles/must_have_pet_supplies_1200x.png?v=1710838097"
+  }
+]

@@ -21,7 +21,7 @@ export default function ItemCard({ item, navigation, isFavorite, onToggleFavorit
       <TouchableOpacity style={styles.favButton} onPress={onToggleFavorite}>
         <Ionicons
           name={isFavorite ? "heart" : "heart-outline"}
-          size={20}
+          size={25}
           color={isFavorite ? "#E53935" : "#888"}
         />
       </TouchableOpacity>

@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
 
   headerRow: {
     position: "absolute",
-    top: 40,
+    top: 17,
     left: 20,
     right: 20,
     zIndex: 10,

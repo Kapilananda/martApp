@@ -42,12 +42,13 @@ const OtpScreen = ({ route, navigation }) => {
 
   const handleVerify = () => {
     const code = otp.join("");
-    if (code.length === 4) {
+    if ( /^\d{4}$/.test(code)) {
       alert("OTP Verified Successfully ✅");
       dispatch(signIn())
       navigation.navigate("BottomTabNavigation", { screen: "Home", })
     } else {
       alert("Enter valid 4-digit OTP");
+      setOtp(["", "", "", ""]);
     }
   };
 

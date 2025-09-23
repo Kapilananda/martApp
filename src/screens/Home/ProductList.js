@@ -111,16 +111,28 @@ const ProductList = ({ route, navigation }) => {
         </TouchableOpacity>
       </View>
 
-      {/* 🔹 Product Grid */}
-      <FlatList
-        data={filteredProducts}
-        renderItem={renderProduct}
-        keyExtractor={(item) => item.id.toString()}
-        numColumns={2}
-        columnWrapperStyle={{ justifyContent: "space-between" }}
-        contentContainerStyle={{ paddingBottom: 40 }}
-        showsVerticalScrollIndicator={false}
-      />
+      {/* 🔹 Show No Products Found */}
+      {filteredProducts.length === 0 ? (
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyText}>No products found</Text>
+          <TouchableOpacity
+            style={styles.tryAgainBtn}
+            onPress={() => navigation.goBack()}
+          >
+            <Text style={styles.tryAgainText}>🔙 Go Back</Text>
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <FlatList
+          data={filteredProducts}
+          renderItem={renderProduct}
+          keyExtractor={(item) => item.id.toString()}
+          numColumns={2}
+          columnWrapperStyle={{ justifyContent: "space-between" }}
+          contentContainerStyle={{ paddingBottom: 40 }}
+          showsVerticalScrollIndicator={false}
+        />
+      )}
 
       {/* 🔹 Filter Modal */}
       <Modal visible={filterVisible} animationType="slide" transparent>
@@ -266,6 +278,28 @@ const styles = StyleSheet.create({
     color: "#2f855a",
     fontWeight: "600",
     marginLeft: 6,
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  emptyText: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "gray",
+    marginBottom: 10,
+  },
+  tryAgainBtn: {
+    backgroundColor: "#2f855a",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 8,
+  },
+  tryAgainText: {
+    color: "#fff",
+    fontWeight: "600",
+    fontSize: 16,
   },
   modalOverlay: {
     flex: 1,

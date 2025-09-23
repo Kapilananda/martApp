@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Fruits",
+    "image": "https://hips.hearstapps.com/hmg-prod/images/assortment-of-colorful-ripe-tropical-fruits-top-royalty-free-image-1747173002.pjpeg?crop=0.668xw:1.00xh;0.167xw,0&resize=640:*"
+  },
+  {
+    "id": 2,
+    "title": "Vegetables",
+    "image": "https://jbmsmartstart.in/wp-content/uploads/2023/09/vegetable-names.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Meat & Poultry",
+    "image": "https://simplyfresh.info/wp-content/uploads/2015/09/simplymeat-300x185.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Seafood",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS8vVlP9KIbird-QCSSxF51rh48BKYSzMKEQ&s"
+  },
+  {
+    "id": 5,
+    "title": "Dairy & Eggs",
+    "image": "https://i.ndtvimg.com/i/2017-04/egg-milk-honey-toner_620x350_61493208242.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Baked Goods",
+    "image": "https://grownupdish.com/wp-content/uploads/2023/10/OneonOneFlavors-262565-Baked-Goods-Flavor-Image1.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Deli & Prepared Foods",
+    "image": "https://www.preparedfoodphotos.com/wp-content/uploads/SaladDeliAsst001_ADL-2-748x1024.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Herbs",
+    "image": "https://grangettos.com/cdn/shop/articles/shutterstock_302895935_2000x.jpg?v=1752606092"
+  },
+  {
+    "id": 9,
+    "title": "Organic Produce",
+    "image": "https://www.shilliminstitute.org/wp-content/uploads/2023/04/yY8mi7JgYkdx6Lt3WWii8b-890x664.jpg.webp"
+  }
+]
