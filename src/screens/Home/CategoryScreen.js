@@ -40,7 +40,7 @@ export default function CategoryScreen({ route, navigation }) {
         onPress={() => navigation.navigate('ProductList', { products })}
       >
         <LinearGradient
-          colors={['#fdfbfb', '#ebedee']} // soft gradient
+          colors={['#e6f7ffff', '#bce9ffff']} // soft gradient
           style={styles.card}
         >
           <View style={styles.imageBox}>
@@ -78,7 +78,7 @@ export default function CategoryScreen({ route, navigation }) {
       <View style={styles.headerRow}>
         <Text style={styles.headerText}>🛒 Categories</Text>
         <TouchableOpacity onPress={() => navigation.navigate("SearchScreen")}>
-          <Ionicons name="search" size={24} color="#2f855a" />
+          <Ionicons name="search" size={24} color="#004a7eff" />
         </TouchableOpacity>
       </View>
 
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f8f8f8',
+    marginBottom:20,
   },
   headerRow: {
     flexDirection: "row",

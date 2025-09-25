@@ -12,16 +12,16 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Icon from "react-native-vector-icons/Ionicons";
 import { addToCart } from "../../store/slice/CartSlice"; // for reorder
+import { ToastAndroid } from "react-native";
 
 export default function OrderDetailsScreen({ route, navigation }) {
   const dispatch = useDispatch();
   const { orderId } = route.params;
   // console.log(`${orderId} hello`);
-  
 
   // Get the order from recentOrdersSlice
   const recentOrders = useSelector(
-    (state) => state.recentOrders?.recentOrders || []
+    (state) => state.orders?.recentOrders || []
   );
 
   const order = recentOrders.find((o) => o.id === orderId);
@@ -41,12 +41,15 @@ export default function OrderDetailsScreen({ route, navigation }) {
     order.items.forEach((item) => {
       dispatch(addToCart({ ...item, quantity: item.quantity ?? 1 }));
     });
-    navigation.navigate("Cart");
+    navigation.navigate("BottomTabNavigation" , {
+      screen : "Cart"
+    });
   };
 
   // Add single item to cart
   const handleAddItem = (item) => {
     dispatch(addToCart({ ...item, quantity: 1 }));
+    ToastAndroid.showWithGravity("Added to Cart..!", ToastAndroid.SHORT, ToastAndroid.CENTER)
   };
 
   // Render single product row
@@ -54,7 +57,7 @@ export default function OrderDetailsScreen({ route, navigation }) {
     <View style={styles.productCard}>
       <Image source={{ uri: item.image }} style={styles.productImg} />
       <View style={styles.productDetails}>
-        <Text style={styles.productTitle}>{item.name}</Text>
+        <Text style={styles.productTitle}>{item.title}</Text>
         <Text style={styles.productQuantity}>Qty: {item.quantity ?? 1}</Text>
         <Text style={styles.productPrice}>
           ₹{(item.price * (item.quantity ?? 1)).toFixed(2)}
@@ -65,7 +68,7 @@ export default function OrderDetailsScreen({ route, navigation }) {
         style={styles.addBtn}
         onPress={() => handleAddItem(item)}
       >
-        <Icon name="cart-outline" size={22} color="#fff" />
+        <Icon name="cart-outline" size={25} color="#fff" />
       </TouchableOpacity>
     </View>
   );
@@ -93,7 +96,9 @@ export default function OrderDetailsScreen({ route, navigation }) {
           <Icon name="chevron-back" size={24} color="#fff" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Order Details</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
+        <TouchableOpacity onPress={() => navigation.navigate("BottomTabNavigation" , {
+          screen:"Cart"
+        })}>
           <Icon name="cart-outline" size={24} color="#fff" />
         </TouchableOpacity>
       </View>
@@ -139,7 +144,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: "#2f855a",
+    backgroundColor: "#007ba8ff",
     padding: 16,
   },
   headerTitle: { color: "#fff", fontSize: 18, fontWeight: "700" },
@@ -170,7 +175,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     elevation: 2,
   },
-  productImg: { width: 60, height: 60, borderRadius: 8, marginRight: 12 },
+  productImg: { width: 60, height: 60, borderRadius: 8, marginRight: 12,resizeMode:"center" },
   productDetails: { flex: 1 },
   productTitle: { fontSize: 16, fontWeight: "600", color: "#333" },
   productQuantity: { fontSize: 14, color: "#777", marginTop: 4 },
@@ -182,7 +187,7 @@ const styles = StyleSheet.create({
   },
 
   addBtn: {
-    backgroundColor: "#2f855a",
+    backgroundColor: "#007ba8ff",
     padding: 8,
     borderRadius: 8,
   },
@@ -201,7 +206,7 @@ const styles = StyleSheet.create({
   totalAmount: { fontSize: 18, fontWeight: "bold", color: "#4CAF50" },
 
   reorderBtn: {
-    backgroundColor: "#FF6D00",
+    backgroundColor: "#f17800ff",
     marginHorizontal: 16,
     paddingVertical: 14,
     borderRadius: 12,

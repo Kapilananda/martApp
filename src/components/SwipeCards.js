@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { useDispatch, useSelector } from "react-redux";
+import Toast from 'react-native-simple-toast';
 import {
   addToCart,
   increaseQty,
@@ -58,12 +59,12 @@ export default function SwipeCards({ item, navigation }) {
       <View style={styles.footer}>
         {!cartItem ? (
           <LinearGradient
-            colors={["#FF6D00", "#FF9500"]}
+            colors={["#0095cbff", "#007ac0ff"]}
             style={styles.cartBtnGradient}
           >
             <TouchableOpacity
               style={styles.cartBtn}
-              onPress={() => dispatch(addToCart(item))}
+              onPress={() => dispatch(addToCart(item),Toast.showWithGravity("Added to Cart..!", Toast.SHORT, Toast.CENTER))}
               activeOpacity={0.8}
             >
               <Text style={styles.cartBtnText}>Add</Text>
@@ -162,6 +163,8 @@ const styles = StyleSheet.create({
   cartBtnGradient: {
     borderRadius: 20,
     padding: 2,
+    // top:-20
+    // width:"100%",
   },
   cartBtn: {
     backgroundColor: "#fff",
@@ -172,20 +175,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   cartBtnText: {
-    fontSize: 13,
+    fontSize: 15,
+    fontWeight:700,
     fontWeight: "bold",
-    color: "#FF6D00",
+    color: "#004268ff",
   },
   qtyContainer: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#f1f1f1",
+    // justifyContent:"center",
+    backgroundColor: "#def5ffff",
     borderRadius: 20,
     paddingHorizontal: 8,
     paddingVertical: 4,
+    // width:"100%",
   },
   qtyBtn: {
-    backgroundColor: "#FF6D00",
+    backgroundColor: "#0069a5ff",
     borderRadius: 15,
     width: 26,
     height: 26,

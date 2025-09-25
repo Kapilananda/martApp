@@ -142,7 +142,7 @@ export default function ProductDetails({ route, navigation }) {
         </View>
         <TouchableOpacity>
           <LinearGradient
-            colors={["#4CAF50", "#2E7D32"]}
+            colors={["#007ad0ff", "#005a9bff"]}
             style={styles.addButton}
           >
             <MaterialIcons name="shopping-cart" size={20} color="#fff" />
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
 
   imageWrapper: {
     alignItems: "center",
-    backgroundColor: "#E8FCE8",
+    backgroundColor: "#def8ffff",
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
     paddingVertical: 50,

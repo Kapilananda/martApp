@@ -98,7 +98,7 @@ const ProductList = ({ route, navigation }) => {
           style={styles.topBtn}
           onPress={() => navigation.goBack()}
         >
-          <AntDesign name="arrowleft" size={20} color="#2f855a" />
+          <AntDesign name="arrowleft" size={20} color="#0073c0ff" />
           <Text style={styles.topBtnText}>Back</Text>
         </TouchableOpacity>
 
@@ -106,7 +106,7 @@ const ProductList = ({ route, navigation }) => {
           style={styles.topBtn}
           onPress={() => setFilterVisible(true)}
         >
-          <Icon name="options-outline" size={18} color="#2f855a" />
+          <Icon name="options-outline" size={18} color="#0073c0ff" />
           <Text style={styles.topBtnText}>Filter</Text>
         </TouchableOpacity>
       </View>
@@ -238,7 +238,7 @@ const ProductList = ({ route, navigation }) => {
                 </Pressable>
 
                 <Pressable
-                  style={[styles.modalBtn, { backgroundColor: "#2f855a" }]}
+                  style={[styles.modalBtn, { backgroundColor: "#0072beff" }]}
                   onPress={applyFilters}
                 >
                   <Text style={styles.modalBtnText}>Apply</Text>
@@ -258,6 +258,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 12,
     backgroundColor: "#fff",
+    // top:40
   },
   topBar: {
     flexDirection: "row",
@@ -275,7 +276,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   topBtnText: {
-    color: "#2f855a",
+    color: "#0073c0ff",
     fontWeight: "600",
     marginLeft: 6,
   },
@@ -291,13 +292,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   tryAgainBtn: {
-    backgroundColor: "#2f855a",
+    backgroundColor: "#b1e0ffff",
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 8,
   },
   tryAgainText: {
-    color: "#fff",
+    color: "#00336cff",
     fontWeight: "600",
     fontSize: 16,
   },
@@ -334,8 +335,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   chipActive: {
-    backgroundColor: "#2f855a",
-    borderColor: "#2f855a",
+    backgroundColor: "#0073c0ff",
+    borderColor: "#96d4feff",
   },
   chipText: {
     color: "#333",

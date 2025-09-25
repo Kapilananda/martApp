@@ -16,35 +16,57 @@ import { useSelector } from "react-redux";
 const { width, height } = Dimensions.get("window");
 
 const categories = [
-  { name: "All", icon: "grid-outline", colors: ["#ff9a9e", "#fad0c4"] },
-  { name: "Fresh", icon: "leaf-outline", colors: ["#a8e063", "#56ab2f"] },
-  { name: "Snacks", icon: "fast-food-outline", colors: ["#ff9966", "#ff5e62"] },
-  { name: "Beverages", icon: "wine-outline", colors: ["#36d1dc", "#5b86e5"] },
-  { name: "Household", icon: "home-outline", colors: ["#f7971e", "#ffd200"] },
-  { name: "Tech", icon: "phone-portrait-outline", colors: ["#7f00ff", "#e100ff"] },
+  { name: "All", icon: "grid-outline", colors: ["#009dd5ff", "#0095cbff"] },
+  { name: "Fresh", icon: "leaf-outline", colors: ["#0095cbff", "#0095cbff"] },
+  { name: "Snacks", icon: "fast-food-outline", colors: ["#0095cbff", "#0095cbff"] },
+  { name: "Beverages", icon: "wine-outline", colors: ["#0095cbff", "#0095cbff"] },
+  { name: "Household", icon: "home-outline", colors: ["#0095cbff", "#0095cbff"] },
+  { name: "Tech", icon: "phone-portrait-outline", colors: ["#0095cbff", "#004e7cff"] },
 ];
 
 export default function TopHome({ navigation, onCategorySelect }) {
+
+  const defaultAddress = useSelector((state) => state.address.defaultAddress)
   const cartItems = useSelector((state) => state.cart.cartItems.length);
 
+  console.log(`hello ${defaultAddress}`);
+
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ backgroundColor: "#F3F4F6" }}>
       <LinearGradient
-        colors={["#00b09b", "#96c93d"]}
-        start={{ x: 0, y: 0 }}
+        colors={["#0097c9ff", "#0097c9ff"]}
+        start={{ x: 0, y: 1 }}
         end={{ x: 1, y: 1 }}
         style={styles.headerContainer}
       >
         {/* Top row */}
         <View style={styles.topRow}>
+
           <View style={{ flexShrink: 1 }}>
             <Text style={styles.deliveryTime}>⏱ 8 mins</Text>
-            <Text style={styles.address} numberOfLines={1}>
-              Padmavathi Nagar, Tirupati
-            </Text>
+            {defaultAddress && defaultAddress.length > 0 ? (
+              <Text style={styles.address} numberOfLines={1}>
+                {[
+                  // defaultAddress[0].house,
+                  defaultAddress[0].street,
+                  defaultAddress[0].city,
+                  // defaultAddress[0].state,
+                  // defaultAddress[0].pincode,
+                ]
+                  .filter(Boolean) // remove empty or undefined fields
+                  .join(", ")}
+              </Text>
+            ) : (
+              <Text style={styles.address} numberOfLines={1}>
+                Address is not yet added
+              </Text>
+            )}
+
           </View>
+
+
           <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate("ProfileScreen")}>
-            <Icon name="person-circle-outline" size={width * 0.12} color="#d7eaffff" />
+            <Icon name="person-circle-outline" size={width * 0.12} color="#fff" />
           </TouchableOpacity>
         </View>
 
@@ -55,7 +77,7 @@ export default function TopHome({ navigation, onCategorySelect }) {
             onPress={() => navigation.navigate("SearchScreen", { navigation })}
             activeOpacity={0.7}
           >
-            <Icon name="search-outline" size={width * 0.06} color="#888" />
+            <Icon name="search-outline" size={width * 0.06} color="#6B7280" />
             <Text style={styles.searchText}> Search for Products... </Text>
           </TouchableOpacity>
 
@@ -64,10 +86,9 @@ export default function TopHome({ navigation, onCategorySelect }) {
             activeOpacity={0.8}
             onPress={() =>
               navigation.navigate("BottomTabNavigation", {
-                screen: "CartScreen",
+                screen: "Cart",
               })
             }
-
           >
             <Icon name="cart-outline" size={width * 0.1} color="#fff" />
             {cartItems > 0 && (
@@ -90,9 +111,14 @@ export default function TopHome({ navigation, onCategorySelect }) {
               key={cat.name}
               activeOpacity={0.8}
               style={styles.catBtn}
-              onPress={() => onCategorySelect(cat.name)}   // 🔹 pass clicked category
+              onPress={() => onCategorySelect(cat.name)}
             >
-              <LinearGradient colors={cat.colors} style={styles.catGradient}>
+              <LinearGradient
+                colors={cat.colors}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1.8, y: 1 }}
+                style={styles.catGradient}
+              >
                 <Icon name={cat.icon} size={width * 0.05} color="#fff" />
                 <Text style={styles.catText}>{cat.name}</Text>
               </LinearGradient>
@@ -112,26 +138,90 @@ const styles = StyleSheet.create({
     paddingBottom: height * 0.02,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    marginBottom:10,
+    marginBottom: 10,
     ...Platform.select({
       ios: { shadowColor: "#000", shadowOpacity: 0.08, shadowRadius: 6, shadowOffset: { width: 0, height: 3 } },
       android: { elevation: 5 },
     }),
   },
-  topRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: height * 0.02 },
-  deliveryTime: { fontSize: width * 0.045, fontWeight: "bold", color: "#fff" },
-  address: { fontSize: width * 0.035, color: "#e6f0ff", maxWidth: width * 0.65 },
-  searchRow: { flexDirection: "row", alignItems: "center", marginBottom: height * 0.02 },
-  searchBox: {
-    flex: 1, flexDirection: "row", alignItems: "center", backgroundColor: "#fff",
-    borderRadius: width * 0.06, paddingHorizontal: width * 0.035, height: height * 0.055,
+  topRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: height * 0.02,
   },
-  searchText: { marginLeft: width * 0.02, fontSize: width * 0.036, color: "#888" },
-  cartBtn: { marginLeft: width * 0.03, position: "relative", justifyContent: "center", alignItems: "center" },
-  badge: { position: "absolute", top: -5, right: -5, backgroundColor: "#E53935", borderRadius: 12, minWidth: 18, height: 18, alignItems: "center", justifyContent: "center", paddingHorizontal: 3 },
-  badgeText: { color: "#fff", fontSize: 10, fontWeight: "bold" },
+  deliveryTime: {
+    fontSize: width * 0.045,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+  address: {
+    fontSize: width * 0.035,
+    color: "#e6f0ff",
+    maxWidth: width * 0.65,
+  },
+  searchRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: height * 0.02,
+  },
+  searchBox: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#F3F4F6",
+    borderRadius: width * 0.06,
+    paddingHorizontal: width * 0.035,
+    height: height * 0.055,
+  },
+  searchText: {
+    marginLeft: width * 0.02,
+    fontSize: width * 0.036,
+    color: "#6B7280",
+  },
+  cartBtn: {
+    marginLeft: width * 0.03,
+    position: "relative",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  badge: {
+    position: "absolute",
+    top: -5,
+    right: -5,
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    minWidth: 18,
+    height: 18,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 3,
+  },
+  badgeText: {
+    top: -2,
+    color: "#007ad0ff",
+    fontSize: 15,
+    fontWeight: "bold",
+  },
   categoryRow: { marginTop: height * 0.01 },
   catBtn: { marginRight: width * 0.025 },
-  catGradient: { flexDirection: "row", alignItems: "center", borderRadius: width * 0.06, paddingHorizontal: width * 0.035, paddingVertical: height * 0.012 },
-  catText: { marginLeft: width * 0.02, fontSize: width * 0.036, fontWeight: "600", color: "#fff" },
+  catGradient: {
+    flexDirection: "row",
+    borderRadius: width * 0.06,
+    paddingHorizontal: width * 0.035,
+    alignItems: "center",
+    paddingVertical: height * 0.012,
+    elevation: 3,
+    shadowColor: "#fff"
+    // borderWidth:0.5,
+    // borderColor:"#fff",
+
+
+  },
+  catText: {
+    marginLeft: width * 0.02,
+    fontSize: width * 0.036,
+    fontWeight: "600",
+    color: "#fff",
+  },
 });

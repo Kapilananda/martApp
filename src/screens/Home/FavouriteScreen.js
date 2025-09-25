@@ -22,12 +22,15 @@ export default function FavoriteScreen({ navigation }) {
 
   if (favorites.length === 0) {
     return (
-      <View style={styles.emptyContainer}>
-        <Ionicons name="heart-outline" size={64} color="#ccc" />
-        <Text style={styles.emptyText}>No favorites yet</Text>
-        <Text style={styles.emptySubText}>
-          Browse products and tap the ❤️ to add them here.
-        </Text>
+      <View style={{flex:1,backgroundColor:"#eef9ffff"}}>
+        <Text style={{ justifyContent: "flex-start", alignItems: "flex-start", fontSize: 22, fontWeight: "700", color: "#333", marginVertical: 15, marginLeft: 10, }}>❤️ My Favorites</Text>
+        <View style={styles.emptyContainer}>
+          <Ionicons name="heart-outline" size={64} color="#ccc" />
+          <Text style={styles.emptyText}>No favorites yet</Text>
+          <Text style={styles.emptySubText}>
+            Browse products and tap the ❤️ to add them here.
+          </Text>
+        </View>
       </View>
     );
   }
@@ -35,7 +38,7 @@ export default function FavoriteScreen({ navigation }) {
   return (
     <View style={styles.container}>
       {/* Header */}
-      <Text style={{ fontSize: 22,fontWeight: "700",color: "#333",marginVertical: 15,marginLeft:10}}>❤️ My Favorites</Text>
+      <Text style={{ fontSize: 22, fontWeight: "700", color: "#333", marginVertical: 15, marginLeft: 10 }}>❤️ My Favorites</Text>
 
       {/* Favorites List */}
       <FlatList
@@ -87,7 +90,7 @@ export default function FavoriteScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#eef9ffff",
   },
   header: {
     flexDirection: "row",
@@ -112,6 +115,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
+    backgroundColor:"#eef9ffff",
   },
   emptyText: {
     fontSize: 18,

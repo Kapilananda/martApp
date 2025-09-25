@@ -9,6 +9,7 @@ import {
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, increaseQty, decreaseQty } from "../store/slice/CartSlice";
+import { ToastAndroid } from "react-native";
 
 export default function ItemCard({ item, navigation, isFavorite, onToggleFavorite }) {
   const dispatch = useDispatch();
@@ -64,7 +65,7 @@ export default function ItemCard({ item, navigation, isFavorite, onToggleFavorit
       {!inCart ? (
         <TouchableOpacity
           style={styles.cartButton}
-          onPress={() => dispatch(addToCart(item))}
+          onPress={() => dispatch(addToCart(item),ToastAndroid.showWithGravity("Added to Cart..!", ToastAndroid.SHORT, ToastAndroid.CENTER))}
         >
           <Ionicons name="cart-outline" size={18} color="#fff" />
           <Text style={styles.cartButtonText}>Add</Text>
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
   discountPrice: {
     fontSize: 15,
     fontWeight: "700",
-    color: "#27ae60",
+    color: "#00b64cff",
     marginRight: 6,
   },
   originalPrice: {
@@ -174,8 +175,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#27ae60",
-    borderRadius: 25,
+    backgroundColor: "#00719dff",
+    borderRadius:15,
     paddingVertical: 8,
     paddingHorizontal: 10,
     marginTop: 4,
@@ -195,7 +196,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: "#27ae60",
+    backgroundColor: "#0080b3ff",
     borderRadius: 25,
     paddingHorizontal: 6,
     paddingVertical: 6,
@@ -206,9 +207,10 @@ const styles = StyleSheet.create({
     width: 34,
     height: 34,
     borderRadius: 17,
+    padding: 7,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#1bb95dff",
+    backgroundColor: "#0092ccff",
   },
   qtyText: {
     color: "#fff",

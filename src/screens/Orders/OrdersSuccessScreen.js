@@ -1,8 +1,17 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import {clearCart} from "../../store/slice/CartSlice";
+import { useSelector,useDispatch } from "react-redux";
 
 export default function OrderSuccessScreen({ navigation }) {
+
+  const dispatch = useDispatch();
+   // ✅ Clear cart only once when screen loads
+  useEffect(() => {
+    dispatch(clearCart());
+  }, [dispatch]);
+
   return (
     <SafeAreaView style={styles.container}>
       <Ionicons name="checkmark-circle" size={100} color="#2f855a" />

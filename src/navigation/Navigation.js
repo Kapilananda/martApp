@@ -20,6 +20,7 @@ import OrderSuccessScreen from '../screens/Orders/OrdersSuccessScreen';
 import OrderDetails from '../screens/Orders/OrderDetails';
 import OrderScreen from '../screens/Orders/OrderScreen';
 import OrderStatusScreen from "../screens/Orders/OrderStatusScreen";
+import LocationScreen from "../screens/Orders/LocationScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,10 +28,10 @@ export default function Navigation() {
   return (
     <Stack.Navigator screenOptions={{headerShown:false}} >
       
-        <Stack.Screen name='BottomTabNavigation' component={BottomTabNavigation} />
         <Stack.Screen name='SignUp' component={SignUp}/>
-        <Stack.Screen name='LoginScreen' component={LoginScreen}/>
+        <Stack.Screen name='BottomTabNavigation' component={BottomTabNavigation} />
         <Stack.Screen name='Home' component={Home}/>
+        <Stack.Screen name='LoginScreen' component={LoginScreen}/>
         <Stack.Screen name='ProductDetails' component={ProductDetails}/>
         <Stack.Screen name='ProductList' component={ProductList}/>
         <Stack.Screen name='SearchResult' component={SearchResult}/>
@@ -43,6 +44,7 @@ export default function Navigation() {
         <Stack.Screen name='OrderScreen' component={OrderScreen} />
         <Stack.Screen name='OrderDetails' component={OrderDetails} />
         <Stack.Screen name='OrderStatusScreen' component={OrderStatusScreen} />
+        <Stack.Screen name='LocationScreen' component={LocationScreen} />
 
     </Stack.Navigator>
   )

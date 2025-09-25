@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "568860298340",
+    "project_id": "dimartapp-92793",
+    "storage_bucket": "dimartapp-92793.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568860298340:android:3d70777a7611fad43da371",
+        "android_client_info": {
+          "package_name": "com.martapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBii7m1APswI0_Lz7W943-Qg0gSGrOeU4o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

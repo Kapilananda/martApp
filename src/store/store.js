@@ -4,6 +4,7 @@ import favoriteReducer from "./slice/FavoritesSlice";
 import authSlice from "./slice/AuthSlice";
 import recentOrdersReducer from './slice/RecentOrderSlice';
 import ordersReducer from './slice/OrdersSlice';
+import addressReducer from './slice/AddressSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     favorite: favoriteReducer,
     recentOrders: recentOrdersReducer,
     orders : ordersReducer, 
+    address : addressReducer,
   },
 });

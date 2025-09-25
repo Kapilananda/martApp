@@ -5,22 +5,39 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  Image,
   KeyboardAvoidingView,
   Platform,
   Alert,
+  ActivityIndicator,
 } from "react-native";
+
+import auth from "@react-native-firebase/auth";
 
 const SignInScreen = ({ navigation }) => {
   const [phone, setPhone] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleContinue = () => {
-    if (phone.length === 10 && /^\d{10}$/.test(phone)) {
-      navigation.navigate("OtpScreen", { phone });
-      // OtpScreen(phone);
-    } else {
-      Alert.alert("Please enter a valid 10-digit phone number");
-      setPhone("")
+  // ✅ Send OTP
+  const handleContinue = async () => {
+    if (!/^[6-9]\d{9}$/.test(phone)) {
+      Alert.alert("Error", "Enter a valid 10-digit phone number");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      // Firebase OTP
+      const confirmation = await auth().signInWithPhoneNumber("+91" + phone);
+
+      setLoading(false);
+
+      // Navigate to OTP screen
+      navigation.navigate("OtpScreen", { confirmation, phone });
+    } catch (error) {
+      setLoading(false);
+      Alert.alert("Error", error.message);
+      console.log("Firebase OTP error:", error);
     }
   };
 
@@ -37,8 +54,8 @@ const SignInScreen = ({ navigation }) => {
       </View>
 
       {/* Title */}
-      <Text style={styles.title}>Enjoy your Day</Text>
-      <Text style={styles.subtitle}>Log in or sign up</Text>
+      <Text style={styles.title}>Welcome Back!</Text>
+      <Text style={styles.subtitle}>Enter your phone number to continue</Text>
 
       {/* Phone Input */}
       <View style={styles.inputContainer}>
@@ -59,32 +76,23 @@ const SignInScreen = ({ navigation }) => {
           styles.button,
           { backgroundColor: phone.length === 10 ? "#FF6600" : "#ccc" },
         ]}
-        disabled={phone.length !== 10}
+        disabled={phone.length !== 10 || loading}
         onPress={handleContinue}
       >
-        <Text style={styles.buttonText}>Continue</Text>
+        {loading ? (
+          <ActivityIndicator color="#fff" />
+        ) : (
+          <Text style={styles.buttonText}>Send OTP</Text>
+        )}
       </TouchableOpacity>
 
-      <View style={{fontSize:25,alignItems:"center"}}>
-        <Text style={{fontSize:17}}>Already having Account <TouchableOpacity onPress={() => {navigation.navigate("LoginScreen")}}>
-          <Text style={{color:"#00f",top:7,fontSize:17}}>
-            Click here
-          </Text>
-        </TouchableOpacity> </Text>
+      {/* Login redirect */}
+      <View style={styles.loginRow}>
+        <Text style={styles.loginText}>Already have an account? </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("LoginScreen")}>
+          <Text style={styles.loginLink}>Login</Text>
+        </TouchableOpacity>
       </View>
-      {/* Divider */}
-      {/* <Text style={styles.orText}>OR</Text> */}
-
-      {/* Google Button */}
-      {/*<TouchableOpacity style={styles.googleButton}>
-         <Image
-           source={{
-             uri: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png",
-           }}
-           style={styles.googleIcon}
-         />
-         <Text style={styles.googleText}>Continue with Google</Text>
-      </TouchableOpacity> */}
     </KeyboardAvoidingView>
   );
 };
@@ -114,7 +122,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   title: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: "700",
     textAlign: "center",
     marginBottom: 5,
@@ -133,6 +141,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10,
     marginBottom: 15,
+    backgroundColor: "#f9f9f9",
   },
   prefix: {
     fontSize: 16,
@@ -155,27 +164,17 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 16,
   },
-  orText: {
-    textAlign: "center",
-    marginBottom: 15,
-    color: "#999",
-  },
-  googleButton: {
+  loginRow: {
     flexDirection: "row",
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 10,
-    alignItems: "center",
     justifyContent: "center",
-    padding: 12,
   },
-  googleIcon: {
-    width: 20,
-    height: 20,
-    marginRight: 10,
+  loginText: {
+    fontSize: 16,
+    color: "#555",
   },
-  googleText: {
-    fontSize: 15,
-    fontWeight: "500",
+  loginLink: {
+    fontSize: 16,
+    color: "#FF6600",
+    fontWeight: "700",
   },
 });
