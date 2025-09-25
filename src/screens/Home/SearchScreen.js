@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, } from "react";
 import {
   View,
   Text,
@@ -12,6 +12,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+import { useDispatch, useSelector } from "react-redux";
+
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import AntDesign from "react-native-vector-icons/AntDesign";
@@ -19,11 +21,15 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 const { width } = Dimensions.get("window");
 
 export default function ProductCarousel({ navigation }) {
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [cart, setCart] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
+
+  const favorites = useSelector((state) =>  state.favorite.favorites)
+    const dispatch = useDispatch();
 
   useEffect(() => {
     const getProducts = async () => {
@@ -80,7 +86,7 @@ export default function ProductCarousel({ navigation }) {
   };
 
   const renderProduct = ({ item }) => (
-    <View style={styles.card}>
+    <TouchableOpacity style={styles.card} onPress={ () => navigation.navigate("ProductDetails",{item})}>
       <Image source={{ uri: item.image }} style={styles.image} />
 
       <Text style={styles.title} numberOfLines={2}>
@@ -109,11 +115,11 @@ export default function ProductCarousel({ navigation }) {
       </View>
 
       {/* 🛒 Add to Cart */}
-      <TouchableOpacity style={styles.cartButton} onPress={() => addToCart(item)}>
+      {/* <TouchableOpacity style={styles.cartButton} onPress={() => addToCart(item)}>
         <Ionicons name="cart-outline" size={18} color="#fff" />
         <Text style={styles.cartButtonText}>Add</Text>
-      </TouchableOpacity>
-    </View>
+      </TouchableOpacity> */}
+    </TouchableOpacity>
   );
 
   return (
@@ -124,7 +130,7 @@ export default function ProductCarousel({ navigation }) {
           style={styles.backButton}
           onPress={() => navigation.goBack()}
         >
-          <AntDesign name="arrowleft" size={22} color="#333" />
+          <AntDesign name="arrowleft" size={22} color="#ffffffff" />
         </TouchableOpacity>
 
         <View style={styles.searchBox}>
@@ -174,7 +180,7 @@ export default function ProductCarousel({ navigation }) {
           <ActivityIndicator size="large" color="#2f855a" />
         ) : (
           products.slice(0, 8).map((item) => (
-            <TouchableOpacity key={item.id} style={styles.popularCard}>
+            <TouchableOpacity key={item.id} style={styles.popularCard} onPress={() => navigation.navigate("ProductList",{products})}>
               <Image source={{ uri: item.image }} style={styles.popularImage} />
               <Text style={styles.popularText} numberOfLines={1}>
                 {item.title}
@@ -187,7 +193,7 @@ export default function ProductCarousel({ navigation }) {
       {/* Top Deals */}
       <View style={styles.dealHeader}>
         <Text style={styles.sectionTitle}>Top Deals</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={ () => navigation.navigate("ProductList",{products,favorites,dispatch})}>
           <Text style={styles.seeAll}>See All &gt;</Text>
         </TouchableOpacity>
       </View>
@@ -219,7 +225,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     elevation: 2,
-    backgroundColor: "#e0e0e0",
+    backgroundColor: "#008bd0ff",
     borderRadius: 25,
     marginLeft: 8,
   },
@@ -359,7 +365,7 @@ const styles = StyleSheet.create({
   },
   cartButton: {
     marginTop: 10,
-    backgroundColor: "#2f855a",
+    backgroundColor: "#2f7185ff",
     paddingVertical: 6,
     borderRadius: 6,
     flexDirection: "row",

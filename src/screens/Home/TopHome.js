@@ -16,12 +16,12 @@ import { useSelector } from "react-redux";
 const { width, height } = Dimensions.get("window");
 
 const categories = [
-  { name: "All", icon: "grid-outline", colors: ["#009dd5ff", "#0095cbff"] },
-  { name: "Fresh", icon: "leaf-outline", colors: ["#0095cbff", "#0095cbff"] },
-  { name: "Snacks", icon: "fast-food-outline", colors: ["#0095cbff", "#0095cbff"] },
-  { name: "Beverages", icon: "wine-outline", colors: ["#0095cbff", "#0095cbff"] },
-  { name: "Household", icon: "home-outline", colors: ["#0095cbff", "#0095cbff"] },
-  { name: "Tech", icon: "phone-portrait-outline", colors: ["#0095cbff", "#004e7cff"] },
+  { name: "All", icon: "grid-outline", colors: ["#0090c5ff", "#006b92ff"] },
+  { name: "Fresh", icon: "leaf-outline", colors: ["#0095cbff", "#006b92ff"] },
+  { name: "Snacks", icon: "fast-food-outline", colors: ["#0095cbff", "#006b92ff"] },
+  { name: "Beverages", icon: "wine-outline", colors: ["#0095cbff", "#006b92ff"] },
+  { name: "Household", icon: "home-outline", colors: ["#0095cbff", "#006b92ff"] },
+  { name: "Tech", icon: "phone-portrait-outline", colors: ["#0095cbff", "#006b92ff"] },
 ];
 
 export default function TopHome({ navigation, onCategorySelect }) {
@@ -208,10 +208,10 @@ const styles = StyleSheet.create({
   catGradient: {
     flexDirection: "row",
     borderRadius: width * 0.06,
-    paddingHorizontal: width * 0.035,
+    paddingHorizontal: width * 0.037,
     alignItems: "center",
-    paddingVertical: height * 0.012,
-    elevation: 3,
+    paddingVertical: height * 0.015,
+    elevation: 7,
     shadowColor: "#fff"
     // borderWidth:0.5,
     // borderColor:"#fff",

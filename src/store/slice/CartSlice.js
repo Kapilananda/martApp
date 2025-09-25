@@ -2,9 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cartItems: [
-    { id: "p1", price: 40, title: "milk", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwFYKIqHw7HhpG9_2oEBaCtIoOhKYxZdKA4Q&s" },
-    { id: "p2", price: 60, title: "bread", image: "https://prod.image.theorganicworld.com/storage/app/public/product/thumbnail/2025-03-13-67d267e075ec3.png" },
-    { id: "p3", price: 120, title: "Jam", image: "https://m.media-amazon.com/images/I/61X2Ov+z7XL._UF894,1000_QL80_.jpg" }
 
   ],
   totalQuantity: 0,

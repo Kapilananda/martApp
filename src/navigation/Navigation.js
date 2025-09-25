@@ -28,8 +28,8 @@ export default function Navigation() {
   return (
     <Stack.Navigator screenOptions={{headerShown:false}} >
       
-        <Stack.Screen name='SignUp' component={SignUp}/>
         <Stack.Screen name='BottomTabNavigation' component={BottomTabNavigation} />
+        <Stack.Screen name='SignUp' component={SignUp}/>
         <Stack.Screen name='Home' component={Home}/>
         <Stack.Screen name='LoginScreen' component={LoginScreen}/>
         <Stack.Screen name='ProductDetails' component={ProductDetails}/>

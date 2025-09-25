@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   Dimensions,
   ScrollView,
+  RefreshControl,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -35,32 +36,72 @@ export default function HomeScreen({ route, navigation }) {
   const favorites = useSelector((state) => state.favorite.favorites);
   const setIsFloating = route.params?.setIsFloating;
 
+  const [refreshing, setRefreshing] = React.useState(false);
+
+
   // --- Data Fetching Effect ---
+  // useEffect(() => {
+  //   const getProducts = async () => {
+  //     try {
+  //       const response = await fetch("https://fakestoreapi.com/products");
+  //       const data = await response.json();
+
+  //       const updated = data.map((item) => {
+  //         const discountPercent = Math.floor(Math.random() * 30) + 10;
+  //         const discountedPrice = (
+  //           item.price - (item.price * discountPercent) / 100
+  //         ).toFixed(2);
+
+  //         return { ...item, discountPercent, discountedPrice };
+  //       });
+
+  //       setProducts(updated);
+  //     } catch (error) {
+  //       console.error("Error fetching products:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   getProducts();
+  // }, []);
+  // --- Data Fetching Function ---
+  const getProducts = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch("https://fakestoreapi.com/products");
+      const data = await response.json();
+
+      const updated = data.map((item) => {
+        const discountPercent = Math.floor(Math.random() * 30) + 10;
+        const discountedPrice = (
+          item.price - (item.price * discountPercent) / 100
+        ).toFixed(2);
+
+        return { ...item, discountPercent, discountedPrice };
+      });
+
+      setProducts(updated);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      setLoading(false);
+      setRefreshing(false); // ✅ stop loader after data comes
+    }
+  };
+
   useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const response = await fetch("https://fakestoreapi.com/products");
-        const data = await response.json();
-
-        const updated = data.map((item) => {
-          const discountPercent = Math.floor(Math.random() * 30) + 10;
-          const discountedPrice = (
-            item.price - (item.price * discountPercent) / 100
-          ).toFixed(2);
-
-          return { ...item, discountPercent, discountedPrice };
-        });
-
-        setProducts(updated);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     getProducts();
   }, []);
+
+
+  // --- Refresh Handler ---
+  const onRefresh = () => {
+    setRefreshing(true);
+    setSelectedCategory("All"); // ✅ reset category if needed
+    getProducts();              // ✅ re-fetch products
+  };
+
 
   // --- Loading State UI ---
   // if (loading) {
@@ -238,7 +279,11 @@ export default function HomeScreen({ route, navigation }) {
   // --- Main Component Render ---
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false} scrollEventThrottle={16}>
+      <ScrollView showsVerticalScrollIndicator={false} scrollEventThrottle={16}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
         {/* Header */}
         < TopHome navigation={navigation} onCategorySelect={setSelectedCategory} />
         {loading ?
@@ -272,8 +317,8 @@ const styles = StyleSheet.create({
 
   // --- Loading State ---
   loaderContainer: {
-    width:"100%",
-    height:"100%",
+    width: "100%",
+    height: "100%",
     flex: 1,
     justifyContent: "center",
     alignItems: "center",

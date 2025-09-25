@@ -57,7 +57,7 @@ export default function ProfileScreen({ navigation }) {
       const granted = await PermissionsAndroid.requestMultiple(
         permissionsToRequest
       );
-      
+
       // Check if all requested permissions were granted.
       const allPermissionsGranted = Object.values(granted).every(
         (status) => status === PermissionsAndroid.RESULTS.GRANTED
@@ -231,6 +231,44 @@ export default function ProfileScreen({ navigation }) {
               trackColor={{ false: "#767577", true: "#6C63FF" }}
             />
           </View>
+        </View>
+        {/* Additional Options */}
+        <View style={styles.detailsCard}>
+          <Text style={styles.cardTitle}>More</Text>
+
+          <TouchableOpacity style={styles.menuItem} onPress={ () => { navigation.navigate("BottomTabNavigation",{
+            screen : "Favourite"
+          })}}>
+            <View style={styles.menuText}>
+              <FontAwesome name="heart" size={22} color="#FF6B6B" />
+              <Text style={styles.menuLabel}>Favorites</Text>
+            </View>
+            <Entypo name="chevron-right" size={22} color="#999" />
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.menuItem}  onPress={ () => { navigation.navigate("OrderScreen")}}>
+            <View style={styles.menuText}>
+              <Ionicons name="document-text" size={22} color="#4ECDC4" />
+              <Text style={styles.menuLabel}>Order History</Text>
+            </View>
+            <Entypo name="chevron-right" size={22} color="#999" />
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.menuItem}  onPress={ () => { navigation.navigate("LocationScreen")}}>
+            <View style={styles.menuText}>
+              <Ionicons name="location" size={22} color="#FF9F1C" />
+              <Text style={styles.menuLabel}>Addresses</Text>
+            </View>
+            <Entypo name="chevron-right" size={22} color="#999" />
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.menuItem}>
+            <View style={styles.menuText}>
+              <MaterialIcons name="payment" size={22} color="#6C63FF" />
+              <Text style={styles.menuLabel}>Payment Methods</Text>
+            </View>
+            <Entypo name="chevron-right" size={22} color="#999" />
+          </TouchableOpacity>
         </View>
 
         {/* Sign Out */}
