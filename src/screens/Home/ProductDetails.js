@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   image: {
-    width: width * 0.7,
+    width: width * 0.8,
     height: width * 0.7,
     resizeMode: "contain",
   },

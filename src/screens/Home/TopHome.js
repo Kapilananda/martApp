@@ -29,7 +29,7 @@ export default function TopHome({ navigation, onCategorySelect }) {
   const defaultAddress = useSelector((state) => state.address.defaultAddress)
   const cartItems = useSelector((state) => state.cart.cartItems.length);
 
-  console.log(`hello ${defaultAddress}`);
+  // console.log(`hello ${defaultAddress}`);
 
   return (
     <SafeAreaView style={{ backgroundColor: "#F3F4F6" }}>

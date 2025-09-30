@@ -56,9 +56,9 @@ export default function ItemCard({ item, navigation, isFavorite, onToggleFavorit
 
       {/* Price */}
       <View style={styles.priceContainer}>
-        <Text style={styles.discountPrice}>${item.discountedPrice}</Text>
-        <Text style={styles.originalPrice}>${item.price.toFixed(2)}</Text>
-        <Text style={styles.discountTag}>-{item.discountPercent}%</Text>
+        <Text style={styles.discountPrice}>₹ {item.discountedPrice} </Text>
+        <Text style={styles.originalPrice}>₹{item.price.toFixed(2)}</Text>
+        <Text style={styles.discountTag}>- {item.discountPercent}%</Text>
       </View>
 
       {/* Cart Buttons */}
@@ -219,3 +219,4 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
 });
+

@@ -2,41 +2,916 @@
   {
     "id": 1,
     "title": "Smartphones",
-    "image": "https://motorolain.vtexassets.com/arquivos/ids/160371-800-auto?width=800&height=auto&aspect=true"
+    "image": "https://motorolain.vtexassets.com/arquivos/ids/160371-800-auto?width=800&height=auto&aspect=true",
+    "products": [
+      {
+        "id": 101,
+        "title": "Apple iPhone 16 Pro (256GB)",
+        "image": "https://vsprod.vijaysales.com/media/catalog/product/2/3/232305-image.jpg?optimize=medium&fit=bounds&height=500&width=500",
+        "price": 149900.0,
+        "category": "Smartphones",
+        "description": "Featuring the powerful A18 Pro chip, a brighter ProMotion display, and an advanced triple-camera system for professional-grade photos and videos.",
+        "rating": {
+          "rate": 4.8,
+          "count": 2500
+        }
+      },
+      {
+        "id": 102,
+        "title": "Samsung Galaxy S25 Ultra (256GB)",
+        "image": "https://m.media-amazon.com/images/I/71P85R392uL._UF894,1000_QL80_.jpg",
+        "price": 134999.0,
+        "category": "Smartphones",
+        "description": "The pinnacle of Android performance with a stunning Dynamic AMOLED display, integrated S Pen, and a groundbreaking 200MP camera system with AI enhancements.",
+        "rating": {
+          "rate": 4.7,
+          "count": 2200
+        }
+      },
+      {
+        "id": 103,
+        "title": "Google Pixel 9 Pro (128GB)",
+        "image": "https://www.zeekonline.co.za/cdn/shop/files/070_57a5a920-5238-497c-94fe-28549f347ab7_grande.jpg?v=1725120893",
+        "price": 95999.0,
+        "category": "Smartphones",
+        "description": "Experience the smartest Android with the new Tensor G4 chip, unparalleled computational photography, and a suite of exclusive AI features.",
+        "rating": {
+          "rate": 4.6,
+          "count": 1800
+        }
+      },
+      {
+        "id": 104,
+        "title": "OnePlus 13 (12GB RAM, 256GB)",
+        "image": "https://m.media-amazon.com/images/I/71N4hshhfNL._UF894,1000_QL80_.jpg",
+        "price": 69999.0,
+        "category": "Smartphones",
+        "description": "The 'Flagship Killer' returns with the latest Snapdragon processor, a silky-smooth 144Hz display, and incredibly fast 150W SUPERVOOC charging.",
+        "rating": {
+          "rate": 4.5,
+          "count": 2800
+        }
+      },
+      {
+        "id": 105,
+        "title": "Xiaomi 15 Pro (256GB)",
+        "image": "https://cdn.beebom.com/mobile/xiaomi-15-pro/xiaomi-15-pro-green.png",
+        "price": 74999.0,
+        "category": "Smartphones",
+        "description": "Co-engineered with Leica, this phone offers a superior mobile photography experience, a vibrant display, and blazing-fast performance.",
+        "rating": {
+          "rate": 4.4,
+          "count": 1500
+        }
+      },
+      {
+        "id": 106,
+        "title": "Nothing Phone (3) (256GB)",
+        "image": "https://backend.paiinternational.in/media/images/5_EiPucAW.webp",
+        "price": 49999.0,
+        "category": "Smartphones",
+        "description": "A unique blend of design and technology, featuring the refined Glyph Interface, a clean Nothing OS, and solid all-round performance.",
+        "rating": {
+          "rate": 4.3,
+          "count": 1900
+        }
+      },
+      {
+        "id": 107,
+        "title": "Samsung Galaxy Z Fold 7 (512GB)",
+        "image": "https://m.media-amazon.com/images/I/61wl26bTJPL._UF894,1000_QL80_.jpg",
+        "price": 179999.0,
+        "category": "Smartphones",
+        "description": "The future of mobile productivity unfolds with a thinner design, a brighter and more durable folding screen, and enhanced multitasking capabilities.",
+        "rating": {
+          "rate": 4.6,
+          "count": 1100
+        }
+      },
+      {
+        "id": 108,
+        "title": "Asus ROG Phone 9 (512GB)",
+        "image": "https://connecteddevices.co.za/cdn/shop/products/asus-rog-phone-5-5g-dual-sim-zs673ks_d4a20ae0-75a4-4d1a-bfc8-bb224f570fe9_700x700.jpg?v=1618240327",
+        "price": 89999.0,
+        "category": "Smartphones",
+        "description": "The ultimate gaming phone with an advanced cooling system, ultrasonic AirTriggers, a high refresh rate screen, and a massive battery.",
+        "rating": {
+          "rate": 4.5,
+          "count": 950
+        }
+      }
+    ]
   },
   {
     "id": 2,
     "title": "Laptops",
-    "image": "https://static0.xdaimages.com/wordpress/wp-content/uploads/2024/05/framework-laptop-2.png"
+    "image": "https://static0.xdaimages.com/wordpress/wp-content/uploads/2024/05/framework-laptop-2.png",
+    "products": [
+      {
+        "id": 201,
+        "title": "Apple MacBook Air M3 (13-inch)",
+        "image": "https://m.media-amazon.com/images/I/71x9JI-Il0L.jpg",
+        "price": 114900.0,
+        "category": "Laptops",
+        "description": "Incredibly thin and light, the MacBook Air is now supercharged by the M3 chip for phenomenal performance and up to 18 hours of battery life.",
+        "rating": {
+          "rate": 4.8,
+          "count": 1800
+        }
+      },
+      {
+        "id": 202,
+        "title": "Dell XPS 15 (2025)",
+        "image": "https://cdn.mos.cms.futurecdn.net/rd5KkhQWT83WesVnwbj3LA-200-80.jpg.webp",
+        "price": 199990.0,
+        "category": "Laptops",
+        "description": "A stunning 4K OLED display, powerful Intel Core Ultra processor, and NVIDIA RTX graphics in a sleek, premium chassis. Perfect for creators.",
+        "rating": {
+          "rate": 4.7,
+          "count": 950
+        }
+      },
+      {
+        "id": 203,
+        "title": "HP Spectre x360 14",
+        "image": "https://www.electronicsbazaar.com/media/catalog/product/cache/fa77d75c1312b9ab17a971266464d579/a/1/a16vkp8r_4.webp",
+        "price": 159999.0,
+        "category": "Laptops",
+        "description": "A versatile 2-in-1 laptop with a gorgeous OLED touch display, AI-powered performance, and a sleek, gem-cut design.",
+        "rating": {
+          "rate": 4.6,
+          "count": 880
+        }
+      },
+      {
+        "id": 204,
+        "title": "Lenovo Yoga 9i (14-inch)",
+        "image": "https://p4-ofp.static.pub//fes/cms/2024/09/19/2w4nfcxmd0aczd2o8d45c1yy2xj194963753.png",
+        "price": 174990.0,
+        "category": "Laptops",
+        "description": "Experience premium portability with a 360° hinge, a beautiful OLED display, and a rotating soundbar for immersive audio.",
+        "rating": {
+          "rate": 4.5,
+          "count": 720
+        }
+      },
+      {
+        "id": 205,
+        "title": "Asus Zenbook Duo (2025)",
+        "image": "https://sg.store.asus.com/media/catalog/product/cache/5cdee6dbb61c193b8ec56378d660fca7/u/x/ux8406_product_photo_2i_inkwell_gray_03.png",
+        "price": 189990.0,
+        "category": "Laptops",
+        "description": "Boost your productivity with two full-size OLED touchscreens in an ultra-portable form factor, powered by the latest Intel processors.",
+        "rating": {
+          "rate": 4.4,
+          "count": 650
+        }
+      },
+      {
+        "id": 206,
+        "title": "Microsoft Surface Laptop 6",
+        "image": "https://daneshcm.ir/wp-content/uploads/2023/09/surface-pro-i5-1.jpg",
+        "price": 129999.0,
+        "category": "Laptops",
+        "description": "Sleek, powerful, and built for the modern workplace with an exceptional keyboard, PixelSense touchscreen, and seamless integration with Windows.",
+        "rating": {
+          "rate": 4.3,
+          "count": 780
+        }
+      },
+      {
+        "id": 207,
+        "title": "Samsung Galaxy Book5 Pro",
+        "image": "https://m.media-amazon.com/images/I/71Hnqnizp2L._UF1000,1000_QL80_.jpg",
+        "price": 145990.0,
+        "category": "Laptops",
+        "description": "Ultra-thin and light with a breathtaking Dynamic AMOLED 2X display. Seamlessly connects with your Samsung Galaxy ecosystem.",
+        "rating": {
+          "rate": 4.6,
+          "count": 690
+        }
+      },
+      {
+        "id": 208,
+        "title": "Razer Blade 16",
+        "image": "https://images-cdn.ubuy.co.in/66b87e9c92b6e7124f34e743-razer-blade-16-16-034-qhd-240hz.jpg",
+        "price": 299990.0,
+        "category": "Laptops",
+        "description": "The ultimate gaming laptop with a stunning Mini-LED display, top-tier NVIDIA GeForce RTX graphics, and a premium CNC aluminum chassis.",
+        "rating": {
+          "rate": 4.5,
+          "count": 550
+        }
+      }
+    ]
   },
   {
     "id": 3,
     "title": "Wearable Tech",
-    "image": "https://careevolution.com/wp-content/uploads/2025/04/Wearables-WP-hero3.jpg"
+    "image": "https://careevolution.com/wp-content/uploads/2025/04/Wearables-WP-hero3.jpg",
+    "products": [
+      {
+        "id": 301,
+        "title": "Apple Watch Series 11",
+        "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/s11-case-unselect-gallery-1-202509_GEO_EMEA_FMT_WHH?wid=752&hei=720&fmt=p-jpg&qlt=80&.v=WldDSmZlQ1ladGVha0lMWUJJK2M4ZHlVRllKam5abHNZRGludXlMbytKNFo2cm95TEtVUGNBN3pWWWMxUmxKSFh2WnVKTjEySjVmY2ZteE1GdEFoNWM2c3NSYUM4YjA0RTQxLytvRzE4M0QrWGp4amFCSTJ1K1hKMXRsMkNUYlhaOWRBWGt2OWI4clNTdjYwdnkxK0RR",
+        "price": 49900.0,
+        "category": "Wearable Tech",
+        "description": "The essential companion for a healthy life gets even better with advanced health sensors, a brighter always-on display, and new safety features.",
+        "rating": {
+          "rate": 4.9,
+          "count": 3200
+        }
+      },
+      {
+        "id": 302,
+        "title": "Samsung Galaxy Watch 7 Classic",
+        "image": "https://m.media-amazon.com/images/I/81GiZMw5XPL._UY1000_.jpg",
+        "price": 42999.0,
+        "category": "Wearable Tech",
+        "description": "A timeless design meets modern tech. Features a rotating bezel for intuitive navigation, advanced sleep tracking, and body composition analysis.",
+        "rating": {
+          "rate": 4.7,
+          "count": 2800
+        }
+      },
+      {
+        "id": 303,
+        "title": "Google Pixel Watch 3",
+        "image": "https://m.media-amazon.com/images/I/71nEDjUiHGL._UF894,1000_QL80_.jpg",
+        "price": 34999.0,
+        "category": "Wearable Tech",
+        "description": "The best of Google and Fitbit combined. A beautiful circular design with helpful Google services and comprehensive health and fitness tracking.",
+        "rating": {
+          "rate": 4.5,
+          "count": 1500
+        }
+      },
+      {
+        "id": 304,
+        "title": "Garmin Fenix 8",
+        "image": "https://cmsprod.garmin-india.com/media/image%20-%202024-10-17T113327.073.webp",
+        "price": 89990.0,
+        "category": "Wearable Tech",
+        "description": "The ultimate multisport GPS watch for athletes and adventurers, featuring solar charging, advanced training metrics, and built-in topographic maps.",
+        "rating": {
+          "rate": 4.6,
+          "count": 950
+        }
+      },
+      {
+        "id": 305,
+        "title": "Fitbit Charge 7",
+        "image": "https://m.media-amazon.com/images/I/51q7FojdicL.jpg",
+        "price": 16999.0,
+        "category": "Wearable Tech",
+        "description": "A premium fitness tracker with ECG, EDA scan for stress management, and built-in GPS. Helps you understand your body and reach your goals.",
+        "rating": {
+          "rate": 4.4,
+          "count": 2100
+        }
+      },
+      {
+        "id": 306,
+        "title": "Noise ColorFit Pro 6",
+        "image": "https://m.media-amazon.com/images/I/81cuxixj2-L._UF1000,1000_QL80_.jpg",
+        "price": 4999.0,
+        "category": "Wearable Tech",
+        "description": "India's leading smartwatch brand offers a large, bright display, Bluetooth calling, and a comprehensive suite of health monitoring features.",
+        "rating": {
+          "rate": 4.2,
+          "count": 5500
+        }
+      },
+      {
+        "id": 307,
+        "title": "Oura Ring Gen 4",
+        "image": "https://m.media-amazon.com/images/I/51zKmnnZU8L.jpg",
+        "price": 38000.0,
+        "category": "Wearable Tech",
+        "description": "A smart ring that tracks your sleep, activity, and recovery with unparalleled accuracy, delivering personalized insights to your phone.",
+        "rating": {
+          "rate": 4.5,
+          "count": 850
+        }
+      },
+      {
+        "id": 308,
+        "title": "Boat Xtend Pro 2",
+        "image": "https://m.media-amazon.com/images/I/71YvTJ+q+WL._UF1000,1000_QL80_.jpg",
+        "price": 3499.0,
+        "category": "Wearable Tech",
+        "description": "A stylish and affordable smartwatch with a premium metallic finish, AMOLED display, and fast charging.",
+        "rating": {
+          "rate": 4.1,
+          "count": 6200
+        }
+      }
+    ]
   },
   {
     "id": 4,
     "title": "Gaming",
-    "image": "https://fintechnews.sg/wp-content/uploads/2024/05/Gaming-Industry.jpg"
+    "image": "https://fintechnews.sg/wp-content/uploads/2024/05/Gaming-Industry.jpg",
+    "products": [
+      {
+        "id": 401,
+        "title": "Sony PlayStation 5 Pro",
+        "image": "https://www.electrocity.ie/acd-cgi/img/v1/wp-content/uploads/2024/10/sony-playstation-5-pro-console-digital-edition-electrocity.ie-8.jpg?quality=90&width=1520&height=1080",
+        "price": 54990.0,
+        "category": "Gaming",
+        "description": "Experience lightning-fast loading with an ultra-high-speed SSD, deeper immersion with support for haptic feedback, adaptive triggers and 3D Audio.",
+        "rating": {
+          "rate": 4.9,
+          "count": 4500
+        }
+      },
+      {
+        "id": 402,
+        "title": "Xbox Series X",
+        "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/610788c6-f422-4e44-89d4-b0dd5563604e.jpg;maxHeight=427;maxWidth=640?format=webp",
+        "price": 49990.0,
+        "category": "Gaming",
+        "description": "The most powerful Xbox ever. Explore rich new worlds with 12 teraflops of raw graphic processing power, DirectX ray tracing, and a custom SSD.",
+        "rating": {
+          "rate": 4.8,
+          "count": 3800
+        }
+      },
+      {
+        "id": 403,
+        "title": "Nintendo Switch 2",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQFNaklw6CzAtJXWeCm4VPupIF2eAuKEcPRg_Ry1ny2_5FAzOeaCefo7C0HMlzwB7R9L0&usqp=CAU",
+        "price": 39999.0,
+        "category": "Gaming",
+        "description": "The next generation of hybrid gaming. Play at home on the big screen or take your games on the go with enhanced graphics and performance.",
+        "rating": {
+          "rate": 4.7,
+          "count": 3100
+        }
+      },
+      {
+        "id": 404,
+        "title": "ASUS ROG Ally 2",
+        "image": "https://i5.walmartimages.com/seo/New-ASUS-ROG-Ally-X-7-120Hz-FHD-1080p-Gaming-Handheld-AMD-Ryzen-Z1-Extreme-Processor-24GB-Ram-Win-11-Pro-2-Years-Warranty-Upgrade-Black-Edition-2TB-G_60626a02-9875-44fd-a44d-30242b7099b2.822c11f8d812193430086f824cddc854.jpeg",
+        "price": 79990.0,
+        "category": "Gaming",
+        "description": "A powerful Windows gaming handheld with a high-refresh-rate screen, ergonomic design, and the latest AMD Ryzen processor for PC gaming on the move.",
+        "rating": {
+          "rate": 4.5,
+          "count": 980
+        }
+      },
+      {
+        "id": 405,
+        "title": "NVIDIA GeForce RTX 5080",
+        "image": "https://static.gigabyte.com/StaticFile/Image/Global/3c70942a064ab123f9f211287d951ed3/Product/43898/Png",
+        "price": 125000.0,
+        "category": "Gaming",
+        "description": "The ultimate graphics card for 4K gaming and content creation, featuring next-gen architecture, DLSS 4 with Frame Generation, and enhanced ray tracing.",
+        "rating": {
+          "rate": 4.8,
+          "count": 1200
+        }
+      },
+      {
+        "id": 406,
+        "title": "Logitech G PRO X Superlight 2 Mouse",
+        "image": "https://owp.klarna.com/product/640x640/3104525196/Logitech-G-Pro-X-Superlight-2-Lightspeed-Wireless-Black.jpg?ph=trueg",
+        "price": 14995.0,
+        "category": "Gaming",
+        "description": "An incredibly lightweight wireless gaming mouse designed with pros for maximum performance, featuring LIGHTSPEED wireless and the HERO sensor.",
+        "rating": {
+          "rate": 4.7,
+          "count": 1850
+        }
+      },
+      {
+        "id": 407,
+        "title": "SteelSeries Arctis Nova Pro Wireless Headset",
+        "image": "https://c1-ebgames.eb-cdn.com.au/merchandising/images/packshots/7c7c4cb615ac4e1998462c1d024dbde7_Large.jpg",
+        "price": 34999.0,
+        "category": "Gaming",
+        "description": "Hi-fi audio for gaming with active noise cancellation, a hot-swappable battery system, and simultaneous connection to two devices.",
+        "rating": {
+          "rate": 4.6,
+          "count": 1150
+        }
+      },
+      {
+        "id": 408,
+        "title": "Meta Quest 4",
+        "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/598062b4-de5c-4b07-beb8-39354a441899.jpg;maxHeight=427;maxWidth=640?format=webp",
+        "price": 52999.0,
+        "category": "Gaming",
+        "description": "Dive into immersive virtual and mixed reality experiences with this standalone headset, featuring higher resolution displays and a more powerful processor.",
+        "rating": {
+          "rate": 4.5,
+          "count": 1300
+        }
+      }
+    ]
   },
   {
     "id": 5,
     "title": "Speakers",
-    "image": "https://www.portronics.com/cdn/shop/files/Portronics_Apollo_One_20w_portable_speaker.jpg?v=1731574580"
+    "image": "https://www.portronics.com/cdn/shop/files/Portronics_Apollo_One_20w_portable_speaker.jpg?v=1731574580",
+    "products": [
+      {
+        "id": 501,
+        "title": "Bose SoundLink Revolve+ II",
+        "image": "https://m.media-amazon.com/images/I/71eJQYXTVxL._UF1000,1000_QL80_.jpg",
+        "price": 29400.0,
+        "category": "Speakers",
+        "description": "A portable Bluetooth speaker engineered to deliver deep, loud, and immersive 360° sound. Water-resistant and durable.",
+        "rating": {
+          "rate": 4.7,
+          "count": 1900
+        }
+      },
+      {
+        "id": 502,
+        "title": "JBL Flip 7",
+        "image": "https://m.media-amazon.com/images/I/81QOsWak5bL._UF1000,1000_QL80_.jpg",
+        "price": 11999.0,
+        "category": "Speakers",
+        "description": "The next evolution of the iconic portable speaker, offering even more powerful sound, improved battery life, and a rugged waterproof design.",
+        "rating": {
+          "rate": 4.6,
+          "count": 3500
+        }
+      },
+      {
+        "id": 503,
+        "title": "Sony SRS-XG500 X-Series",
+        "image": "https://www.sony.co.in/image/adecf74f94dc7b468737b87ee3b68037?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF",
+        "price": 32990.0,
+        "category": "Speakers",
+        "description": "A powerful and portable party speaker with deep, punchy bass, ambient lighting, and a long-lasting battery. Water-resistant design.",
+        "rating": {
+          "rate": 4.5,
+          "count": 1200
+        }
+      },
+      {
+        "id": 504,
+        "title": "Marshall Stanmore III",
+        "image": "https://mahajanelectronics.com/cdn/shop/products/2_6aae63a6-cd5d-4a70-b33d-bd95cb8960f9.jpg?v=1755429926&width=1500",
+        "price": 41999.0,
+        "category": "Speakers",
+        "description": "This legendary speaker has an even wider soundstage than its predecessor, delivering expansive Marshall signature sound for your home.",
+        "rating": {
+          "rate": 4.8,
+          "count": 950
+        }
+      },
+      {
+        "id": 505,
+        "title": "Sonos Era 100",
+        "image": "https://avstore.in/cdn/shop/files/2.AVStore-Sonos-Era-100-Wireless-Powered-Speaker-Front-Top-Angled-View-Black.jpg?v=1682665139&width=2000",
+        "price": 29999.0,
+        "category": "Speakers",
+        "description": "A compact smart speaker with next-gen acoustics and new connectivity options. Enjoy room-filling stereo sound and easy control.",
+        "rating": {
+          "rate": 4.6,
+          "count": 880
+        }
+      },
+      {
+        "id": 506,
+        "title": "Portronics SoundDrum",
+        "image": "https://m.media-amazon.com/images/I/71o881+wdnL.jpg",
+        "price": 1999.0,
+        "category": "Speakers",
+        "description": "A powerful portable Bluetooth speaker with a water-resistant body, FM radio, and multiple connectivity options.",
+        "rating": {
+          "rate": 4.2,
+          "count": 8500
+        }
+      },
+      {
+        "id": 507,
+        "title": "Boat Stone 1500",
+        "image": "https://images.jdmagicbox.com/quickquotes/images_main/boat-stone-1500-40-w-bluetooth-speaker-378035566-4v0lx.webp",
+        "price": 4999.0,
+        "category": "Speakers",
+        "description": "Unleash the power of 40W boAt Signature Sound with this rugged, waterproof portable speaker. Perfect for outdoor adventures.",
+        "rating": {
+          "rate": 4.3,
+          "count": 7200
+        }
+      },
+      {
+        "id": 508,
+        "title": "Amazon Echo Studio",
+        "image": "https://m.media-amazon.com/images/I/41kCNGqQbXL._UF350,350_QL80_.jpg",
+        "price": 22999.0,
+        "category": "Speakers",
+        "description": "Our best-sounding smart speaker yet, with immersive 3D audio, Dolby Atmos, and Alexa. Automatically adapts to any room.",
+        "rating": {
+          "rate": 4.5,
+          "count": 4100
+        }
+      }
+    ]
   },
   {
     "id": 6,
     "title": "Buds",
-    "image": "https://bnewmobiles.com/cdn/shop/products/NoiseMiniAirBudsTrulyWirelessBluetooth_JetBlack_2_2048x.png?v=1631276040"
+    "image": "https://bnewmobiles.com/cdn/shop/products/NoiseMiniAirBudsTrulyWirelessBluetooth_JetBlack_2_2048x.png?v=1631276040",
+    "products": [
+      {
+        "id": 601,
+        "title": "Apple AirPods Pro (3rd Generation)",
+        "image": "https://i.ebayimg.com/images/g/OG4AAOSwAg5mI-iP/s-l400.jpg",
+        "price": 26900.0,
+        "category": "Buds",
+        "description": "Experience next-level audio with more effective Active Noise Cancellation, Adaptive Audio, and Personalized Spatial Audio.",
+        "rating": {
+          "rate": 4.8,
+          "count": 4500
+        }
+      },
+      {
+        "id": 602,
+        "title": "Sony WF-1000XM6",
+        "image": "https://stereoplus.com/cdn/shop/products/704370_3_400x.jpg?v=1636116354",
+        "price": 24990.0,
+        "category": "Buds",
+        "description": "The new benchmark for noise cancelling earbuds. Unmatched sound quality, industry-leading ANC, and a comfortable, secure fit.",
+        "rating": {
+          "rate": 4.7,
+          "count": 3200
+        }
+      },
+      {
+        "id": 603,
+        "title": "Samsung Galaxy Buds 3 Pro",
+        "image": "https://m.media-amazon.com/images/I/71ke2BEdIhL.jpg",
+        "price": 17999.0,
+        "category": "Buds",
+        "description": "Immersive 24-bit Hi-Fi audio, intelligent ANC, and seamless connectivity with your Galaxy devices. Crystal clear calls with 3 microphones.",
+        "rating": {
+          "rate": 4.6,
+          "count": 3800
+        }
+      },
+      {
+        "id": 604,
+        "title": "Bose QuietComfort Ultra Earbuds",
+        "image": "https://img-prd-pim.poorvika.com/product/Bose-quietcomfort-ultra-earbuds-moonstone-blue-Front-View.png",
+        "price": 25900.0,
+        "category": "Buds",
+        "description": "World-class noise cancellation and groundbreaking immersive audio. These earbuds provide a listening experience that's all you.",
+        "rating": {
+          "rate": 4.5,
+          "count": 2100
+        }
+      },
+      {
+        "id": 605,
+        "title": "Nothing Ear (3)",
+        "image": "https://smarthomesounds.sirv.com/live-magento/catalog/product/n/o/nothing-ear-earbuds-white-hero_1.jpg?profile=smarthome&q=80&canvas.width=944&canvas.height=944&canvas.color=ffffff&w=944&h=944",
+        "price": 9999.0,
+        "category": "Buds",
+        "description": "Iconic transparent design with studio-quality sound, advanced noise cancellation, and a personalized listening experience.",
+        "rating": {
+          "rate": 4.4,
+          "count": 2900
+        }
+      },
+      {
+        "id": 606,
+        "title": "Sennheiser Momentum True Wireless 4",
+        "image": "https://m.media-amazon.com/images/I/71t5GEyhbyL.jpg",
+        "price": 22990.0,
+        "category": "Buds",
+        "description": "Unrivaled signature sound with superior active noise cancellation and future-proof technologies for the ultimate wireless audio.",
+        "rating": {
+          "rate": 4.6,
+          "count": 1500
+        }
+      },
+      {
+        "id": 607,
+        "title": "Boat Airdopes 141",
+        "image": "https://mobitez.in/wp-content/uploads/2024/12/BoAt-Airdopes-141-ANC-16.jpg",
+        "price": 1499.0,
+        "category": "Buds",
+        "description": "Enjoy nonstop playback with up to 42 hours of battery life, Beast Mode for low latency gaming, and ENx Tech for clear calls.",
+        "rating": {
+          "rate": 4.1,
+          "count": 15000
+        }
+      },
+      {
+        "id": 608,
+        "title": "Noise Buds VS104",
+        "image": "https://m.media-amazon.com/images/I/51O-ZSlD6eL.jpg",
+        "price": 1299.0,
+        "category": "Buds",
+        "description": "Features a total playtime of 45 hours, Instacharge technology, and 13mm drivers for deep bass. A great value-for-money option.",
+        "rating": {
+          "rate": 4.0,
+          "count": 12500
+        }
+      }
+    ]
   },
   {
     "id": 7,
     "title": "Cameras",
-    "image": "https://images-cdn.ubuy.co.in/65fe64a89de64a706c0120dc-canon-eos-5d-mark-iv-dslr-camera-with.jpg"
+    "image": "https://images-cdn.ubuy.co.in/65fe64a89de64a706c0120dc-canon-eos-5d-mark-iv-dslr-camera-with.jpg",
+    "products": [
+      {
+        "id": 701,
+        "title": "Sony Alpha a7 V",
+        "image": "https://m.media-amazon.com/images/I/71oTV9AGITL._UF350,350_QL80_.jpg",
+        "price": 349990.0,
+        "category": "Cameras",
+        "description": "The next generation of hybrid cameras with a high-resolution full-frame sensor, advanced AI-powered autofocus, and 8K video recording.",
+        "rating": {
+          "rate": 4.9,
+          "count": 980
+        }
+      },
+      {
+        "id": 702,
+        "title": "Canon EOS R5 Mark II",
+        "image": "https://in.canon/media/image/2024/07/12/677928d6126445b9976a4aee738d3e2d_EOS+R5+Mark+II+Body+Front+Slant.png",
+        "price": 399995.0,
+        "category": "Cameras",
+        "description": "A professional powerhouse mirrorless camera featuring a stacked CMOS sensor, next-gen Dual Pixel AF, and enhanced 8K RAW video capabilities.",
+        "rating": {
+          "rate": 4.8,
+          "count": 850
+        }
+      },
+      {
+        "id": 703,
+        "title": "Nikon Z8",
+        "image": "https://fotocentreindia.com/wp-content/uploads/Nikon-Z8-Mirrorless-Camera-Online-Buy-India_1.jpg",
+        "price": 328999.0,
+        "category": "Cameras",
+        "description": "A compact and powerful hybrid camera that inherits the flagship Z9's technology, offering incredible speed, resolution, and video performance.",
+        "rating": {
+          "rate": 4.7,
+          "count": 750
+        }
+      },
+      {
+        "id": 704,
+        "title": "Fujifilm X-T6",
+        "image": "https://preview.redd.it/waited-2-years-for-the-xt-5-and-just-bought-and-xt-4-v0-c6aqs8hqqm0a1.jpg?width=640&crop=smart&auto=webp&s=8f5c62a8cd137ebbbb226decfb2883759a6d540d",
+        "price": 189990.0,
+        "category": "Cameras",
+        "description": "The perfect blend of classic design and modern technology, featuring a new X-Trans sensor, 7-stop IBIS, and renowned Fujifilm film simulations.",
+        "rating": {
+          "rate": 4.6,
+          "count": 1100
+        }
+      },
+      {
+        "id": 705,
+        "title": "GoPro HERO13 Black",
+        "image": "https://fotocentreindia.com/wp-content/uploads/GoPro-Hero-13-Black-Creator-Edition-Online-Buy-India_03.jpg",
+        "price": 49500.0,
+        "category": "Cameras",
+        "description": "The most powerful GoPro yet, with improved HyperSmooth stabilization, longer battery life, and higher resolution video for capturing all your adventures.",
+        "rating": {
+          "rate": 4.5,
+          "count": 2200
+        }
+      },
+      {
+        "id": 706,
+        "title": "DJI Pocket 4",
+        "image": "https://www.robot-advance.com/EN/ori-dji-osmo-pocket-2-camera-3639.jpg",
+        "price": 45990.0,
+        "category": "Cameras",
+        "description": "A pocket-sized powerhouse with a 3-axis gimbal, a larger sensor for better low-light performance, and intuitive controls for smooth, cinematic footage.",
+        "rating": {
+          "rate": 4.6,
+          "count": 1800
+        }
+      },
+      {
+        "id": 707,
+        "title": "Sony ZV-E10 II",
+        "image": "https://poojaelectronics.in/storage/2024/09/Sony-ZV-E10-II-Mirrorless-Camera-with-16-50mm-Lens-Black-Online-Buy-India_01.webp",
+        "price": 79990.0,
+        "category": "Cameras",
+        "description": "The perfect interchangeable-lens camera for vloggers, featuring AI-powered autofocus, a vari-angle screen, and product showcase modes.",
+        "rating": {
+          "rate": 4.7,
+          "count": 1400
+        }
+      }
+    ]
   },
   {
     "id": 8,
     "title": "Drones",
-    "image": "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/54A5/production/_87996612_87996608.jpg"
-  }
+    "image": "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/54A5/production/_87996612_87996608.jpg",
+    "products": [
+      {
+        "id": 801,
+        "title": "DJI Mavic 4 Pro",
+        "image": "https://se-cdn.djiits.com/tpc/uploads/carousel/image/f96def8770cb7529d7a98731fa2117dd@ultra.jpg",
+        "price": 249990.0,
+        "category": "Drones",
+        "description": "The flagship consumer drone with a triple-camera system, including a Hasselblad main camera, omnidirectional obstacle sensing, and extended flight time.",
+        "rating": {
+          "rate": 4.9,
+          "count": 850
+        }
+      },
+      {
+        "id": 802,
+        "title": "DJI Air 3S",
+        "image": "https://www-cdn.djiits.com/cms/uploads/ef97699c719414c2138ae8cca2806760@374*374.png",
+        "price": 134990.0,
+        "category": "Drones",
+        "description": "The ideal balance of portability and power, featuring a 1-inch CMOS sensor, 5.4K video, and advanced safety features for stunning aerial content.",
+        "rating": {
+          "rate": 4.8,
+          "count": 1100
+        }
+      },
+      {
+        "id": 803,
+        "title": "DJI Mini 5 Pro",
+        "image": "https://flyworldgadget.in/wp-content/uploads/2025/09/dji-mini-5-pro-2.webp",
+        "price": 99990.0,
+        "category": "Drones",
+        "description": "An ultra-light, sub-249g drone packed with pro-level features like 4K/60fps video, vertical shooting, and advanced obstacle avoidance.",
+        "rating": {
+          "rate": 4.7,
+          "count": 1500
+        }
+      },
+      {
+        "id": 804,
+        "title": "Autel Robotics EVO II Pro V4",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnoo3JOTi_0-83HHp_7Fp-baeBPZ4EJtodmA&s",
+        "price": 210000.0,
+        "category": "Drones",
+        "description": "A professional drone with a 1-inch sensor capable of 6K video, a 40-minute flight time, and a rugged design for demanding missions.",
+        "rating": {
+          "rate": 4.6,
+          "count": 550
+        }
+      },
+      {
+        "id": 805,
+        "title": "DJI Avata 2",
+        "image": "https://www-cdn.djiits.com/dps/602a4b8b79df6245a7c010e908405837.png",
+        "price": 105990.0,
+        "category": "Drones",
+        "description": "Experience the thrill of immersive FPV flight with this intuitive and safe drone. Capture super-wide 4K video with enhanced stabilization.",
+        "rating": {
+          "rate": 4.5,
+          "count": 780
+        }
+      },
+      {
+        "id": 806,
+        "title": "Ryze Tello Drone",
+        "image": "https://5.imimg.com/data5/BV/GO/HK/SELLER-26899578/dji-ryze-tech-tello-quadcopter-250x250.jpg",
+        "price": 8499.0,
+        "category": "Drones",
+        "description": "A fun and easy-to-fly mini drone powered by DJI technology. Perfect for beginners to learn the basics of flight and aerial photography.",
+        "rating": {
+          "rate": 4.2,
+          "count": 2500
+        }
+      }
+    ]
+  },
+  {
+  "id": 9,
+  "title": "Smart TV",
+  "image": "https://www.lg.com/content/dam/channel/wcms/in/images/tvs/oled42c3psa_atr_eail_in_c/gallery/OLED42C3PSA-DZ-02.jpg",
+  "products": [
+    {
+      "id": 901,
+      "title": "Samsung 55-inch 4K UHD Smart TV",
+      "image": "https://imgs.dev-almanea.com/media/catalog/product/5/5/55due800_2_.png?width=384&quality=100&format=webp",
+      "price": 55999.0,
+      "category": "Smart TV",
+      "description": "Crystal-clear 4K Ultra HD with HDR10+, slim design, and built-in Alexa/Google Assistant support.",
+      "rating": {
+        "rate": 4.7,
+        "count": 1800
+      }
+    },
+    {
+      "id": 902,
+      "title": "LG 65-inch OLED Smart TV",
+      "image": "https://www.thebrick.com/cdn/shop/files/shopify-image_cd12698f-b789-4baf-b85d-11f77aa43399_1500x.jpg?v=1743784720",
+      "price": 174999.0,
+      "category": "Smart TV",
+      "description": "Experience true blacks and infinite contrast with OLED technology, Dolby Vision IQ, and Dolby Atmos.",
+      "rating": {
+        "rate": 4.9,
+        "count": 950
+      }
+    },
+    {
+      "id": 903,
+      "title": "Sony Bravia 50-inch 4K Android TV",
+      "image": "https://vasanthandco.in/images/productimages/8f506f6-0csony-bravia-50-inch-126-cm-kd-50x75l-ultra-hd-4k-smart-led-tv-4.png",
+      "price": 67999.0,
+      "category": "Smart TV",
+      "description": "Sony Bravia with 4K HDR Processor X1, Motionflow XR, and Google TV built-in.",
+      "rating": {
+        "rate": 4.8,
+        "count": 1200
+      }
+    },
+    {
+      "id": 904,
+      "title": "Xiaomi 43-inch Mi TV 5X",
+      "image": "https://appfire.oklahomacomputadores.com/src/assets/productos/1466/68643872973b2.webp",
+      "price": 29999.0,
+      "category": "Smart TV",
+      "description": "Bezel-less 4K display with Dolby Vision, PatchWall with IMDb integration, and 30W stereo speakers.",
+      "rating": {
+        "rate": 4.5,
+        "count": 2400
+      }
+    },
+    {
+      "id": 905,
+      "title": "OnePlus 55-inch Q1 Series QLED TV",
+      "image": "https://www.startech.com.bd/image/cache/catalog/television/oneplus/Y1G-1-500x500.webp",
+      "price": 62999.0,
+      "category": "Smart TV",
+      "description": "Premium QLED panel, Dolby Atmos soundbar, OxygenPlay content, and seamless OnePlus ecosystem integration.",
+      "rating": {
+        "rate": 4.6,
+        "count": 1600
+      }
+    },
+    {
+      "id": 906,
+      "title": "TCL 65-inch 4K QLED Google TV",
+      "image": "https://m.media-amazon.com/images/I/61y+GrIRtwL._UF1000,1000_QL80_.jpg",
+      "price": 79999.0,
+      "category": "Smart TV",
+      "description": "QLED panel with 100% color volume, Dolby Vision & Atmos, and hands-free Google Assistant.",
+      "rating": {
+        "rate": 4.4,
+        "count": 870
+      }
+    },
+    {
+      "id": 907,
+      "title": "Amazon Fire TV 43-inch 4K",
+      "image": "https://s13emagst.akamaized.net/products/612/611942/images/res_e1478e265b9863dc77da1ffbd5cca0ae.jpg",
+      "price": 28999.0,
+      "category": "Smart TV",
+      "description": "4K Ultra HD display with Alexa voice remote, Prime Video, Netflix, Disney+, and Fire TV OS.",
+      "rating": {
+        "rate": 4.3,
+        "count": 3100
+      }
+    },
+    {
+      "id": 908,
+      "title": "Hisense 58-inch 4K UHD Smart TV",
+      "image": "https://api.hisense-india.com/media/product-variants/58A71F-2.webp",
+      "price": 39999.0,
+      "category": "Smart TV",
+      "description": "Dolby Vision HDR, DTS Virtual:X, and Android TV 11 with Chromecast built-in.",
+      "rating": {
+        "rate": 4.2,
+        "count": 950
+      }
+    },
+    {
+      "id": 909,
+      "title": "Realme 32-inch HD Ready Smart TV",
+      "image": "https://www.jiomart.com/images/product/original/492796729/realme-80-cm-32-inch-hd-led-smart-tv-neo-digital-o492796729-p591196520-1-202204042128.jpeg?im=Resize=(420,420)",
+      "price": 15999.0,
+      "category": "Smart TV",
+      "description": "Compact budget-friendly TV with bezel-less design, Android TV, and 24W Quad Stereo Speakers.",
+      "rating": {
+        "rate": 4.1,
+        "count": 2100
+      }
+    },
+    {
+      "id": 910,
+      "title": "Philips 58-inch 4K Ambilight TV",
+      "image": "https://images.icecat.biz/img/gallery/img_24411522_high_1482467578_6217_3788.jpg",
+      "price": 54999.0,
+      "category": "Smart TV",
+      "description": "Unique Ambilight technology that projects colors on walls, 4K HDR10+, and Dolby Atmos audio.",
+      "rating": {
+        "rate": 4.6,
+        "count": 640
+      }
+    }
+  ]
+}
 ]

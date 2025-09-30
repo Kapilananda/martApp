@@ -71,6 +71,7 @@ export default function ProductCarousel({ navigation }) {
     }
   }, [searchQuery, products]);
 
+  
   // ✅ Navigate to SearchResult on Enter
   const handleSearchSubmit = () => {
     if (searchQuery.length > 0) {

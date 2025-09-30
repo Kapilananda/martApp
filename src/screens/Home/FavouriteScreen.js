@@ -62,7 +62,7 @@ export default function FavoriteScreen({ navigation }) {
               <Text style={styles.title} numberOfLines={2}>
                 {item.title}
               </Text>
-              <Text style={styles.price}>${item.price.toFixed(2)}</Text>
+              <Text style={styles.price}>₹ {item.price.toFixed(2)}</Text>
 
               <View style={styles.actionRow}>
                 <TouchableOpacity

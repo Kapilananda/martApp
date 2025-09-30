@@ -2,46 +2,1144 @@
   {
     "id": 1,
     "title": "Cleaning Supplies",
-    "image": "https://i.chaldn.com/_mpimage/laundry?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D166470&q=best&v=1"
+    "image": "https://i.chaldn.com/_mpimage/laundry?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D166470&q=best&v=1",
+    "products": [
+      {
+        "id": 101,
+        "title": "All-Purpose Cleaner",
+        "image": "hhttps://pics.walgreens.com/prodimg/644130/450.jpg",
+        "price": 199.0,
+        "category": "Cleaning Supplies",
+        "description": "A versatile liquid cleaner for floors, kitchens, and bathrooms. Kills 99.9% of germs.",
+        "rating": {
+          "rate": 4.7,
+          "count": 1250
+        }
+      },
+      {
+        "id": 102,
+        "title": "Dish Soap Liquid Gel",
+        "image": "https://m.media-amazon.com/images/I/51rhw--KcDL.jpg",
+        "price": 150.5,
+        "category": "Cleaning Supplies",
+        "description": "Tough on grease, soft on hands. Concentrated formula with a refreshing lemon scent for sparkling clean dishes.",
+        "rating": {
+          "rate": 4.8,
+          "count": 2100
+        }
+      },
+      {
+        "id": 103,
+        "title": "Glass Cleaner Spray",
+        "image": "https://images-cdn.ubuy.co.in/633ff789007b2c2d98410542-windex-glass-cleaner-original-blue.jpg",
+        "price": 95.0,
+        "category": "Cleaning Supplies",
+        "description": "Provides a streak-free shine on windows, mirrors, and other glass surfaces. Ammonia-free formula.",
+        "rating": {
+          "rate": 4.6,
+          "count": 980
+        }
+      },
+      {
+        "id": 104,
+        "title": "Toilet Bowl Cleaner",
+        "image": "https://m.media-amazon.com/images/I/71xt9E14ABL._UF1000,1000_QL80_.jpg",
+        "price": 88.75,
+        "category": "Cleaning Supplies",
+        "description": "Thick liquid formula that coats the bowl to remove tough stains and kill germs, leaving it fresh and clean.",
+        "rating": {
+          "rate": 4.5,
+          "count": 1500
+        }
+      },
+      {
+        "id": 105,
+        "title": "Disinfectant Wipes",
+        "image": "https://images.homedepot.ca/productimages/p_1001015038.jpg?product-images=l",
+        "price": 250.0,
+        "category": "Cleaning Supplies",
+        "description": "Convenient, pre-moistened wipes for quick cleaning and disinfecting of surfaces. Kills cold and flu viruses.",
+        "rating": {
+          "rate": 4.9,
+          "count": 1800
+        }
+      },
+      {
+        "id": 106,
+        "title": "Floor Cleaner Liquid",
+        "image": "https://soul-fresh.in/cdn/shop/files/Purple-DFC-975-ml-front.png?v=1693053851",
+        "price": 220.0,
+        "category": "Cleaning Supplies",
+        "description": "A powerful floor cleaner that removes dirt and grime, suitable for all types of flooring like tile, marble, and vinyl.",
+        "rating": {
+          "rate": 4.6,
+          "count": 1150
+        }
+      },
+      {
+        "id": 107,
+        "title": "Microfiber Cleaning Cloths (Pack of 5)",
+        "image": "https://www.jiomart.com/images/product/original/rv6agdcjxm/shopimoz-microfiber-cleaning-cloths-multipurpose-cloth-super-absorbent-pack-of-5-multicolor-product-images-orv6agdcjxm-p596387707-0-202212151446.jpg?im=Resize=(1000,1000)",
+        "price": 299.0,
+        "category": "Cleaning Supplies",
+        "description": "Ultra-soft, non-abrasive cloths for cleaning, dusting, and polishing. Highly absorbent and reusable.",
+        "rating": {
+          "rate": 4.4,
+          "count": 850
+        }
+      },
+      {
+        "id": 108,
+        "title": "Air Freshener Spray",
+        "image": "https://www.bbassets.com/media/uploads/p/xl/40179418_9-odonil-room-air-freshener-spray-lavender-mist.jpg",
+        "price": 165.0,
+        "category": "Cleaning Supplies",
+        "description": "Instantly eliminates odors and freshens the air with a long-lasting lavender fragrance.",
+        "rating": {
+          "rate": 4.3,
+          "count": 920
+        }
+      },
+      {
+        "id": 109,
+        "title": "Heavy Duty Scrub Sponges (Pack of 3)",
+        "image": "https://d2lnr5mha7bycj.cloudfront.net/product-image/file/large_2747cfa9-f85c-4a34-92bb-a6c55e1b1c38.jpg",
+        "price": 110.0,
+        "category": "Cleaning Supplies",
+        "description": "Dual-sided sponges with a tough scouring pad for baked-on messes and a soft side for general cleaning.",
+        "rating": {
+          "rate": 4.2,
+          "count": 700
+        }
+      },
+      {
+        "id": 110,
+        "title": "Bathroom Cleaner Spray",
+        "image": "https://m.media-amazon.com/images/I/71vdqPJCfdL.jpg",
+        "price": 180.0,
+        "category": "Cleaning Supplies",
+        "description": "Specifically formulated to cut through soap scum, hard water stains, and grime on tiles, taps, and showers.",
+        "rating": {
+          "rate": 4.5,
+          "count": 880
+        }
+      }
+    ]
   },
   {
     "id": 2,
     "title": "Kitchenware",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4uqbjaRMqoV1rZOkI_uUQLTEdjiSC1ZM8zQ&s"
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4uqbjaRMqoV1rZOkI_uUQLTEdjiSC1ZM8zQ&s",
+    "products": [
+      {
+        "id": 201,
+        "title": "Non-Stick Frying Pan (24cm)",
+        "image": "https://shop.ttkprestige.com/media/catalog/product/3/2/3231-36722-P-IMG1.jpg",
+        "price": 899.0,
+        "category": "Kitchenware",
+        "description": "Durable non-stick coating for easy cooking and cleanup. Induction compatible with a cool-touch handle.",
+        "rating": {
+          "rate": 4.6,
+          "count": 950
+        }
+      },
+      {
+        "id": 202,
+        "title": "Chef's Knife (8-inch)",
+        "image": "https://gutereise.in/cdn/shop/products/6_8063_20B-1.jpg?v=1626892740",
+        "price": 1200.0,
+        "category": "Kitchenware",
+        "description": "High-carbon stainless steel blade for precision chopping, slicing, and dicing. Ergonomic handle for comfort.",
+        "rating": {
+          "rate": 4.8,
+          "count": 780
+        }
+      },
+      {
+        "id": 203,
+        "title": "Plastic Cutting Board Set (Set of 3)",
+        "image": "https://i5.walmartimages.com/seo/2-Pack-Small-Plastic-Cutting-Boards-for-Kitchen-with-Handles-for-Food-Fruits-Vegetables-Black-7-7-x-11-6-In_9cdd8a83-175d-4660-824d-8325848389a6.b4513bf595562be2283aac9b2b6c3e40.jpeg",
+        "price": 450.0,
+        "category": "Kitchenware",
+        "description": "Set of three color-coded, non-porous cutting boards to prevent cross-contamination. Dishwasher safe.",
+        "rating": {
+          "rate": 4.5,
+          "count": 1100
+        }
+      },
+      {
+        "id": 204,
+        "title": "Stainless Steel Mixing Bowls (Set of 3)",
+        "image": "https://bakewareindia.com/cdn/shop/products/bakewareind-stainless-steel-deep-mixing-bowl-3pcs-set-503180.jpg?v=1654596957",
+        "price": 750.0,
+        "category": "Kitchenware",
+        "description": "A set of three nesting mixing bowls in different sizes. Lightweight, durable, and easy to clean.",
+        "rating": {
+          "rate": 4.7,
+          "count": 820
+        }
+      },
+      {
+        "id": 205,
+        "title": "Silicone Spatula Set",
+        "image": "https://agarolifestyle.com/cdn/shop/files/1_08f57c3a-6edb-4bcf-94e3-120f9b94312e_1200x1200.jpg?v=1758205717",
+        "price": 399.0,
+        "category": "Kitchenware",
+        "description": "Heat-resistant silicone spatula set for cooking, baking, and mixing. Won't scratch non-stick cookware.",
+        "rating": {
+          "rate": 4.4,
+          "count": 650
+        }
+      },
+      {
+        "id": 206,
+        "title": "Measuring Cups and Spoons Set",
+        "image": "hhttps://images-cdn.ubuy.co.in/633aed5cc0b24921f17fbd7b-measuring-cups-and-spoons-set-11-piece.jpg",
+        "price": 299.0,
+        "category": "Kitchenware",
+        "description": "A complete set of measuring cups and spoons for accurate cooking and baking. Made from food-grade plastic.",
+        "rating": {
+          "rate": 4.6,
+          "count": 1300
+        }
+      },
+      {
+        "id": 207,
+        "title": "Vegetable Peeler",
+        "image": "https://m.media-amazon.com/images/I/51WxEWMSV-L.jpg",
+        "price": 149.0,
+        "category": "Kitchenware",
+        "description": "Swivel peeler with a sharp stainless steel blade and a comfortable, non-slip handle for effortless peeling.",
+        "rating": {
+          "rate": 4.3,
+          "count": 900
+        }
+      },
+      {
+        "id": 208,
+        "title": "Dinner Plate Set (Set of 6)",
+        "image": "https://images-cdn.ubuy.co.in/6708348125a6141db8723d2e-veweet-24-piece-porcelain-dinnerware.jpg",
+        "price": 1500.0,
+        "category": "Kitchenware",
+        "description": "Elegant ceramic dinner plates for everyday use or special occasions. Microwave and dishwasher safe.",
+        "rating": {
+          "rate": 4.5,
+          "count": 550
+        }
+      },
+      {
+        "id": 209,
+        "title": "Coffee Mug",
+        "image": "https://exclusivelane.com/cdn/shop/products/whispers-of-warli-handcrafted-ceramic-tea-_-coffee-mug-300-ml-microwave-safe_1.jpg?v=1642833997",
+        "price": 250.0,
+        "category": "Kitchenware",
+        "description": "A classic ceramic coffee mug with a 350ml capacity. Perfect for your morning coffee or tea.",
+        "rating": {
+          "rate": 4.8,
+          "count": 1200
+        }
+      },
+      {
+        "id": 210,
+        "title": "Pressure Cooker (3 Litre)",
+        "image": "https://vinodcookware.com/cdn/shop/files/PSP01619.jpg?v=1754126967",
+        "price": 1800.0,
+        "category": "Kitchenware",
+        "description": "An aluminium pressure cooker for fast and efficient cooking. Comes with multiple safety features.",
+        "rating": {
+          "rate": 4.7,
+          "count": 1400
+        }
+      }
+    ]
   },
   {
     "id": 3,
     "title": "Personal Care",
-    "image": "https://lh3.googleusercontent.com/proxy/2Qc-vo5dx9V5j1HOL7UltR_Y58mts3loqhOk8Y7stmq3Yux0a3LNH-Z1atdw9AptveX--AhpOZdzK7g4cZjwKDBuGXh_x5KH3gUEwNDfDb_CLI9UGik-AAUb3o6PBtk"
+    "image": "https://www.kindpng.com/picc/m/160-1606870_personal-care-products-png-transparent-png.png",
+    "products": [
+      {
+        "id": 301,
+        "title": "Anti-Dandruff Shampoo (340ml)",
+        "image": "https://m.media-amazon.com/images/I/61ZfiBJGS4L.jpg",
+        "price": 280.0,
+        "category": "Personal Care",
+        "description": "Clinically proven to fight dandruff and relieve an itchy scalp, leaving hair fresh and clean.",
+        "rating": {
+          "rate": 4.6,
+          "count": 1800
+        }
+      },
+      {
+        "id": 302,
+        "title": "Moisturizing Body Wash (500ml)",
+        "image": "https://greenpharmacy.co.in/cdn/shop/files/Hydrating_Body_Wash.jpg?v=1729316012&width=1946",
+        "price": 350.0,
+        "category": "Personal Care",
+        "description": "A gentle and nourishing body wash that leaves your skin feeling soft, smooth, and hydrated.",
+        "rating": {
+          "rate": 4.7,
+          "count": 1500
+        }
+      },
+      {
+        "id": 303,
+        "title": "Toothpaste for Cavity Protection",
+        "image": "https://www.colgate.com.au/content/dam/cp-sites/oral-care/oral-care-center/en-au/product-detail-pages/toothpaste/colgate-cavity-protection-cool-mint-toothpaste-2024.jpg",
+        "price": 120.0,
+        "category": "Personal Care",
+        "description": "Fluoride toothpaste that helps strengthen teeth, fight cavities, and freshen breath.",
+        "rating": {
+          "rate": 4.8,
+          "count": 2500
+        }
+      },
+      {
+        "id": 304,
+        "title": "Soft Bristle Toothbrush (Pack of 4)",
+        "image": "https://perforacare.com/cdn/shop/files/Perfora_Manual_Toothbrush_OG_Pack_of_4.3.webp?v=1751008906&width=3000",
+        "price": 150.0,
+        "category": "Personal Care",
+        "description": "A pack of toothbrushes with soft bristles for a gentle yet effective clean, designed to protect gums.",
+        "rating": {
+          "rate": 4.5,
+          "count": 1300
+        }
+      },
+      {
+        "id": 305,
+        "title": "Deodorant Body Spray (150ml)",
+        "image": "https://d1ebdenobygu5e.cloudfront.net/media/catalog/product/d/e/deodorant_body_spray_-_150_ml_-_black_o.g_khaki_-_set_of_3_1.jpg",
+        "price": 199.0,
+        "category": "Personal Care",
+        "description": "Provides all-day protection against body odor with a fresh, masculine fragrance.",
+        "rating": {
+          "rate": 4.4,
+          "count": 1900
+        }
+      },
+      {
+        "id": 306,
+        "title": "Daily Moisturizing Lotion (400ml)",
+        "image": "https://m.media-amazon.com/images/I/41E5nL4kRyL._UF1000,1000_QL80_.jpg",
+        "price": 425.0,
+        "category": "Personal Care",
+        "description": "A non-greasy body lotion that provides long-lasting hydration for dry skin.",
+        "rating": {
+          "rate": 4.6,
+          "count": 1100
+        }
+      },
+      {
+        "id": 307,
+        "title": "Gentle Face Wash (150ml)",
+        "image": "https://5.imimg.com/data5/PE/SS/RE/SELLER-1448971/himalaya-face-wash1-500x500.jpg",
+        "price": 299.0,
+        "category": "Personal Care",
+        "description": "A soap-free face wash that gently cleanses the skin without stripping its natural moisture.",
+        "rating": {
+          "rate": 4.7,
+          "count": 2200
+        }
+      },
+      {
+        "id": 308,
+        "title": "Liquid Hand Soap Refill (750ml)",
+        "image": "https://www.bbassets.com/media/uploads/p/l/40034580_27-dettol-liquid-handwash-original-everyday-protection-fights-germs.jpg",
+        "price": 145.0,
+        "category": "Personal Care",
+        "description": "An economical refill pack of moisturizing liquid hand soap that kills germs and leaves hands soft.",
+        "rating": {
+          "rate": 4.8,
+          "count": 1600
+        }
+      },
+      {
+        "id": 309,
+        "title": "Sunscreen SPF 50",
+        "image": "https://www.drsheths.com/cdn/shop/files/1_Website_b94bf3ba-3f6e-488f-aba9-4c0491de6fc2.jpg?v=1747650041",
+        "price": 550.0,
+        "category": "Personal Care",
+        "description": "Broad-spectrum SPF 50 sunscreen that provides protection against UVA and UVB rays. Lightweight and non-sticky.",
+        "rating": {
+          "rate": 4.5,
+          "count": 1450
+        }
+      },
+      {
+        "id": 310,
+        "title": "Hair Conditioner (180ml)",
+        "image": "https://www.bbassets.com/media/uploads/p/l/20004713_10-pantene-pro-v-advanced-solution-conditioner-hairfall-control-strengthens-roots.jpg",
+        "price": 220.0,
+        "category": "Personal Care",
+        "description": "A nourishing conditioner that helps detangle, smooth, and strengthen hair, reducing breakage.",
+        "rating": {
+          "rate": 4.4,
+          "count": 950
+        }
+      }
+    ]
   },
   {
     "id": 4,
     "title": "Laundry",
-    "image": "https://static.vecteezy.com/system/resources/previews/068/816/599/non_2x/laundry-spray-and-folded-clothes-in-home-laundry-room-for-domestic-chores-use-free-photo.jpeg"
+    "image": "https://static.vecteezy.com/system/resources/previews/068/816/599/non_2x/laundry-spray-and-folded-clothes-in-home-laundry-room-for-domestic-chores-use-free-photo.jpeg",
+    "products": [
+      {
+        "id": 401,
+        "title": "Liquid Laundry Detergent (1L)",
+        "image": "https://m.media-amazon.com/images/I/61n9r3PqLqL.jpg",
+        "price": 250.0,
+        "category": "Laundry",
+        "description": "Powerful liquid detergent for front and top load washing machines. Tough on stains, gentle on fabrics.",
+        "rating": {
+          "rate": 4.7,
+          "count": 1900
+        }
+      },
+      {
+        "id": 402,
+        "title": "Detergent Powder (4kg)",
+        "image": "https://i0.wp.com/pkhypermart.com/wp-content/uploads/2021/09/1-164.jpg?fit=466%2C444&ssl=1",
+        "price": 550.0,
+        "category": "Laundry",
+        "description": "An economical bulk pack of detergent powder that provides a brilliant clean and removes tough stains.",
+        "rating": {
+          "rate": 4.6,
+          "count": 2200
+        }
+      },
+      {
+        "id": 403,
+        "title": "Fabric Softener (860ml)",
+        "image": "https://www.quickpantry.in/cdn/shop/products/comfort-after-wash-lily-fresh-fabric-conditioner-quick-pantry.jpg?v=1710538265",
+        "price": 210.0,
+        "category": "Laundry",
+        "description": "Leaves clothes feeling soft, fresh, and easy to iron. Helps protect against stretching and fading.",
+        "rating": {
+          "rate": 4.8,
+          "count": 1700
+        }
+      },
+      {
+        "id": 404,
+        "title": "Stain Remover Spray (500ml)",
+        "image": "https://images-cdn.ubuy.co.in/668d2398ba1bd669b56e519a-vanish-oxiaction-spray-500-ml.jpg",
+        "price": 300.0,
+        "category": "Laundry",
+        "description": "A pre-wash stain remover that effectively targets and lifts tough stains like grease, oil, and food.",
+        "rating": {
+          "rate": 4.5,
+          "count": 800
+        }
+      },
+      {
+        "id": 405,
+        "title": "Plastic Laundry Basket",
+        "image": "https://murukali.com/cdn/shop/files/Plastic-Laundry-Basket-murukali-com-451.jpg",
+        "price": 599.0,
+        "category": "Laundry",
+        "description": "A large, durable laundry basket with handles for easy carrying. Ventilated design to prevent odors.",
+        "rating": {
+          "rate": 4.4,
+          "count": 650
+        }
+      },
+      {
+        "id": 406,
+        "title": "Dryer Sheets (Pack of 80)",
+        "image": "https://m.media-amazon.com/images/I/81iUUAaYhaL.jpg",
+        "price": 450.0,
+        "category": "Laundry",
+        "description": "Reduces static cling and leaves clothes smelling fresh and feeling soft straight from the dryer.",
+        "rating": {
+          "rate": 4.3,
+          "count": 400
+        }
+      },
+      {
+        "id": 407,
+        "title": "Cloth Pegs (Pack of 24)",
+        "image": "https://m.media-amazon.com/images/I/61MIGJnt9ML.jpg",
+        "price": 120.0,
+        "category": "Laundry",
+        "description": "Strong and durable plastic cloth pegs with a secure grip to hold laundry on the line.",
+        "rating": {
+          "rate": 4.2,
+          "count": 950
+        }
+      },
+      {
+        "id": 408,
+        "title": "Foldable Ironing Board",
+        "image": "https://www.kuberindustries.co.in/uploads/kuberindustries/products/kuber-industries-18-inch-adjustable-amp-foldable-iron-stand-for-clothes-amp-sarees--quick-pressing-b-355092246792024_l.jpg",
+        "price": 1800.0,
+        "category": "Laundry",
+        "description": "A sturdy and foldable ironing board with a heat-resistant cover and an iron rest. Space-saving design.",
+        "rating": {
+          "rate": 4.6,
+          "count": 520
+        }
+      },
+      {
+        "id": 409,
+        "title": "Steam Iron",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJVqQT1ZXR27mESJBOZlPb9tMf5VsPnf8-HzhU3roRH60S6C_MW8zRbbrgdKCD8o_NJwQ&usqp=CAU",
+        "price": 1500.0,
+        "category": "Laundry",
+        "description": "A powerful steam iron with a non-stick soleplate for smooth gliding and effective wrinkle removal.",
+        "rating": {
+          "rate": 4.5,
+          "count": 780
+        }
+      },
+      {
+        "id": 410,
+        "title": "Delicates Laundry Bag",
+        "image": "https://m.media-amazon.com/images/I/71tANbw4qlL.jpg",
+        "price": 250.0,
+        "category": "Laundry",
+        "description": "A mesh laundry bag to protect delicate garments from snagging or tangling in the washing machine.",
+        "rating": {
+          "rate": 4.7,
+          "count": 600
+        }
+      }
+    ]
   },
   {
     "id": 5,
     "title": "Home Decor",
-    "image": "https://cdn.shopify.com/s/files/1/2690/0106/files/Macrame_Wall_Hangings_for_Vibrant_Home_Decor_480x480.jpg?v=1707463768"
+    "image": "https://cdn.shopify.com/s/files/1/2690/0106/files/Macrame_Wall_Hangings_for_Vibrant_Home_Decor_480x480.jpg?v=1707463768",
+    "products": [
+      {
+        "id": 501,
+        "title": "Modern Wall Clock (12-inch)",
+        "image": "https://images-cdn.ubuy.co.in/65370906198dec19406fdb70-easy-read-12-inch-wall-clocks-battery.jpg",
+        "price": 799.0,
+        "category": "Home Decor",
+        "description": "A stylish and silent non-ticking wall clock, perfect for living rooms, bedrooms, and offices.",
+        "rating": {
+          "rate": 4.5,
+          "count": 680
+        }
+      },
+      {
+        "id": 502,
+        "title": "Scented Jar Candle (Vanilla)",
+        "image": "https://m.media-amazon.com/images/I/81S8PGUjSJL._UF1000,1000_QL80_.jpg",
+        "price": 450.0,
+        "category": "Home Decor",
+        "description": "A long-lasting scented candle in a glass jar that fills your home with a warm and comforting vanilla aroma.",
+        "rating": {
+          "rate": 4.6,
+          "count": 920
+        }
+      },
+      {
+        "id": 503,
+        "title": "Cushion Cover Set (Set of 5)",
+        "image": "https://m.media-amazon.com/images/I/81C37qQkfZL._UF1000,1000_QL80_.jpg",
+        "price": 699.0,
+        "category": "Home Decor",
+        "description": "A set of five decorative cushion covers with modern prints to brighten up your sofa or bed.",
+        "rating": {
+          "rate": 4.4,
+          "count": 1100
+        }
+      },
+      {
+        "id": 504,
+        "title": "Artificial Indoor Plant with Pot",
+        "image": "https://m.media-amazon.com/images/I/61wrqsOzmOL._UF894,1000_QL80_.jpg",
+        "price": 399.0,
+        "category": "Home Decor",
+        "description": "A realistic-looking artificial plant that adds a touch of greenery to your space with no maintenance required.",
+        "rating": {
+          "rate": 4.2,
+          "count": 750
+        }
+      },
+      {
+        "id": 505,
+        "title": "Photo Frame (8x10 inch)",
+        "image": "https://m.media-amazon.com/images/I/81JEJUuoWeL.jpg",
+        "price": 250.0,
+        "category": "Home Decor",
+        "description": "A classic wooden photo frame to display your favorite memories on a wall or tabletop.",
+        "rating": {
+          "rate": 4.7,
+          "count": 880
+        }
+      },
+      {
+        "id": 506,
+        "title": "Fairy Lights (10 meters, Warm White)",
+        "image": "https://m.media-amazon.com/images/I/71R4O2zzHVL.jpg",
+        "price": 299.0,
+        "category": "Home Decor",
+        "description": "A string of decorative LED fairy lights to create a cozy and magical ambiance for any occasion.",
+        "rating": {
+          "rate": 4.8,
+          "count": 1500
+        }
+      },
+      {
+        "id": 507,
+        "title": "Decorative Wall Mirror",
+        "image": "https://woodentwist.com/cdn/shop/files/Gold-finished_iron_structure_for_long-lasting_elegance.webp?v=1752247240",
+        "price": 1200.0,
+        "category": "Home Decor",
+        "description": "An elegant and modern wall mirror with a decorative frame to enhance your living room or entryway.",
+        "rating": {
+          "rate": 4.6,
+          "count": 450
+        }
+      },
+      {
+        "id": 508,
+        "title": "Ceramic Flower Vase",
+        "image": "https://m.media-amazon.com/images/I/717COgJSyAL._UF894,1000_QL80_.jpg",
+        "price": 550.0,
+        "category": "Home Decor",
+        "description": "A minimalist ceramic vase perfect for displaying fresh flowers or as a standalone decorative piece.",
+        "rating": {
+          "rate": 4.5,
+          "count": 520
+        }
+      },
+      {
+        "id": 509,
+        "title": "Wall Shelves (Set of 3)",
+        "image": "https://www.jiomart.com/images/product/original/rvcfejxsal/woodsy-wooden-intersecting-wall-shelves-set-of-3-for-small-square-for-living-room-bedroom-kitchen-bathroom-dining-room-entryway-hallway-white-product-images-orvcfejxsal-p609540603-0-202407181730.jpg?im=Resize=(420,420)",
+        "price": 899.0,
+        "category": "Home Decor",
+        "description": "A set of three floating wall shelves for displaying books, plants, and other decorative items.",
+        "rating": {
+          "rate": 4.3,
+          "count": 980
+        }
+      },
+      {
+        "id": 510,
+        "title": "Door Mat",
+        "image": "https://onlymat.com/cdn/shop/products/bg_859472d7-7ac2-4a66-b931-c9c2fd0f8b31.jpg?v=1597824023&width=1445",
+        "price": 350.0,
+        "category": "Home Decor",
+        "description": "A durable and absorbent doormat to keep your home clean, with an anti-slip backing.",
+        "rating": {
+          "rate": 4.1,
+          "count": 1200
+        }
+      }
+    ]
   },
   {
     "id": 6,
     "title": "Stationery",
-    "image": "https://img.freepik.com/free-photo/school-stationery-with-accessories_1101-373.jpg?semt=ais_incoming&w=740&q=80"
+    "image": "https://img.freepik.com/free-photo/school-stationery-with-accessories_1101-373.jpg?semt=ais_incoming&w=740&q=80",
+    "products": [
+      {
+        "id": 601,
+        "title": "A4 Paper Ream (500 Sheets)",
+        "image": "https://5.imimg.com/data5/SELLER/Default/2021/7/PQ/BC/FI/31989089/jk-copier-paper-a4-500-sheets-75-gsm-500x500.jpg",
+        "price": 350.0,
+        "category": "Stationery",
+        "description": "High-quality multipurpose A4 paper, perfect for printing, photocopying, and writing.",
+        "rating": {
+          "rate": 4.8,
+          "count": 1800
+        }
+      },
+      {
+        "id": 602,
+        "title": "Ballpoint Pens (Pack of 10, Blue)",
+        "image": "https://www.stationerybazaar.com/images/Radius_24_blue.jpg",
+        "price": 100.0,
+        "category": "Stationery",
+        "description": "A pack of smooth-writing ballpoint pens with a comfortable grip for everyday use.",
+        "rating": {
+          "rate": 4.7,
+          "count": 2500
+        }
+      },
+      {
+        "id": 603,
+        "title": "Spiral Notebook (A5, 180 Pages)",
+        "image": "https://m.media-amazon.com/images/I/51dZQgLxaLS._UF1000,1000_QL80_.jpg",
+        "price": 120.0,
+        "category": "Stationery",
+        "description": "A durable spiral-bound notebook with ruled pages, ideal for note-taking in meetings or classes.",
+        "rating": {
+          "rate": 4.6,
+          "count": 1300
+        }
+      },
+      {
+        "id": 604,
+        "title": "Sticky Notes (Pack of 4)",
+        "image": "https://soniofficemate.com/wp-content/uploads/2017/04/583546192-sticky-notepads-fluorescent-19-x-76-x-4-x-50-soni-officemate.webp",
+        "price": 150.0,
+        "category": "Stationery",
+        "description": "A pack of colorful sticky notes for reminders, bookmarks, and quick notes.",
+        "rating": {
+          "rate": 4.5,
+          "count": 1100
+        }
+      },
+      {
+        "id": 605,
+        "title": "Stapler with Staples",
+        "image": "https://m.media-amazon.com/images/I/61+byUwEwEL._UF1000,1000_QL80_.jpg",
+        "price": 180.0,
+        "category": "Stationery",
+        "description": "A compact and sturdy stapler that comes with a box of standard staples. Perfect for home or office.",
+        "rating": {
+          "rate": 4.4,
+          "count": 950
+        }
+      },
+      {
+        "id": 606,
+        "title": "Highlighter Pens (Set of 5)",
+        "image": "https://5.imimg.com/data5/KL/HJ/NX/SELLER-33276151/highlighter-set-of-5-faber-castell-500x500.jpg",
+        "price": 130.0,
+        "category": "Stationery",
+        "description": "A set of five vibrant highlighter pens with chisel tips for broad and fine highlighting.",
+        "rating": {
+          "rate": 4.7,
+          "count": 1200
+        }
+      },
+      {
+        "id": 607,
+        "title": "Permanent Marker (Black, Pack of 2)",
+        "image": "https://static1.industrybuying.com/products/office-supplies/pens-pencils-writing-supplies/permanent-marker/OFF.PER.334980445_1756730559992.webp",
+        "price": 80.0,
+        "category": "Stationery",
+        "description": "A pack of two permanent markers that write on almost any surface. Quick-drying and water-resistant ink.",
+        "rating": {
+          "rate": 4.3,
+          "count": 1400
+        }
+      },
+      {
+        "id": 608,
+        "title": "Scissors (8-inch)",
+        "image": "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/375667/375667_p/375667",
+        "price": 140.0,
+        "category": "Stationery",
+        "description": "Multipurpose scissors with sharp stainless steel blades and comfortable handles for home and office use.",
+        "rating": {
+          "rate": 4.6,
+          "count": 850
+        }
+      },
+      {
+        "id": 609,
+        "title": "File Folders (Pack of 10)",
+        "image": "https://m.media-amazon.com/images/I/71aYNYlUihL._UF1000,1000_QL80_.jpg",
+        "price": 220.0,
+        "category": "Stationery",
+        "description": "A pack of durable file folders to keep your documents organized and secure.",
+        "rating": {
+          "rate": 4.2,
+          "count": 700
+        }
+      },
+      {
+        "id": 610,
+        "title": "Desk Organizer",
+        "image": "https://images-cdn.ubuy.co.in/652879f4aa2fe61114414c5f-deli-mesh-desktop-organizer-office.jpg",
+        "price": 499.0,
+        "category": "Stationery",
+        "description": "A mesh desk organizer with multiple compartments to keep your pens, pencils, and other supplies tidy.",
+        "rating": {
+          "rate": 4.5,
+          "count": 980
+        }
+      }
+    ]
   },
   {
     "id": 7,
     "title": "Tools & Hardware",
-    "image": "https://roadnarrows-store.com/wp-content/uploads/2024/08/Top-10-Essential-Hardware-Tools-for-Every-Homeowner-roadnarrows-store.com_.jpg"
+    "image": "https://roadnarrows-store.com/wp-content/uploads/2024/08/Top-10-Essential-Hardware-Tools-for-Every-Homeowner-roadnarrows-store.com_.jpg",
+    "products": [
+      {
+        "id": 701,
+        "title": "Screwdriver Set (8-Piece)",
+        "image": "https://images.thdstatic.com/productImages/52b9060c-c3e3-410f-a005-a1dbe56225ff/svn/crescent-screwdriver-sets-cdt8pcset-64_1000.jpg",
+        "price": 499.0,
+        "category": "Tools & Hardware",
+        "description": "An 8-piece screwdriver set with various sizes of Phillips and flathead tips. Magnetic tips for convenience.",
+        "rating": {
+          "rate": 4.7,
+          "count": 850
+        }
+      },
+      {
+        "id": 702,
+        "title": "Claw Hammer",
+        "image": "https://www.kapriol.com/images/thumbs/0007262_martello-da-carpentiere-claw-hammer_550.jpeg",
+        "price": 350.0,
+        "category": "Tools & Hardware",
+        "description": "A sturdy claw hammer for general household repairs, with a comfortable anti-slip grip.",
+        "rating": {
+          "rate": 4.6,
+          "count": 720
+        }
+      },
+      {
+        "id": 703,
+        "title": "Measuring Tape (5 meters)",
+        "image": "https://cdn.moglix.com/p/gnmfJhFZpUik5.jpg",
+        "price": 250.0,
+        "category": "Tools & Hardware",
+        "description": "A retractable measuring tape with a lockable blade for accurate measurements. Durable and easy to read.",
+        "rating": {
+          "rate": 4.5,
+          "count": 980
+        }
+      },
+      {
+        "id": 704,
+        "title": "Combination Pliers",
+        "image": "https://forcetools.co.za/wp-content/uploads/2018/10/611B175-web-2.jpg",
+        "price": 299.0,
+        "category": "Tools & Hardware",
+        "description": "Versatile combination pliers for gripping, bending, and cutting wires. Made from hardened steel.",
+        "rating": {
+          "rate": 4.4,
+          "count": 650
+        }
+      },
+      {
+        "id": 705,
+        "title": "Adjustable Wrench",
+        "image": "https://m.media-amazon.com/images/I/71CrI1V6L+L.jpg",
+        "price": 420.0,
+        "category": "Tools & Hardware",
+        "description": "An adjustable wrench with a wide jaw capacity to fit various sizes of nuts and bolts.",
+        "rating": {
+          "rate": 4.3,
+          "count": 550
+        }
+      },
+      {
+        "id": 706,
+        "title": "LED Flashlight",
+        "image": "https://ozonicshunting.com/cdn/shop/files/09A.jpg?v=1703192481&width=1946",
+        "price": 599.0,
+        "category": "Tools & Hardware",
+        "description": "A bright and durable LED flashlight with multiple modes. Ideal for emergencies and outdoor use.",
+        "rating": {
+          "rate": 4.8,
+          "count": 1100
+        }
+      },
+      {
+        "id": 707,
+        "title": "Duct Tape (Grey)",
+        "image": "https://images-cdn.ubuy.co.in/634e7cbfb99c9b2fe2090c6d-duct-tape-heavy-duty-waterproof-1-88.jpg",
+        "price": 180.0,
+        "category": "Tools & Hardware",
+        "description": "Strong, all-purpose duct tape for repairs, bundling, and sealing. Water-resistant adhesive.",
+        "rating": {
+          "rate": 4.2,
+          "count": 800
+        }
+      },
+      {
+        "id": 708,
+        "title": "Assorted Nails & Screws Kit",
+        "image": "https://www.calcuttaoutdoors.com/cdn/shop/products/5709-0271_f52b36e6-8bbf-4491-9b6e-1c90747bc7d0.jpg?v=1620069185&width=2048",
+        "price": 399.0,
+        "category": "Tools & Hardware",
+        "description": "A convenient kit containing a variety of nails and screws in different sizes for household projects.",
+        "rating": {
+          "rate": 4.1,
+          "count": 600
+        }
+      },
+      {
+        "id": 709,
+        "title": "Utility Knife",
+        "image": "https://m.media-amazon.com/images/I/413xA+mT0QL._UF1000,1000_QL80_.jpg",
+        "price": 199.0,
+        "category": "Tools & Hardware",
+        "description": "A retractable utility knife with a sharp blade for cutting cardboard, plastic, and other materials.",
+        "rating": {
+          "rate": 4.6,
+          "count": 780
+        }
+      },
+      {
+        "id": 710,
+        "title": "Extension Cord (5 meters)",
+        "image": "https://m.media-amazon.com/images/I/61-MBdQCwCL.jpg",
+        "price": 450.0,
+        "category": "Tools & Hardware",
+        "description": "A 5-meter extension cord with multiple sockets to power your devices from a distance.",
+        "rating": {
+          "rate": 4.7,
+          "count": 920
+        }
+      }
+    ]
   },
   {
     "id": 8,
     "title": "Storage Solutions",
-    "image": "https://images.squarespace-cdn.com/content/v1/5f4c451c8a35d1237843430d/1598851928373-9XWAEXD5KD0DF5UVR3UY/Mobilepartstrolley-withbins_512x512.jpg"
+    "image": "https://images.squarespace-cdn.com/content/v1/5f4c451c8a35d1237843430d/1598851928373-9XWAEXD5KD0DF5UVR3UY/Mobilepartstrolley-withbins_512x512.jpg",
+    "products": [
+      {
+        "id": 801,
+        "title": "Stackable Storage Bins with Lids",
+        "image": "https://www.irisusainc.com/cdn/shop/files/MLBH-290D_Clear-TrViolet_Lifestyle-Stacking2lo.jpg?v=1710797109&width=1080",
+        "price": 999.0,
+        "category": "Storage Solutions",
+        "description": "A set of large, stackable plastic storage bins with secure lids to organize clothes, toys, and more.",
+        "rating": {
+          "rate": 4.6,
+          "count": 880
+        }
+      },
+      {
+        "id": 802,
+        "title": "Food Storage Containers (Set of 10)",
+        "image": "https://www.jiomart.com/images/product/original/492865392/home-one-star-assorted-colour-plastic-container-5-7-10-15-l-set-of-4-product-images-o492865392-p594159787-1-202210112310.jpg?im=Resize=(420,420)",
+        "price": 650.0,
+        "category": "Storage Solutions",
+        "description": "Airtight and leak-proof food storage containers in various sizes. Microwave and freezer safe.",
+        "rating": {
+          "rate": 4.8,
+          "count": 1500
+        }
+      },
+      {
+        "id": 803,
+        "title": "Hanging Closet Organizer",
+        "image": "https://m.media-amazon.com/images/I/71HmcBZodvL._UF1000,1000_QL80_.jpg",
+        "price": 550.0,
+        "category": "Storage Solutions",
+        "description": "A fabric hanging organizer with shelves to maximize vertical space in your closet for clothes and accessories.",
+        "rating": {
+          "rate": 4.4,
+          "count": 920
+        }
+      },
+      {
+        "id": 804,
+        "title": "Underbed Storage Bag",
+        "image": "https://storite.in/cdn/shop/files/1_582b55dd-9762-4517-a95c-b07122a5dbdf.jpg?v=1726117849&width=1445",
+        "price": 399.0,
+        "category": "Storage Solutions",
+        "description": "A foldable storage bag with a clear window, perfect for storing seasonal clothing or blankets under the bed.",
+        "rating": {
+          "rate": 4.3,
+          "count": 1100
+        }
+      },
+      {
+        "id": 805,
+        "title": "3-Tier Metal Shoe Rack",
+        "image": "https://m.media-amazon.com/images/I/81CQMGPtdxL.jpg",
+        "price": 899.0,
+        "category": "Storage Solutions",
+        "description": "A sturdy and space-saving shoe rack that can hold up to 9 pairs of shoes.",
+        "rating": {
+          "rate": 4.5,
+          "count": 1300
+        }
+      },
+      {
+        "id": 806,
+        "title": "Spice Rack Organizer",
+        "image": "https://nestasia.in/cdn/shop/files/KitchenOrganiserRack_6.jpg?v=1724931892&width=600",
+        "price": 450.0,
+        "category": "Storage Solutions",
+        "description": "A compact spice rack to keep your spice jars organized and easily accessible on your kitchen counter.",
+        "rating": {
+          "rate": 4.2,
+          "count": 780
+        }
+      },
+      {
+        "id": 807,
+        "title": "Over-the-Door Hook Rack",
+        "image": "https://i5.walmartimages.com/seo/BUSATIA-Door-Hook-Over-Door-Towel-Rack-6-Dual-Coat-Hooks-Door-Hanger-Door-Coat-Hanger-Over-Door-Coat-Rack-Door-Hooks-Hanging-Clothes-Back-Door-Black_b98814b0-b99d-4613-b9eb-a2e141894e70.6d3b02337369daa89db09dd99c0d3684.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF",
+        "price": 350.0,
+        "category": "Storage Solutions",
+        "description": "An easy-to-install hook rack that fits over any standard door for hanging coats, towels, and bags.",
+        "rating": {
+          "rate": 4.1,
+          "count": 950
+        }
+      },
+      {
+        "id": 808,
+        "title": "Drawer Dividers (Set of 4)",
+        "image": "https://m.media-amazon.com/images/I/71Ir1q18y7L.jpg",
+        "price": 299.0,
+        "category": "Storage Solutions",
+        "description": "Adjustable drawer dividers to organize socks, underwear, and other small items in your drawers.",
+        "rating": {
+          "rate": 4.0,
+          "count": 650
+        }
+      },
+      {
+        "id": 809,
+        "title": "Vacuum Storage Bags (Pack of 6)",
+        "image": "https://m.media-amazon.com/images/I/71vNAnYT-wL._UF1000,1000_QL80_.jpg",
+        "price": 599.0,
+        "category": "Storage Solutions",
+        "description": "Space-saving vacuum bags that compress bulky items like quilts and winter clothes by up to 80%.",
+        "rating": {
+          "rate": 4.7,
+          "count": 1200
+        }
+      },
+      {
+        "id": 810,
+        "title": "Bookshelf (Small, 3-Tier)",
+        "image": "https://m.media-amazon.com/images/I/81I8ZRFw8NL._UF1000,1000_QL80_.jpg",
+        "price": 1500.0,
+        "category": "Storage Solutions",
+        "description": "A compact wooden bookshelf with three tiers, perfect for small spaces to organize books and decor.",
+        "rating": {
+          "rate": 4.6,
+          "count": 750
+        }
+      }
+    ]
   },
   {
     "id": 9,
     "title": "Pet Supplies",
-    "image": "https://www.petexpress.com.ph/cdn/shop/articles/must_have_pet_supplies_1200x.png?v=1710838097"
+    "image": "https://www.petexpress.com.ph/cdn/shop/articles/must_have_pet_supplies_1200x.png?v=1710838097",
+    "products": [
+      {
+        "id": 901,
+        "title": "Dry Dog Food (Chicken, 3kg)",
+        "image": "https://m.media-amazon.com/images/I/71o84Bphv-L._UF1000,1000_QL80_.jpg",
+        "price": 850.0,
+        "category": "Pet Supplies",
+        "description": "Complete and balanced nutrition for adult dogs, with real chicken as the first ingredient.",
+        "rating": {
+          "rate": 4.8,
+          "count": 1600
+        }
+      },
+      {
+        "id": 902,
+        "title": "Wet Cat Food (Tuna, Pack of 12)",
+        "image": "https://amanpetshop.com/cdn/shop/products/Whiskas-Adult-Wet-Cat-Food_-Tuna-in-Jelly--85-g-_1.02-kg_-12-Pouches_-Amanpetshop--1655822864.jpg",
+        "price": 480.0,
+        "category": "Pet Supplies",
+        "description": "A pack of delicious wet cat food pouches in a savory tuna flavor that cats love.",
+        "rating": {
+          "rate": 4.7,
+          "count": 1100
+        }
+      },
+      {
+        "id": 903,
+        "title": "Adjustable Dog Leash and Collar Set",
+        "image": "https://m.media-amazon.com/images/I/81hOHdPt1yL._UF1000,1000_QL80_.jpg",
+        "price": 499.0,
+        "category": "Pet Supplies",
+        "description": "A durable nylon leash and adjustable collar set for daily walks. Suitable for medium-sized dogs.",
+        "rating": {
+          "rate": 4.5,
+          "count": 950
+        }
+      },
+      {
+        "id": 904,
+        "title": "Clumping Cat Litter (5kg)",
+        "image": "https://www.cheapaschips.com.au/cdn/shop/files/media_e740f1fe-f69d-4b74-bcfa-9a758b361ef3.jpg?v=1756260905",
+        "price": 550.0,
+        "category": "Pet Supplies",
+        "description": "A highly absorbent, clumping cat litter with superior odor control to keep your home fresh.",
+        "rating": {
+          "rate": 4.6,
+          "count": 1250
+        }
+      },
+      {
+        "id": 905,
+        "title": "Squeaky Chew Toy for Dogs",
+        "image": "https://m.media-amazon.com/images/I/81-Z8ZuyWRL._UF350,350_QL80_.jpg",
+        "price": 250.0,
+        "category": "Pet Supplies",
+        "description": "A durable rubber chew toy with a squeaker inside to keep your dog entertained and promote dental health.",
+        "rating": {
+          "rate": 4.3,
+          "count": 880
+        }
+      },
+      {
+        "id": 906,
+        "title": "Pet Grooming Brush",
+        "image": "https://images.meesho.com/images/products/328633586/fd24z_512.webp?width=512",
+        "price": 380.0,
+        "category": "Pet Supplies",
+        "description": "A grooming brush that effectively removes loose fur and tangles, suitable for both dogs and cats.",
+        "rating": {
+          "rate": 4.4,
+          "count": 720
+        }
+      },
+      {
+        "id": 907,
+        "title": "Stainless Steel Pet Bowls (Set of 2)",
+        "image": "https://m.media-amazon.com/images/I/61z0IPpDN5L._UF350,350_QL80_.jpg",
+        "price": 399.0,
+        "category": "Pet Supplies",
+        "description": "A set of two durable and easy-to-clean stainless steel bowls for your pet's food and water.",
+        "rating": {
+          "rate": 4.7,
+          "count": 1400
+        }
+      },
+      {
+        "id": 908,
+        "title": "Cozy Pet Bed (Medium)",
+        "image": "https://m.media-amazon.com/images/I/81gX8RpPcwL._UF1000,1000_QL80_.jpg",
+        "price": 1200.0,
+        "category": "Pet Supplies",
+        "description": "A soft and comfortable bed that provides a cozy space for your pet to rest and sleep.",
+        "rating": {
+          "rate": 4.5,
+          "count": 980
+        }
+      },
+      {
+        "id": 909,
+        "title": "Pet Shampoo (Hypoallergenic)",
+        "image": "https://soospets.com/cdn/shop/files/1_b16debb2-e2fb-4251-b72e-d01153136903.jpg?v=1744740358&width=1445",
+        "price": 450.0,
+        "category": "Pet Supplies",
+        "description": "A gentle, soap-free shampoo for pets with sensitive skin. Leaves the coat clean and soft.",
+        "rating": {
+          "rate": 4.2,
+          "count": 650
+        }
+      },
+      {
+        "id": 910,
+        "title": "Feather Wand Cat Toy",
+        "image": "https://luckydoggyrescue.org/cdn/shop/files/8c393d2dec8af80ecf7a6d102396c550.jpg?v=1733538414",
+        "price": 199.0,
+        "category": "Pet Supplies",
+        "description": "An interactive wand toy with feathers and a bell to engage your cat in playful activity.",
+        "rating": {
+          "rate": 4.1,
+          "count": 1150
+        }
+      }
+    ]
   }
 ]

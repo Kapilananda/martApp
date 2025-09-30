@@ -46,12 +46,12 @@ export default function SwipeCards({ item, navigation }) {
       <View style={styles.priceRow}>
         {item.discountPercent ? (
           <>
-            <Text style={styles.discountPrice}>${item.discountedPrice}</Text>
-            <Text style={styles.originalPrice}>${item.price.toFixed(2)}</Text>
+            <Text style={styles.discountPrice}>₹{item.discountedPrice}</Text>
+            <Text style={styles.originalPrice}>₹ {item.price.toFixed(2)}</Text>
             <Text style={styles.discountTag}>-{item.discountPercent}%</Text>
           </>
         ) : (
-          <Text style={styles.discountPrice}>${item.price.toFixed(2)}</Text>
+          <Text style={styles.discountPrice}>₹{item.price.toFixed(2)}</Text>
         )}
       </View>
 
@@ -64,7 +64,12 @@ export default function SwipeCards({ item, navigation }) {
           >
             <TouchableOpacity
               style={styles.cartBtn}
-              onPress={() => dispatch(addToCart(item),Toast.showWithGravity("Added to Cart..!", Toast.SHORT, Toast.CENTER))}
+              // onPress={() => dispatch(addToCart(item),Toast.showWithGravity("Added to Cart..!", Toast.SHORT, Toast.CENTER))}
+              onPress={() => {
+                   dispatch(addToCart(item)); // update cart
+                  Toast.showWithGravity("Added to Cart..!", Toast.SHORT, Toast.CENTER); // show toast
+              }}
+
               activeOpacity={0.8}
             >
               <Text style={styles.cartBtnText}>Add</Text>

@@ -9,7 +9,7 @@ export default function Categories({ item,products, navigation,favorites,dispatc
   
   return (
     <View style={styles.container}>
-      <TouchableOpacity  onPress={() => navigation.navigate("ProductList",{products,favorites,dispatch})}>
+      <TouchableOpacity onPress={() => navigation.navigate("ProductList", { products, favorites, dispatch })}>
 
         <Image
           source={{ uri: item.image }}
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     elevation: 2,
     resizeMode: "cover",
     backgroundColor: "#f5f5f5",
+    // justifyContent:"space-between"
   },
   label: {
     marginTop: 6,
