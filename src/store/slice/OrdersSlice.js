@@ -85,10 +85,14 @@ const ordersSlice = createSlice({
             const index = state.currentOrders.findIndex((o) => o.id === orderId);
 
             if (index !== -1) {
+
+                
+                
                 const deliveredOrder = {
                     ...state.currentOrders[index],
                     status: "Delivered",
                 };
+                console.log(deliveredOrder);
 
                 // remove from currentOrders
                 state.currentOrders.splice(index, 1);
@@ -97,6 +101,7 @@ const ordersSlice = createSlice({
                 const existingIndex = state.recentOrders.findIndex(
                     (item) => item.id === deliveredOrder.id
                 );
+
                 if (existingIndex !== -1) {
                     state.recentOrders.splice(existingIndex, 1);
                 }
@@ -108,6 +113,9 @@ const ordersSlice = createSlice({
                 if (state.recentOrders.length > 10) {
                     state.recentOrders.pop();
                 }
+                
+                console.log("end");
+                
             }
         },
 

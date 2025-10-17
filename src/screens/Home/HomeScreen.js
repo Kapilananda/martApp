@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   StyleSheet,
   View,
@@ -20,23 +20,34 @@ import TopHome from './TopHome';
 import ItemCard from '../../components/ItemCard';
 import AdsCarousel from '../../components/AdsCarousel';
 
+// import FasterImage from '@rraut/react-native-faster-image';
+
 // --- Static Data Imports ---
-import Snacks from '../../assets/Snacks.json';
-import Beverages from '../../assets/Beverages.json';
-import Fresh from '../../assets/Fresh.json';
-import Household from '../../assets/Household.json';
-import Tech from '../../assets/Tech.json';
+import { Snacks } from '../../assets/Snacks/Snacks';
+import { Beverages } from '../../assets/Beverages/Beverages';
+import { Fresh } from '../../assets/fresh/Fresh';
+import { Household } from '../../assets/Household/Household';
+import { Tech } from '../../assets/Tech/Tech';
+import { Groceries } from '../../assets/Groceries/Groceries';
+import {dayDeals} from '../../assets/dayDeals';
+import {popular} from '../../assets/popular'
+import { isDisabled } from 'react-native/types_generated/Libraries/LogBox/Data/LogBoxData';
 
 export default function HomeScreen({ route, navigation }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('All');
-
+  // console.log(Household);
   const dispatch = useDispatch();
   const favorites = useSelector(state => state.favorite.favorites);
   const setIsFloating = route.params?.setIsFloating;
 
   const [refreshing, setRefreshing] = React.useState(false);
+
+  // const randomDeals = useMemo(() => {
+  //   const shuffled = [...dayDeals].sort(() => 0.5 - Math.random());
+  //   return shuffled.slice(0, 7); // show 5 random items
+  // }, [dayDeals]);
 
   // --- Data Fetching Effect ---
   // useEffect(() => {
@@ -94,22 +105,20 @@ export default function HomeScreen({ route, navigation }) {
     getProducts();
   }, []);
 
+  const randomDeals = useMemo(() => {
+    const shuffled = [...dayDeals].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, 20); // show 5 random items
+  }, [dayDeals]);
+
   // --- Refresh Handler ---
   const onRefresh = () => {
+    {
+      randomDeals;
+    }
     setRefreshing(true);
     setSelectedCategory('All'); // ✅ reset category if needed
     getProducts(); // ✅ re-fetch products
   };
-
-  // --- Loading State UI ---
-  // if (loading) {
-  //   return (
-  //     <View style={styles.loaderContainer}>
-  //       <ActivityIndicator size="large" color="#2ECC71" />
-  //       <Text style={styles.loaderText}>Loading products...</Text>
-  //     </View>
-  //   );
-  // }
 
   // --- Category Content Renderer ---
   const renderCategoryContent = () => {
@@ -124,13 +133,13 @@ export default function HomeScreen({ route, navigation }) {
             <View style={styles.sectionContainer}>
               <Text style={styles.heading}>🔥 Deals of the Day</Text>
               <FlatList
-                data={products.slice(0, 8)}
+                data={randomDeals}
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={item => item.id.toString()}
                 contentContainerStyle={styles.dealsListContainer}
                 renderItem={({ item }) => (
-                  <HotDealsCard item={item} navigation={navigation} />
+                  <HotDealsCard item={{...item , isDeal:true}} navigation={navigation} />
                 )}
               />
             </View>
@@ -138,14 +147,13 @@ export default function HomeScreen({ route, navigation }) {
             {/* Popular */}
             <View style={styles.sectionContainer}>
               <Text style={styles.heading}>⭐ Popular</Text>
-              <View style={styles.gridContainer}>
-                {products.slice(0, 6).map(item => {
+              <View style={styles.gridContainerPop}>
+                {popular.slice(0, 6).map(item => {
                   const isFavorite = favorites.some(fav => fav.id === item.id);
-
                   return (
                     <ItemCard
                       key={item.id}
-                      item={item}
+                      item={ {...item , isDeal:false}}
                       navigation={navigation}
                       isFavorite={isFavorite}
                       onToggleFavorite={() => dispatch(toggleFavorite(item))}
@@ -157,11 +165,13 @@ export default function HomeScreen({ route, navigation }) {
 
             {/* Other Categories */}
             {[
+              { title: '🛒 Groceries', data: Groceries },
               { title: '🍪 Snacks', data: Snacks },
               { title: '🥤 Beverages', data: Beverages },
               { title: '🥦 Fresh', data: Fresh },
               { title: '🏠 Household', data: Household },
               { title: '💻 Tech', data: Tech },
+              // { title: '🍛 Food Items', data: FoodItems },
             ].map(category => (
               <View key={category.title} style={styles.sectionContainer}>
                 <Text style={styles.heading}>{category.title}</Text>
@@ -169,7 +179,7 @@ export default function HomeScreen({ route, navigation }) {
                   {category.data.map(item => (
                     <Categories
                       key={item.id}
-                      item={item}
+                      item={{...item , isDeal:false}}
                       products={item.products}
                       navigation={navigation}
                     />
@@ -182,83 +192,127 @@ export default function HomeScreen({ route, navigation }) {
 
       case 'Snacks':
         return (
-          <View style={styles.sectionContainer}>
+          <View style={[styles.sectionContainer, { marginBottom: 10 }]}>
             <Text style={styles.heading}>🍪 Snacks</Text>
             <View style={styles.gridContainer}>
               {/* console.log(item.items); */}
               {Snacks.map(item => (
-                <Categories
-                  key={item.id}
-                  item={item}
-                  products={item.products}
-                  navigation={navigation}
-                />
+                <View key={item.id} style={styles.gridItem}>
+                  <Categories
+                    key={item.id}
+                    item={{...item , isDeal:false}}
+                    products={item.products}
+                    navigation={navigation}
+                  />
+                </View>
               ))}
-              <View style={{ marginBottom: 70 }} />
+              {/* <View style={{ marginBottom: 70 }} /> */}
             </View>
           </View>
         );
 
       case 'Fresh':
         return (
-          <View style={[styles.sectionContainer, { marginBottom: 0 }]}>
+          <View style={[styles.sectionContainer]}>
             <Text style={styles.heading}>🥦 Fresh</Text>
             <View style={styles.gridContainer}>
               {Fresh.map(item => (
-                <Categories
-                  key={item.id}
-                  item={item}
-                  products={item.products}
-                  navigation={navigation}
-                />
+                <View key={item.id} style={styles.gridItem}>
+                  <Categories
+                    key={item.id}
+                    item={{...item , isDeal:false}}
+                    products={item.products}
+                    navigation={navigation}
+                  />
+                </View>
               ))}
-              <View style={{ marginBottom: 70 }} />
+              {/* <View style={{ marginBottom: 70 }} /> */}
             </View>
           </View>
         );
 
       case 'Beverages':
         return (
-          <View style={styles.sectionContainer}>
+          <View style={[styles.sectionContainer, ]}>
             <Text style={styles.heading}>🥤 Beverages</Text>
             <View style={styles.gridContainer}>
               {Beverages.map(item => (
-                <Categories
-                  key={item.id}
-                  item={item}
-                  products={item.products}
-                  navigation={navigation}
-                />
+                <View key={item.id} style={styles.gridItem}>
+                  <Categories
+                    key={item.id}
+                    item={{...item , isDeal:false}}
+                    products={item.products}
+                    navigation={navigation}
+                  />
+                </View>
               ))}
-              <View style={{ marginBottom: 70 }} />
+              {/* <View style={{ marginBottom: 70 }} /> */}
             </View>
           </View>
         );
 
       case 'Household':
         return (
-          <View style={styles.sectionContainer}>
+          <View style={[styles.sectionContainer, { marginBottom: 10 }]}>
             <Text style={styles.heading}>🏠 Household</Text>
             <View style={styles.gridContainer}>
               {Household.map(item => (
-                <Categories
-                  key={item.id}
-                  item={item}
-                  products={item.products}
-                  navigation={navigation}
-                />
+                <View key={item.id} style={styles.gridItem}>
+                  <Categories
+                    item={{...item , isDeal:false}}
+                    products={item.products}
+                    navigation={navigation}
+                  />
+                </View>
               ))}
-              <View style={{ marginBottom: 70 }} />
+              {/* <View style={{ marginBottom: 70 }} /> */}
             </View>
           </View>
         );
 
       case 'Tech':
         return (
-          <View style={[styles.sectionContainerTech, { marginBottom: 70 }]}>
+          <View style={[styles.sectionContainerTech, { marginBottom: 10 }]}>
             <Text style={styles.heading}>💻 Tech</Text>
             <View style={styles.gridContainer}>
               {Tech.map(item => (
+                <View key={item.id} style={styles.gridItem}>
+                  <Categories
+                    item={{...item , isDeal:false}}
+                    products={item.products}
+                    navigation={navigation}
+                  />
+                </View>
+              ))}
+              {/* <View style={{ marginBottom: 70 }} /> */}
+            </View>
+          </View>
+        );
+
+      case 'Groceries':
+        return (
+          <View style={[styles.sectionContainer, { marginBottom: 10 }]}>
+            <Text style={styles.heading}>🛒 Groceries</Text>
+            <View style={styles.gridContainer}>
+              {Groceries.map(item => (
+                <View key={item.id} style={styles.gridItem}>
+                  <Categories
+                    item={{...item , isDeal:false}}
+                    products={item.products}
+                    navigation={navigation}
+                  />
+                </View>
+              ))}
+            </View>
+            {/* <View style={{ marginBottom: 70 }} /> */}
+          </View>
+        );
+        // case 'FoodItems':
+        return (
+          <View style={styles.sectionContainer}>
+            <Text style={styles.heading}>🏠 Household</Text>
+            <View style={styles.gridContainer}>
+              {Household.map(item => (
                 <Categories
                   key={item.id}
                   item={item}
@@ -282,30 +336,33 @@ export default function HomeScreen({ route, navigation }) {
       <ScrollView
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={16}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
+        // refreshControl={
+        //   <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        // }
       >
         {/* Header */}
         <TopHome
           navigation={navigation}
           onCategorySelect={setSelectedCategory}
+          selected={selectedCategory}
         />
-        {loading ? (
-          <>
-            <View style={styles.loaderContainer}>
-              <ActivityIndicator size="large" color="#2ECC71" />
-              <Text style={styles.loaderText}>Loading products...</Text>
-            </View>
-          </>
-        ) : (
+        {
+        // !loading ? (
+        //   <>
+        //     <View style={styles.loaderContainer}>
+        //       <ActivityIndicator size="large" color="#2ECC71" />
+        //       <Text style={styles.loaderText}>Loading products...</Text>
+        //     </View>
+        //   </>
+        // ) : 
+        (
           <>
             {/* Dynamic Content */}
             {renderCategoryContent()}
           </>
         )}
       </ScrollView>
-      <View style={{ marginBottom: 70 }}></View>
+      {/* <View style={{ marginBottom: 70 }}></View> */}
     </SafeAreaView>
   );
 }
@@ -316,6 +373,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffffff',
+    marginBottom : 65,
   },
 
   // --- Loading State ---
@@ -340,20 +398,20 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginHorizontal: 16,
     marginTop: 16,
-    padding: 16,
+    padding: 10,
     shadowColor: '#34495E',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
+    marginBottom :6,
   },
   sectionContainerTech: {
     backgroundColor: '#eef9ffff',
     borderRadius: 12,
-    marginHorizontal: 16,
+    marginHorizontal: 15,
     marginTop: 16,
     padding: 16,
-    marginBottom: 70,
     shadowColor: '#34495E',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -374,9 +432,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
+    paddingHorizontal: 10,
+    columnGap: 12,
+  },
+  gridContainerPop: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    // paddingHorizontal: 10,
     rowGap: 16,
   },
-
+  gridItem: {
+    width: '30%',
+    alignItems: 'center',
+    marginBottom: 15,
+  },
   // --- Horizontal Lists ---
   dealsListContainer: {
     paddingHorizontal: 0,

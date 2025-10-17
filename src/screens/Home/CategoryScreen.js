@@ -15,11 +15,12 @@ import data from '../../assets/CategoryData.json';
 import Categories from '../../components/Categories';
 import ProductList from './ProductList';
 
-import Snacks from '../../assets/Snacks.json';
-import Beverages from '../../assets/Beverages.json';
-import Fresh from '../../assets/Fresh.json';
-import Household from '../../assets/Household.json';
-import Tech from '../../assets/Tech.json';
+import {Snacks} from '../../assets/Snacks/Snacks';
+import {Beverages} from '../../assets/Beverages/Beverages';
+import {Fresh} from '../../assets/fresh/Fresh';
+import {Household} from '../../assets/Household/Household';
+import {Tech} from '../../assets/Tech/Tech';
+import {Groceries} from '../../assets/Groceries/Groceries';
 
 export default function CategoryScreen({ route, navigation }) {
   const [products, setProducts] = useState([]);
@@ -66,10 +67,11 @@ export default function CategoryScreen({ route, navigation }) {
   /** 🔹 Category Block */
   const RenderCategory = () => {
     return (
-      <View style= {{}}>
+      <View style={{ marginBottom: 50 }}>
         {/* <Text style={styles.categoryTitle}>{item.title}</Text> */}
 
         {[
+          { title: '🛒 Groceries', data: Groceries },
           { title: '🍪 Snacks', data: Snacks },
           { title: '🥤 Beverages', data: Beverages },
           { title: '🥦 Fresh', data: Fresh },
@@ -79,7 +81,7 @@ export default function CategoryScreen({ route, navigation }) {
           <View key={category.title} style={styles.sectionContainer}>
             <Text style={styles.heading}>{category.title}</Text>
             <View style={styles.gridContainer}>
-              {category.data.map(item => (
+              {category.data?.map(item => (
                 <Categories
                   key={item.id}
                   item={item}

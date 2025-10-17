@@ -8,27 +8,31 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
+import FastImage from 'react-native-fast-image';
+
 
 const { width: screenWidth } = Dimensions.get('window');
 
 export default function AdsCarousel({
   autoPlayInterval = 3000,
-  itemWidth = screenWidth ,
+  itemWidth = screenWidth,
   itemHeight = 250,
 }) {
   const data = [
     {
       id: '1',
-      image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=800&q=80',
+      image: require('../components/image1.webp'),
+        // 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=800&q=80',
       title: 'Summer Sale',
       description: 'Up to 50% off on summer essentials',
       ctaText: 'Shop Now',
       discount: '50% OFF',
       backgroundColor: '#FF6B6B',
     },
-    {
+    {     
       id: '2',
-      image: 'https://images.unsplash.com/photo-1605733513597-a8f8341084e6?auto=format&fit=crop&w=800&q=80',
+      image:  require('../components/bag1.png'),
+        // 'https://images.unsplash.com/photo-1605733513597-a8f8341084e6?auto=format&fit=crop&w=800&q=80',
       title: 'Prime Member Deals',
       description: 'Exclusive discounts for Prime members',
       ctaText: 'See Offers',
@@ -37,7 +41,8 @@ export default function AdsCarousel({
     },
     {
       id: '3',
-      image: 'https://images.unsplash.com/photo-1555529771-7888783a18d3?auto=format&fit=crop&w=800&q=80',
+      image: require('../components/image2.webp'),
+        // 'https://images.unsplash.com/photo-1555529771-7888783a18d3?auto=format&fit=crop&w=800&q=80',
       title: 'New Arrivals',
       description: 'Discover the latest products',
       ctaText: 'Explore',
@@ -46,7 +51,8 @@ export default function AdsCarousel({
     },
     {
       id: '4',
-      image: 'https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80',
+      image: require('../components/bag3.png'),
+        // 'https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80',
       title: 'Electronics Sale',
       description: 'Top deals on gadgets and devices',
       ctaText: 'Buy Now',
@@ -71,20 +77,34 @@ export default function AdsCarousel({
   }, [currentIndex]);
 
   // Jump to specific slide
-  const jumpTo = (i) => {
+  const jumpTo = i => {
     flatRef.current?.scrollToIndex({ index: i, animated: true });
     setCurrentIndex(i);
   };
 
   const renderItem = ({ item }) => (
-    <View style={{ width: itemWidth, height: itemHeight , margin:0}}>
-      <Image source={{ uri: item.image }} style={styles.image} resizeMode="cover" />
+    <View style={{ width: itemWidth, height: itemHeight, margin: 0 }}>
+      {/* <Image source={{ uri: item.image }} style={styles.image} resizeMode="cover" /> */}
 
+      <FastImage
+  source={
+    typeof item.image === 'number'
+    ? item.image
+    : {uri : item.image}
+  }
+  style={styles.image}
+  resizeMode={FastImage.resizeMode.cover}
+/>
       {/* Dark overlay */}
       <View style={styles.overlay} />
 
       {/* Discount badge */}
-      <View style={[styles.discountBadge, { backgroundColor: item.backgroundColor }]}>
+      <View
+        style={[
+          styles.discountBadge,
+          { backgroundColor: item.backgroundColor },
+        ]}
+      >
         <Text style={styles.discountText}>{item.discount}</Text>
       </View>
 
@@ -113,9 +133,11 @@ export default function AdsCarousel({
         decelerationRate="fast"
         showsHorizontalScrollIndicator={false}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        onMomentumScrollEnd={(ev) => {
-          const newIndex = Math.round(ev.nativeEvent.contentOffset.x / itemWidth);
+        keyExtractor={item => item.id}
+        onMomentumScrollEnd={ev => {
+          const newIndex = Math.round(
+            ev.nativeEvent.contentOffset.x / itemWidth,
+          );
           setCurrentIndex(newIndex);
         }}
       />
@@ -123,8 +145,14 @@ export default function AdsCarousel({
       {/* Dots */}
       <View style={styles.dots}>
         {data.map((_, i) => (
-          <TouchableOpacity key={i} onPress={() => jumpTo(i)} style={styles.dotTouchable}>
-            <View style={[styles.dot, currentIndex === i && styles.dotActive]} />
+          <TouchableOpacity
+            key={i}
+            onPress={() => jumpTo(i)}
+            style={styles.dotTouchable}
+          >
+            <View
+              style={[styles.dot, currentIndex === i && styles.dotActive]}
+            />
           </TouchableOpacity>
         ))}
       </View>
@@ -137,6 +165,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     borderRadius: 16,
+    // padding : 15,
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
@@ -159,7 +188,11 @@ const styles = StyleSheet.create({
     right: 16,
   },
   title: { color: 'white', fontSize: 22, fontWeight: 'bold' },
-  description: { color: 'rgba(255,255,255,0.9)', fontSize: 14, marginVertical: 6 },
+  description: {
+    color: 'rgba(255,255,255,0.9)',
+    fontSize: 14,
+    marginVertical: 6,
+  },
   ctaButton: {
     alignSelf: 'flex-start',
     paddingHorizontal: 16,

@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "title": "Noodles",
+    "image": "https://www.example.com/images/noodles.jpg",
+    "products": [
+      { "id": 101, "title": "Veg Hakka Noodles", "image": "https://www.example.com/images/veg_hakka_noodles.jpg", "price": 120.0, "category": "Noodles", "description": "Stir-fried noodles with vegetables.", "rating": { "rate": 4.5, "count": 150 } },
+      { "id": 102, "title": "Chicken Chowmein", "image": "https://www.example.com/images/chicken_chowmein.jpg", "price": 150.0, "category": "Noodles", "description": "Spicy chicken noodles.", "rating": { "rate": 4.6, "count": 140 } },
+      { "id": 103, "title": "Schezwan Noodles", "image": "https://www.example.com/images/schezwan_noodles.jpg", "price": 160.0, "category": "Noodles", "description": "Spicy Schezwan style noodles.", "rating": { "rate": 4.7, "count": 130 } },
+      { "id": 104, "title": "Egg Noodles", "image": "https://www.example.com/images/egg_noodles.jpg", "price": 140.0, "category": "Noodles", "description": "Noodles cooked with eggs.", "rating": { "rate": 4.5, "count": 120 } },
+      { "id": 105, "title": "Hakka Veg Noodles", "image": "https://www.example.com/images/hakka_veg_noodles.jpg", "price": 125.0, "category": "Noodles", "description": "Hakka style stir-fried noodles.", "rating": { "rate": 4.6, "count": 110 } },
+      { "id": 106, "title": "Paneer Noodles", "image": "https://www.example.com/images/paneer_noodles.jpg", "price": 150.0, "category": "Noodles", "description": "Noodles with paneer and vegetables.", "rating": { "rate": 4.7, "count": 100 } },
+      { "id": 107, "title": "Garlic Noodles", "image": "https://www.example.com/images/garlic_noodles.jpg", "price": 130.0, "category": "Noodles", "description": "Noodles tossed with garlic and sauces.", "rating": { "rate": 4.5, "count": 90 } },
+      { "id": 108, "title": "Veg Singapore Noodles", "image": "https://www.example.com/images/veg_singapore_noodles.jpg", "price": 155.0, "category": "Noodles", "description": "Spicy Singapore style noodles.", "rating": { "rate": 4.6, "count": 95 } },
+      { "id": 109, "title": "Chicken Lo Mein", "image": "https://www.example.com/images/chicken_lo_mein.jpg", "price": 165.0, "category": "Noodles", "description": "Soft noodles with chicken and sauce.", "rating": { "rate": 4.7, "count": 85 } },
+      { "id": 110, "title": "Veg Chow Mein", "image": "https://www.example.com/images/veg_chow_mein.jpg", "price": 120.0, "category": "Noodles", "description": "Classic vegetable chow mein.", "rating": { "rate": 4.5, "count": 100 } }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Burgers",
+    "image": "https://www.example.com/images/burgers.jpg",
+    "products": [
+      { "id": 201, "title": "Classic Veg Burger", "image": "https://www.example.com/images/classic_veg_burger.jpg", "price": 100.0, "category": "Burgers", "description": "Veg burger with lettuce and tomato.", "rating": { "rate": 4.5, "count": 120 } },
+      { "id": 202, "title": "Cheese Burger", "image": "https://www.example.com/images/cheese_burger.jpg", "price": 130.0, "category": "Burgers", "description": "Burger with melted cheese.", "rating": { "rate": 4.6, "count": 110 } },
+      { "id": 203, "title": "Chicken Burger", "image": "https://www.example.com/images/chicken_burger.jpg", "price": 150.0, "category": "Burgers", "description": "Grilled chicken burger with sauces.", "rating": { "rate": 4.7, "count": 130 } },
+      { "id": 204, "title": "Paneer Burger", "image": "https://www.example.com/images/paneer_burger.jpg", "price": 140.0, "category": "Burgers", "description": "Burger with spicy paneer patty.", "rating": { "rate": 4.5, "count": 100 } },
+      { "id": 205, "title": "Spicy Veg Burger", "image": "https://www.example.com/images/spicy_veg_burger.jpg", "price": 120.0, "category": "Burgers", "description": "Veg burger with spicy sauce.", "rating": { "rate": 4.6, "count": 110 } },
+      { "id": 206, "title": "Double Chicken Burger", "image": "https://www.example.com/images/double_chicken_burger.jpg", "price": 180.0, "category": "Burgers", "description": "Double layer chicken burger.", "rating": { "rate": 4.7, "count": 90 } },
+      { "id": 207, "title": "Veggie Delight", "image": "https://www.example.com/images/veggie_delight.jpg", "price": 130.0, "category": "Burgers", "description": "Burger with mixed vegetables.", "rating": { "rate": 4.5, "count": 80 } },
+      { "id": 208, "title": "BBQ Chicken Burger", "image": "https://www.example.com/images/bbq_chicken_burger.jpg", "price": 160.0, "category": "Burgers", "description": "BBQ grilled chicken burger.", "rating": { "rate": 4.6, "count": 85 } },
+      { "id": 209, "title": "Cheese Veggie Burger", "image": "https://www.example.com/images/cheese_veggie_burger.jpg", "price": 135.0, "category": "Burgers", "description": "Veg burger with cheese slice.", "rating": { "rate": 4.7, "count": 75 } },
+      { "id": 210, "title": "Classic Chicken Burger", "image": "https://www.example.com/images/classic_chicken_burger.jpg", "price": 150.0, "category": "Burgers", "description": "Chicken burger with classic toppings.", "rating": { "rate": 4.5, "count": 100 } }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Pizza",
+    "image": "https://www.example.com/images/pizza.jpg",
+    "products": [
+      { "id": 301, "title": "Margherita Pizza", "image": "https://www.example.com/images/margherita.jpg", "price": 250.0, "category": "Pizza", "description": "Classic cheese pizza with tomato sauce.", "rating": { "rate": 4.7, "count": 140 } },
+      { "id": 302, "title": "Pepperoni Pizza", "image": "https://www.example.com/images/pepperoni.jpg", "price": 300.0, "category": "Pizza", "description": "Pepperoni and cheese pizza.", "rating": { "rate": 4.8, "count": 130 } },
+      { "id": 303, "title": "Veggie Pizza", "image": "https://www.example.com/images/veggie_pizza.jpg", "price": 270.0, "category": "Pizza", "description": "Loaded with fresh vegetables.", "rating": { "rate": 4.6, "count": 120 } },
+      { "id": 304, "title": "BBQ Chicken Pizza", "image": "https://www.example.com/images/bbq_chicken_pizza.jpg", "price": 320.0, "category": "Pizza", "description": "BBQ chicken topping with cheese.", "rating": { "rate": 4.7, "count": 110 } },
+      { "id": 305, "title": "Cheese Burst Pizza", "image": "https://www.example.com/images/cheese_burst.jpg", "price": 350.0, "category": "Pizza", "description": "Extra cheesy pizza with burst flavor.", "rating": { "rate": 4.8, "count": 100 } },
+      { "id": 306, "title": "Paneer Tikka Pizza", "image": "https://www.example.com/images/paneer_tikka.jpg", "price": 300.0, "category": "Pizza", "description": "Paneer tikka topping with vegetables.", "rating": { "rate": 4.7, "count": 90 } },
+      { "id": 307, "title": "Mexican Green Wave", "image": "https://www.example.com/images/mexican_green_wave.jpg", "price": 310.0, "category": "Pizza", "description": "Veg pizza with Mexican flavors.", "rating": { "rate": 4.6, "count": 80 } },
+      { "id": 308, "title": "Farmhouse Pizza", "image": "https://www.example.com/images/farmhouse.jpg", "price": 290.0, "category": "Pizza", "description": "Loaded with vegetables and cheese.", "rating": { "rate": 4.7, "count": 70 } },
+      { "id": 309, "title": "Chicken Sausage Pizza", "image": "https://www.example.com/images/chicken_sausage.jpg", "price": 320.0, "category": "Pizza", "description": "Chicken sausage topping pizza.", "rating": { "rate": 4.6, "count": 60 } },
+      { "id": 310, "title": "Veg Extravaganza", "image": "https://www.example.com/images/veg_extravaganza.jpg", "price": 330.0, "category": "Pizza", "description": "Veg pizza with multiple toppings.", "rating": { "rate": 4.8, "count": 50 } }
+    ]
+  }
+]

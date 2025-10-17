@@ -5,6 +5,8 @@ import authSlice from "./slice/AuthSlice";
 import recentOrdersReducer from './slice/RecentOrderSlice';
 import ordersReducer from './slice/OrdersSlice';
 import addressReducer from './slice/AddressSlice';
+import profileReducer from "./slice/ProfileSlice";
+import paymentReducer from "./slice/PaymentSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +16,8 @@ export const store = configureStore({
     recentOrders: recentOrdersReducer,
     orders : ordersReducer, 
     address : addressReducer,
+    profile : profileReducer,
+    payment: paymentReducer,
+    
   },
 });

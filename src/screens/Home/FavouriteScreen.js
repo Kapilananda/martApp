@@ -25,7 +25,7 @@ export default function FavoriteScreen({ navigation }) {
       <View style={{flex:1,backgroundColor:"#eef9ffff"}}>
         <Text style={{ justifyContent: "flex-start", alignItems: "flex-start", fontSize: 22, fontWeight: "700", color: "#333", marginVertical: 15, marginLeft: 10, }}>❤️ My Favorites</Text>
         <View style={styles.emptyContainer}>
-          <Ionicons name="heart-outline" size={64} color="#ccc" />
+          <Ionicons name="heart-outline" size={64} color="#741818ff" />
           <Text style={styles.emptyText}>No favorites yet</Text>
           <Text style={styles.emptySubText}>
             Browse products and tap the ❤️ to add them here.
@@ -54,7 +54,11 @@ export default function FavoriteScreen({ navigation }) {
               onPress={() => navigation.navigate("ProductDetails", { item })}
               style={styles.imageContainer}
             >
-              <Image source={{ uri: item.image }} style={styles.image} />
+              <Image source={
+                typeof item.image === 'number'
+                ? item.image
+                : {uri : item.image}
+              } style={styles.image} />
             </TouchableOpacity>
 
             {/* Details */}
@@ -62,7 +66,7 @@ export default function FavoriteScreen({ navigation }) {
               <Text style={styles.title} numberOfLines={2}>
                 {item.title}
               </Text>
-              <Text style={styles.price}>₹ {item.price.toFixed(2)}</Text>
+              <Text style={styles.price}>₹ {item.discount_price}</Text>
 
               <View style={styles.actionRow}>
                 <TouchableOpacity

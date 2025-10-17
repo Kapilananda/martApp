@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -7,23 +7,34 @@ import {
   ScrollView,
   Dimensions,
   TouchableOpacity,
-} from "react-native";
-import AntDesign from "react-native-vector-icons/AntDesign";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import LinearGradient from "react-native-linear-gradient";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleFavorite } from "../../store/slice/FavoritesSlice"; // import slice
+} from 'react-native';
 
-const { width } = Dimensions.get("window");
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import LinearGradient from 'react-native-linear-gradient';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleFavorite } from '../../store/slice/FavoritesSlice'; // import slice
+import {
+  addToCart,
+  increaseQty,
+  decreaseQty,
+} from '../../store/slice/CartSlice';
+import { ToastAndroid } from 'react-native';
+import FastImage from 'react-native-fast-image';
+
+const { width } = Dimensions.get('window');
 
 export default function ProductDetails({ route, navigation }) {
   const { item } = route.params;
   const [quantity, setQuantity] = useState(1);
+  const cartItems = useSelector(state => state.cart.cartItems);
+
+  console.log(item);
 
   const dispatch = useDispatch();
-  const favorites = useSelector((state) => state.favorite.favorites);
+  const favorites = useSelector(state => state.favorite.favorites);
 
-  const isFavorite = favorites.some((fav) => fav.id === item.id);
+  const isFavorite = favorites.some(fav => fav.id === item.id);
 
   // ⭐ Toggle favorite
   const handleToggleFavorite = () => {
@@ -31,7 +42,7 @@ export default function ProductDetails({ route, navigation }) {
   };
 
   // ⭐ Dynamic Rating Renderer
-  const renderStars = (rating) => {
+  const renderStars = rating => {
     if (!rating) return <Text style={styles.noRating}>No rating</Text>;
 
     const fullStars = Math.floor(rating);
@@ -39,11 +50,16 @@ export default function ProductDetails({ route, navigation }) {
     const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 
     return (
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         {Array(fullStars)
           .fill()
           .map((_, i) => (
-            <AntDesign key={`full-${i}`} name="star" size={18} color="#FF9800" />
+            <AntDesign
+              key={`full-${i}`}
+              name="star"
+              size={18}
+              color="#FF9800"
+            />
           ))}
         {halfStar && <AntDesign name="staro" size={18} color="#FF9800" />}
         {Array(emptyStars)
@@ -54,6 +70,16 @@ export default function ProductDetails({ route, navigation }) {
       </View>
     );
   };
+
+  // const imageSource =
+  //     typeof item.image === 'string'
+  //       ? { uri: item.image } // remote image
+  //       : item.image; // local require image
+
+  const imageSource =
+    typeof item.image === 'number'
+      ? item.image // local require image
+      : { uri: String(item.image) }; // ensure it's a string
 
   return (
     <View style={styles.container}>
@@ -74,16 +100,22 @@ export default function ProductDetails({ route, navigation }) {
             onPress={handleToggleFavorite}
           >
             <AntDesign
-              name={isFavorite ? "heart" : "hearto"}
+              name={isFavorite ? 'heart' : 'hearto'}
               size={22}
-              color={isFavorite ? "#E91E63" : "#E91E63"}
+              color={isFavorite ? '#E91E63' : '#E91E63'}
             />
           </TouchableOpacity>
         </View>
 
         {/* Product Image */}
         <View style={styles.imageWrapper}>
-          <Image source={{ uri: item.image }} style={styles.image} />
+          {/* <Image source={imageSource} style={styles.image} /> */}
+
+          <FastImage
+            source={imageSource}
+            style={styles.image}
+            resizeMode={FastImage.resizeMode.contain}
+          />
         </View>
 
         {/* Product Info */}
@@ -100,7 +132,13 @@ export default function ProductDetails({ route, navigation }) {
 
           {/* Price & Quantity */}
           <View style={styles.priceRow}>
-            <Text style={styles.price}>₹ {item.price}</Text>
+            <Text style={styles.price}>
+              {item.isDeal
+                ? `₹ ${item.discount_price}`
+                : `₹ ${Math.round(
+                    item.actual_price - item.discount_percentage,
+                  )}`}
+            </Text>
 
             <View style={styles.qtyBox}>
               <TouchableOpacity
@@ -108,7 +146,7 @@ export default function ProductDetails({ route, navigation }) {
               >
                 <Text style={styles.qtyBtn}>−</Text>
               </TouchableOpacity>
-              <Text style={styles.qtyText}>{quantity} KG</Text>
+              <Text style={styles.qtyText}>{quantity} Unit</Text>
               <TouchableOpacity onPress={() => setQuantity(quantity + 1)}>
                 <Text style={styles.qtyBtn}>＋</Text>
               </TouchableOpacity>
@@ -124,8 +162,16 @@ export default function ProductDetails({ route, navigation }) {
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {[...Array(3)].map((_, i) => (
               <View key={i} style={styles.relatedCard}>
-                <Image source={{ uri: item.image }} style={styles.relatedImg} />
-                <Text style={styles.relatedPrice}>₹ {item.price}</Text>
+                <Image source={imageSource} style={styles.relatedImg} />
+                <Text style={styles.relatedPrice}>₹ 
+                   {' '}
+            {(
+              (item.isDeal
+                ? item.discount_price
+                : Math.round(item.actual_price - item.discount_percentage)) *
+              quantity
+            ).toFixed()}
+                </Text>
               </View>
             ))}
           </ScrollView>
@@ -136,13 +182,36 @@ export default function ProductDetails({ route, navigation }) {
       <View style={styles.footer}>
         <View>
           <Text style={styles.totalText}>Total Price</Text>
+          {/* <Text style={styles.totalPrice}>
+            ₹ {(item.isDeal ? `₹ ${item.discount_price}` : `₹ ${Math.round(
+                    item.actual_price - item.discount_percentage,
+                  )}` * quantity).toFixed(2)}
+          </Text> */}
           <Text style={styles.totalPrice}>
-            ₹ {(item.price * quantity).toFixed(2)}
+            ₹{' '}
+            {(
+              (item.isDeal
+                ? item.discount_price
+                : Math.round(item.actual_price - item.discount_percentage)) *
+              quantity
+            ).toFixed(2)}
           </Text>
         </View>
-        <TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() =>
+            dispatch(
+              addToCart(item),
+              ToastAndroid.showWithGravity(
+                'Added to Cart..!',
+                ToastAndroid.SHORT,
+                ToastAndroid.CENTER,
+              ),
+            )
+          }
+        >
           <LinearGradient
-            colors={["#007ad0ff", "#005a9bff"]}
+            colors={['#007ad0ff', '#005a9bff']}
             style={styles.addButton}
           >
             <MaterialIcons name="shopping-cart" size={20} color="#fff" />
@@ -155,31 +224,31 @@ export default function ProductDetails({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#F9FAFB" },
+  container: { flex: 1, backgroundColor: '#F9FAFB' },
 
   headerRow: {
-    position: "absolute",
+    position: 'absolute',
     top: 17,
     left: 20,
     right: 20,
     zIndex: 10,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   iconButton: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     padding: 10,
     borderRadius: 30,
     elevation: 5,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
 
   imageWrapper: {
-    alignItems: "center",
-    backgroundColor: "#def8ffff",
+    alignItems: 'center',
+    // backgroundColor: "#30b9dfff",
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
     paddingVertical: 50,
@@ -188,102 +257,102 @@ const styles = StyleSheet.create({
   image: {
     width: width * 0.8,
     height: width * 0.7,
-    resizeMode: "contain",
+    resizeMode: 'contain',
   },
 
   infoCard: {
     padding: 20,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     marginTop: -20,
     elevation: 5,
   },
-  title: { fontSize: 22, fontWeight: "700", marginBottom: 6, color: "#222" },
+  title: { fontSize: 22, fontWeight: '700', marginBottom: 6, color: '#222' },
 
-  ratingRow: { flexDirection: "row", alignItems: "center", marginBottom: 12 },
-  ratingValue: { marginLeft: 6, fontSize: 14, color: "#666" },
+  ratingRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 12 },
+  ratingValue: { marginLeft: 6, fontSize: 14, color: '#666' },
 
   priceRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 20,
   },
-  price: { fontSize: 28, fontWeight: "bold", color: "#4CAF50" },
+  price: { fontSize: 28, fontWeight: 'bold', color: '#4CAF50' },
 
   qtyBox: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#F2F2F2",
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F2F2F2',
     borderRadius: 20,
     paddingHorizontal: 12,
     paddingVertical: 6,
   },
   qtyBtn: {
     fontSize: 18,
-    fontWeight: "bold",
-    color: "#4CAF50",
+    fontWeight: 'bold',
+    color: '#4CAF50',
     marginHorizontal: 8,
   },
-  qtyText: { fontSize: 14, fontWeight: "600" },
+  qtyText: { fontSize: 14, fontWeight: '600' },
 
   sectionTitle: {
     fontSize: 16,
-    fontWeight: "600",
+    fontWeight: '600',
     marginBottom: 8,
-    color: "#333",
+    color: '#333',
     marginTop: 10,
   },
   description: {
     fontSize: 14,
     lineHeight: 20,
-    color: "#555",
+    color: '#555',
     marginBottom: 20,
   },
 
   relatedCard: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     borderRadius: 15,
     padding: 12,
     marginRight: 12,
     elevation: 4,
-    alignItems: "center",
+    alignItems: 'center',
     width: 120,
     marginBottom: 10,
   },
-  relatedImg: { width: 80, height: 80, resizeMode: "contain" },
+  relatedImg: { width: 80, height: 80, resizeMode: 'contain' },
   relatedPrice: {
     marginTop: 6,
     fontSize: 14,
-    fontWeight: "bold",
-    color: "#4CAF50",
+    fontWeight: 'bold',
+    color: '#4CAF50',
   },
 
   footer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     padding: 16,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     elevation: 15,
   },
-  totalText: { fontSize: 14, color: "#777" },
-  totalPrice: { fontSize: 20, fontWeight: "bold", color: "#333" },
+  totalText: { fontSize: 14, color: '#777' },
+  totalPrice: { fontSize: 20, fontWeight: 'bold', color: '#333' },
 
   addButton: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 30,
   },
   addButtonText: {
     fontSize: 16,
-    fontWeight: "600",
-    color: "#fff",
+    fontWeight: '600',
+    color: '#fff',
     marginLeft: 8,
   },
 });

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo } from 'react';
 import {
   View,
   Text,
@@ -10,20 +10,20 @@ import {
   Pressable,
   SafeAreaView,
   ScrollView,
-} from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
-import AntDesign from "react-native-vector-icons/AntDesign";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleFavorite } from "../../store/slice/FavoritesSlice";
-import ItemCard from "../../components/ItemCard";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleFavorite } from '../../store/slice/FavoritesSlice';
+import ItemCard from '../../components/ItemCard';
 
-const { width } = Dimensions.get("window");
+const { width } = Dimensions.get('window');
 
 const ProductList = ({ route, navigation }) => {
   const products = route?.params?.products || [];
 
   const dispatch = useDispatch();
-  const favorites = useSelector((state) => state.favorite.favorites);
+  const favorites = useSelector(state => state.favorite.favorites);
 
   const [filterVisible, setFilterVisible] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState(products);
@@ -36,32 +36,47 @@ const ProductList = ({ route, navigation }) => {
 
   // ✅ Unique categories
   const categories = useMemo(
-    () => [...new Set(products.map((p) => p.category))],
-    [products]
+    () => [...new Set(products.map(p => p.category))],
+    [products],
   );
+
 
   // ✅ Apply Filters
   const applyFilters = () => {
     let filtered = [...products];
 
     if (selectedCategory) {
-      filtered = filtered.filter((item) => item.category === selectedCategory);
+      filtered = filtered.filter(item => item.category === selectedCategory);
     }
 
+    // if (minRating) {
+    //   filtered = filtered.filter(item => item.rating?.rate >= minRating);
+    // }
     if (minRating) {
-      filtered = filtered.filter((item) => item.rating?.rate >= minRating);
+      const ratingThreshold = minRating === 5 ? 4.5 : minRating;
+      filtered = filtered.filter(item => item.rating?.rate >= ratingThreshold);
     }
 
     if (priceRange) {
       filtered = filtered.filter(
-        (item) => item.price >= priceRange[0] && item.price <= priceRange[1]
+        item =>
+          Math.round(item.actual_price - item.discount_percentage) >=
+            priceRange[0] && item.actual_price <= priceRange[1],
       );
     }
 
-    if (sortBy === "lowToHigh") {
-      filtered.sort((a, b) => a.price - b.price);
-    } else if (sortBy === "highToLow") {
-      filtered.sort((a, b) => b.price - a.price);
+    if (sortBy === 'lowToHigh') {
+      filtered.sort(
+        (a, b) =>
+          Math.round(a.actual_price - a.discount_percentage) -
+          Math.round(b.actual_price - b.discount_percentage),
+      );
+    } else if (sortBy === 'highToLow') {
+      filtered.sort(
+        (a, b) =>
+          Math.round(b.actual_price - b.discount_percentage) -
+          Math.round(a.actual_price - a.discount_percentage),
+      );
     }
 
     setFilteredProducts(filtered);
@@ -78,7 +93,7 @@ const ProductList = ({ route, navigation }) => {
   };
 
   const renderProduct = ({ item }) => {
-    const isFavorite = favorites.some((fav) => fav.id === item.id);
+    const isFavorite = favorites.some(fav => fav.id === item.id);
 
     return (
       <ItemCard
@@ -126,9 +141,9 @@ const ProductList = ({ route, navigation }) => {
         <FlatList
           data={filteredProducts}
           renderItem={renderProduct}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={item => item.id.toString()}
           numColumns={2}
-          columnWrapperStyle={{ justifyContent: "space-between" }}
+          columnWrapperStyle={{ justifyContent: 'space-between' }}
           contentContainerStyle={{ paddingBottom: 40 }}
           showsVerticalScrollIndicator={false}
         />
@@ -143,8 +158,8 @@ const ProductList = ({ route, navigation }) => {
 
               {/* Category */}
               <Text style={styles.modalOption}>Category</Text>
-              <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-                {categories.map((cat) => (
+              <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                {categories.map(cat => (
                   <Pressable
                     key={cat}
                     style={[
@@ -152,9 +167,7 @@ const ProductList = ({ route, navigation }) => {
                       selectedCategory === cat && styles.chipActive,
                     ]}
                     onPress={() =>
-                      setSelectedCategory(
-                        selectedCategory === cat ? null : cat
-                      )
+                      setSelectedCategory(selectedCategory === cat ? null : cat)
                     }
                   >
                     <Text
@@ -171,18 +184,18 @@ const ProductList = ({ route, navigation }) => {
 
               {/* Sort by */}
               <Text style={styles.modalOption}>Sort by</Text>
-              <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+              <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                 <Pressable
                   style={[
                     styles.chip,
-                    sortBy === "lowToHigh" && styles.chipActive,
+                    sortBy === 'lowToHigh' && styles.chipActive,
                   ]}
-                  onPress={() => setSortBy("lowToHigh")}
+                  onPress={() => setSortBy('lowToHigh')}
                 >
                   <Text
                     style={[
                       styles.chipText,
-                      sortBy === "lowToHigh" && styles.chipTextActive,
+                      sortBy === 'lowToHigh' && styles.chipTextActive,
                     ]}
                   >
                     Price: Low → High
@@ -192,14 +205,14 @@ const ProductList = ({ route, navigation }) => {
                 <Pressable
                   style={[
                     styles.chip,
-                    sortBy === "highToLow" && styles.chipActive,
+                    sortBy === 'highToLow' && styles.chipActive,
                   ]}
-                  onPress={() => setSortBy("highToLow")}
+                  onPress={() => setSortBy('highToLow')}
                 >
                   <Text
                     style={[
                       styles.chipText,
-                      sortBy === "highToLow" && styles.chipTextActive,
+                      sortBy === 'highToLow' && styles.chipTextActive,
                     ]}
                   >
                     Price: High → Low
@@ -209,8 +222,8 @@ const ProductList = ({ route, navigation }) => {
 
               {/* Rating */}
               <Text style={styles.modalOption}>Minimum Rating</Text>
-              <View style={{ flexDirection: "row" }}>
-                {[3, 4, 5].map((r) => (
+              <View style={{ flexDirection: 'row' }}>
+                {[3, 4, 5].map(r => (
                   <Pressable
                     key={r}
                     style={[styles.chip, minRating === r && styles.chipActive]}
@@ -231,14 +244,14 @@ const ProductList = ({ route, navigation }) => {
               {/* Modal Actions */}
               <View style={styles.modalActions}>
                 <Pressable
-                  style={[styles.modalBtn, { backgroundColor: "#ccc" }]}
+                  style={[styles.modalBtn, { backgroundColor: '#ccc' }]}
                   onPress={resetFilters}
                 >
                   <Text style={styles.modalBtnText}>Reset</Text>
                 </Pressable>
 
                 <Pressable
-                  style={[styles.modalBtn, { backgroundColor: "#0072beff" }]}
+                  style={[styles.modalBtn, { backgroundColor: '#0072beff' }]}
                   onPress={applyFilters}
                 >
                   <Text style={styles.modalBtnText}>Apply</Text>
@@ -257,58 +270,61 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 12,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
+    // paddingBottom: 10,
     // top:40
+    marginBottom: -40,
+    // marginTop:100,
   },
   topBar: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginBottom: 10,
     marginTop: 5,
   },
   topBtn: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#f0fdf4",
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#f0fdf4',
     borderRadius: 25,
     paddingHorizontal: 15,
     paddingVertical: 8,
     elevation: 2,
   },
   topBtnText: {
-    color: "#0073c0ff",
-    fontWeight: "600",
+    color: '#0073c0ff',
+    fontWeight: '600',
     marginLeft: 6,
   },
   emptyContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   emptyText: {
     fontSize: 18,
-    fontWeight: "600",
-    color: "gray",
+    fontWeight: '600',
+    color: 'gray',
     marginBottom: 10,
   },
   tryAgainBtn: {
-    backgroundColor: "#b1e0ffff",
+    backgroundColor: '#b1e0ffff',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 8,
   },
   tryAgainText: {
-    color: "#00336cff",
-    fontWeight: "600",
+    color: '#00336cff',
+    fontWeight: '600',
     fontSize: 16,
   },
   modalOverlay: {
     flex: 1,
-    backgroundColor: "rgba(0,0,0,0.4)",
-    justifyContent: "flex-end",
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    justifyContent: 'flex-end',
   },
   modalContainer: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     padding: 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -316,18 +332,18 @@ const styles = StyleSheet.create({
   },
   modalTitle: {
     fontSize: 22,
-    fontWeight: "700",
+    fontWeight: '700',
     marginBottom: 20,
-    color: "#333",
+    color: '#333',
   },
   modalOption: {
     fontSize: 16,
     marginVertical: 10,
-    color: "#444",
+    color: '#444',
   },
   chip: {
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: '#ccc',
     borderRadius: 20,
     paddingHorizontal: 12,
     paddingVertical: 6,
@@ -335,20 +351,20 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   chipActive: {
-    backgroundColor: "#0073c0ff",
-    borderColor: "#96d4feff",
+    backgroundColor: '#0073c0ff',
+    borderColor: '#96d4feff',
   },
   chipText: {
-    color: "#333",
+    color: '#333',
     fontSize: 14,
   },
   chipTextActive: {
-    color: "#fff",
-    fontWeight: "600",
+    color: '#fff',
+    fontWeight: '600',
   },
   modalActions: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: 20,
     marginBottom: 10,
   },
@@ -357,11 +373,11 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     marginHorizontal: 6,
     borderRadius: 10,
-    alignItems: "center",
+    alignItems: 'center',
   },
   modalBtnText: {
-    color: "#fff",
-    fontWeight: "600",
+    color: '#fff',
+    fontWeight: '600',
     fontSize: 16,
   },
 });

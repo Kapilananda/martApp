@@ -22,7 +22,9 @@ const cartSlice = createSlice({
         state.cartItems.push({ ...item, quantity: 1 });
       }
       state.totalQuantity += 1;
-      state.totalPrice += item.price;
+      state.totalPrice += (item.isDeal
+                ? item.discount_price
+                : Math.round(item.actual_price - item.discount_percentage));
     },
     removeFromCart: (state, action) => {
       const itemId = action.payload;

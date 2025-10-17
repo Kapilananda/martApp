@@ -21,6 +21,7 @@ import OrderDetails from '../screens/Orders/OrderDetails';
 import OrderScreen from '../screens/Orders/OrderScreen';
 import OrderStatusScreen from "../screens/Orders/OrderStatusScreen";
 import LocationScreen from "../screens/Orders/LocationScreen";
+import OnlinePaymentScreen from "../screens/Home/OnlinePaymentScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,10 +30,10 @@ export default function Navigation() {
     <Stack.Navigator screenOptions={{headerShown:false}} >
       
         <Stack.Screen name='BottomTabNavigation' component={BottomTabNavigation} />
+        <Stack.Screen name='ProductDetails' component={ProductDetails}/>
         <Stack.Screen name='SignUp' component={SignUp}/>
         <Stack.Screen name='Home' component={Home}/>
         <Stack.Screen name='LoginScreen' component={LoginScreen}/>
-        <Stack.Screen name='ProductDetails' component={ProductDetails}/>
         <Stack.Screen name='ProductList' component={ProductList}/>
         <Stack.Screen name='SearchResult' component={SearchResult}/>
         <Stack.Screen name="SearchScreen" component={SearchScreen} />
@@ -45,6 +46,7 @@ export default function Navigation() {
         <Stack.Screen name='OrderDetails' component={OrderDetails} />
         <Stack.Screen name='OrderStatusScreen' component={OrderStatusScreen} />
         <Stack.Screen name='LocationScreen' component={LocationScreen} />
+        <Stack.Screen name='OnlinePaymentScreen' component={OnlinePaymentScreen}/>
 
     </Stack.Navigator>
   )

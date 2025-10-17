@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo } from 'react';
 import {
   View,
   Text,
@@ -8,11 +8,11 @@ import {
   StyleSheet,
   SafeAreaView,
   ScrollView,
-} from "react-native";
-import { useDispatch, useSelector } from "react-redux";
-import Icon from "react-native-vector-icons/Ionicons";
-import { addToCart } from "../../store/slice/CartSlice"; // for reorder
-import { ToastAndroid } from "react-native";
+} from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { addToCart } from '../../store/slice/CartSlice'; // for reorder
+import { ToastAndroid } from 'react-native';
 
 export default function OrderDetailsScreen({ route, navigation }) {
   const dispatch = useDispatch();
@@ -20,13 +20,12 @@ export default function OrderDetailsScreen({ route, navigation }) {
   // console.log(`${orderId} hello`);
 
   // Get the order from recentOrdersSlice
-  const recentOrders = useSelector(
-    (state) => state.orders?.recentOrders || []
-  );
+  const recentOrders = useSelector(state => state.orders?.recentOrders || []);
 
-  const order = recentOrders.find((o) => o.id === orderId);
+  const order = recentOrders.find(o => o.id === orderId);
   // const order = recentOrders.find((o) => o.id === "d1");
-
+  console.log(order);
+  
   // Calculate total price
   const totalPrice = useMemo(() => {
     if (!order) return 0;
@@ -38,24 +37,33 @@ export default function OrderDetailsScreen({ route, navigation }) {
   // Handle reorder → adds all items to cart
   const handleReorder = () => {
     if (!order) return;
-    order.items.forEach((item) => {
+    order.items.forEach(item => {
       dispatch(addToCart({ ...item, quantity: item.quantity ?? 1 }));
     });
-    navigation.navigate("BottomTabNavigation" , {
-      screen : "Cart"
+    navigation.navigate('BottomTabNavigation', {
+      screen: 'Cart',
     });
   };
 
   // Add single item to cart
-  const handleAddItem = (item) => {
+  const handleAddItem = item => {
     dispatch(addToCart({ ...item, quantity: 1 }));
-    ToastAndroid.showWithGravity("Added to Cart..!", ToastAndroid.SHORT, ToastAndroid.CENTER)
+    ToastAndroid.showWithGravity(
+      'Added to Cart..!',
+      ToastAndroid.SHORT,
+      ToastAndroid.CENTER,
+    );
   };
 
   // Render single product row
   const renderItem = ({ item }) => (
     <View style={styles.productCard}>
-      <Image source={{ uri: item.image }} style={styles.productImg} />
+      <Image
+        source={
+          typeof item.image === 'number' ? item.image : { uri: item.image }
+        }
+        style={styles.productImg}
+      />
       <View style={styles.productDetails}>
         <Text style={styles.productTitle}>{item.title}</Text>
         <Text style={styles.productQuantity}>Qty: {item.quantity ?? 1}</Text>
@@ -96,9 +104,13 @@ export default function OrderDetailsScreen({ route, navigation }) {
           <Icon name="chevron-back" size={24} color="#fff" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Order Details</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("BottomTabNavigation" , {
-          screen:"Cart"
-        })}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('BottomTabNavigation', {
+              screen: 'Cart',
+            })
+          }
+        >
           <Icon name="cart-outline" size={24} color="#fff" />
         </TouchableOpacity>
       </View>
@@ -110,7 +122,9 @@ export default function OrderDetailsScreen({ route, navigation }) {
           <Text style={styles.summaryText}>Date: {order.date}</Text>
           <Text style={styles.summaryText}>Status: {order.status}</Text>
           {order.deliveryOtp && (
-            <Text style={styles.summaryOtp}>Delivery OTP: {order.deliveryOtp}</Text>
+            <Text style={styles.summaryOtp}>
+              Delivery OTP: {order.deliveryOtp}
+            </Text>
           )}
         </View>
 
@@ -139,81 +153,92 @@ export default function OrderDetailsScreen({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f5f5f5" },
+  container: { flex: 1, backgroundColor: '#f5f5f5' },
   header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    backgroundColor: "#007ba8ff",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#007ba8ff',
     padding: 16,
   },
-  headerTitle: { color: "#fff", fontSize: 18, fontWeight: "700" },
+  headerTitle: { color: '#fff', fontSize: 18, fontWeight: '700' },
 
   summaryCard: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     margin: 16,
     padding: 16,
     borderRadius: 12,
     elevation: 3,
   },
-  summaryTitle: { fontSize: 18, fontWeight: "bold", marginBottom: 6 },
-  summaryText: { fontSize: 14, color: "#555", marginBottom: 4 },
+  summaryTitle: { fontSize: 18, fontWeight: 'bold', marginBottom: 6 },
+  summaryText: { fontSize: 14, color: '#555', marginBottom: 4 },
   summaryOtp: {
     fontSize: 14,
-    color: "#FF6D00",
-    fontWeight: "600",
+    color: '#FF6D00',
+    fontWeight: '600',
     marginTop: 6,
   },
 
   list: { marginHorizontal: 16, marginBottom: 20 },
   productCard: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#fff",
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
     padding: 12,
     borderRadius: 12,
     marginBottom: 12,
     elevation: 2,
   },
-  productImg: { width: 60, height: 60, borderRadius: 8, marginRight: 12,resizeMode:"center" },
+  productImg: {
+    width: 60,
+    height: 60,
+    borderRadius: 8,
+    marginRight: 12,
+    resizeMode: 'center',
+  },
   productDetails: { flex: 1 },
-  productTitle: { fontSize: 16, fontWeight: "600", color: "#333" },
-  productQuantity: { fontSize: 14, color: "#777", marginTop: 4 },
+  productTitle: { fontSize: 16, fontWeight: '600', color: '#333' },
+  productQuantity: { fontSize: 14, color: '#777', marginTop: 4 },
   productPrice: {
     fontSize: 16,
-    fontWeight: "bold",
-    color: "#4CAF50",
+    fontWeight: 'bold',
+    color: '#4CAF50',
     marginTop: 6,
   },
 
   addBtn: {
-    backgroundColor: "#007ba8ff",
+    backgroundColor: '#007ba8ff',
     padding: 8,
     borderRadius: 8,
   },
 
   totalContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "#fff",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
     marginHorizontal: 16,
     padding: 16,
     borderRadius: 12,
     elevation: 2,
     marginBottom: 20,
   },
-  totalText: { fontSize: 18, fontWeight: "600", color: "#333" },
-  totalAmount: { fontSize: 18, fontWeight: "bold", color: "#4CAF50" },
+  totalText: { fontSize: 18, fontWeight: '600', color: '#333' },
+  totalAmount: { fontSize: 18, fontWeight: 'bold', color: '#4CAF50' },
 
   reorderBtn: {
-    backgroundColor: "#f17800ff",
+    backgroundColor: '#f17800ff',
     marginHorizontal: 16,
     paddingVertical: 14,
     borderRadius: 12,
-    alignItems: "center",
+    alignItems: 'center',
     elevation: 2,
   },
-  reorderText: { color: "#fff", fontSize: 16, fontWeight: "bold" },
+  reorderText: { color: '#fff', fontSize: 16, fontWeight: 'bold' },
 
-  emptyText: { fontSize: 16, color: "#777", textAlign: "center", marginTop: 40 },
+  emptyText: {
+    fontSize: 16,
+    color: '#777',
+    textAlign: 'center',
+    marginTop: 40,
+  },
 });

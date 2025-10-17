@@ -1,6 +1,6 @@
 import { ActivityIndicator } from 'react-native';
 import React, { useEffect, useState } from 'react';
-
+import {dayDeals} from '../assets/dayDeals';
 
 export default function ResultScreen({ route, navigation }) {
   const { query } = route.params;
@@ -10,8 +10,7 @@ export default function ResultScreen({ route, navigation }) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('https://fakestoreapi.com/products');
-        const data = await response.json();
+        const data = dayDeals;
 
         // Add random discounts
         const updated = data.map(item => {
